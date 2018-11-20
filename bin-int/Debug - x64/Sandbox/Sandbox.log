@@ -1,2 +1,2 @@
-﻿  Application.cpp
-e:\mega\programming\c++\acrylic\sandbox\src\application.cpp(10): warning C4326: return type of 'main' should be 'int' instead of 'void'
+﻿  SandboxApp.cpp
+  Sandbox.vcxproj -> E:\MEGA\Programming\C++\Acrylic\bin\Debug - x64\Sandbox\Sandbox.exe
