@@ -1,0 +1,2 @@
+﻿  Application.cpp
+e:\mega\programming\c++\acrylic\sandbox\src\application.cpp(10): warning C4326: return type of 'main' should be 'int' instead of 'void'
