@@ -40,11 +40,6 @@ project "Acrylic"
 			"AC_BUILD_DLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "AC_DEBUG"
 		symbols "On"
@@ -90,6 +85,11 @@ project "Sandbox"
 		defines
 		{
 			"AC_PLATFORM_WINDOWS"
+		}
+
+		postbuildcommands
+		{
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 	filter "configurations:Debug"
