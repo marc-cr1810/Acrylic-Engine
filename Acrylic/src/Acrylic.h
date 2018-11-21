@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 #include "Acrylic/Application.h"
+#include "Acrylic/Log.h"
 
-// -------| Entry Point |-------
+// -------| Application Entry Point |-------
 #include "Acrylic/EntryPoint.h"
-// -------|=============|------
+// -------|=========================|------
