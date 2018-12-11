@@ -9,3 +9,5 @@
 #else
 	#error Acrylic is only supported on Windows systems
 #endif
+
+#define BIT(x) (1 << x)
