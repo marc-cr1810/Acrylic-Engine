@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Acrylic {
 
 	class ACRYLIC_API MouseMovedEvent : public Event

@@ -20,6 +20,9 @@ project "Acrylic"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "acpch.h"
+	pchsource "Acrylic/src/acpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

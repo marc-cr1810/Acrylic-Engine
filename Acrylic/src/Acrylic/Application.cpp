@@ -1,3 +1,4 @@
+#include "acpch.h"
 #include "Application.h"
 
 #include "Acrylic/Events/ApplicationEvent.h"
