@@ -12,6 +12,13 @@ workspace "Acrylic"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Acrylic/vendor/GLFW/include"
+
+include "Acrylic/vendor/GLFW"
+
+
 project "Acrylic"
 	location "Acrylic"
 	kind "SharedLib"
@@ -32,7 +39,14 @@ project "Acrylic"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
