@@ -3,6 +3,9 @@
 bin/
 bin-int/
 
+Acrylic/vendor/GLFW/bin/
+Acrylic/vendor/GLFW/bin-int/
+
 # Files
 *.sln
 *.vcxproj
