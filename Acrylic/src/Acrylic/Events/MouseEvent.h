@@ -67,7 +67,7 @@ namespace Acrylic {
 		MouseButtonPressedEvent(int button) 
 			: MouseButtonEvent(button) { }
 
-		std::string ToString()
+		std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
