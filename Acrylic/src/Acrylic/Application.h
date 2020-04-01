@@ -7,8 +7,8 @@
 #include "Acrylic/Events/Event.h"
 #include "Acrylic/Events/ApplicationEvent.h"
 
-namespace Acrylic {
-
+namespace Acrylic 
+{
 	class ACRYLIC_API Application
 	{
 	public:
