@@ -4,3 +4,6 @@
 [submodule "Acrylic/vendor/GLFW"]
 	path = Acrylic/vendor/GLFW
 	url = https://github.com/marc-cr1810/glfw
+[submodule "Acrylic/vendor/imgui"]
+	path = Acrylic/vendor/imgui
+	url = https://github.com/marc-cr1810/imgui
