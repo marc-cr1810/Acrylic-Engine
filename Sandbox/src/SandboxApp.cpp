@@ -9,12 +9,18 @@ public:
 
 	void OnUpdate() override
 	{
-		AC_INFO("ExampleLayer::Update");
+		if (Acrylic::Input::IsKeyPressed(AC_KEY_TAB))
+			AC_INFO("Tab key is pressed! (poll)");
 	}
 
 	void OnEvent(Acrylic::Event& event) override
 	{
-		AC_TRACE("{0}", event);
+		if (event.GetEventType() == Acrylic::EventType::KeyPressed)
+		{
+			Acrylic::KeyPressedEvent& e = (Acrylic::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == AC_KEY_TAB)
+				AC_INFO("Tab key is pressed! (event)");
+		}
 	}
 };
 
