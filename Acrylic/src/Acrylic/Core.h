@@ -10,6 +10,10 @@
 	#error Acrylic is only supported on Windows systems
 #endif
 
+#ifdef AC_DEBUG
+	#define AC_ENABLE_ASSERTS
+#endif
+
 #ifdef AC_ENABLE_ASSERTS
 	#define AC_ASSERT(x, ...) { if(!(x)) { AC_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define AC_CORE_ASSERT(x, ...) { if(!(x)) { AC_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
