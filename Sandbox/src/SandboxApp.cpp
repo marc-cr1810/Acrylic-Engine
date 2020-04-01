@@ -1,5 +1,7 @@
 #include <Acrylic.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Acrylic::Layer
 {
 public:
@@ -11,6 +13,13 @@ public:
 	{
 		if (Acrylic::Input::IsKeyPressed(AC_KEY_TAB))
 			AC_INFO("Tab key is pressed! (poll)");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World!");
+		ImGui::End();
 	}
 
 	void OnEvent(Acrylic::Event& event) override
@@ -30,7 +39,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Acrylic::ImGuiLayer());
 	}
 
 	~Sandbox()

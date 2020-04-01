@@ -1,13 +1,17 @@
 #pragma once
 
 #ifdef AC_PLATFORM_WINDOWS
-	#ifdef AC_BUILD_DLL
-		#define ACRYLIC_API	__declspec(dllexport)
+	#if AC_DYNAMIC_LINK
+		#ifdef AC_BUILD_DLL
+			#define ACRYLIC_API __declspec(dllexport)
+		#else
+			#define ACRYLIC_API __declspec(dllimport)
+		#endif
 	#else
-		#define ACRYLIC_API	__declspec(dllimport)
+		#define ACRYLIC_API
 	#endif
 #else
-	#error Acrylic is only supported on Windows systems
+	#error Acrylic only supports Windows!
 #endif
 
 #ifdef AC_DEBUG

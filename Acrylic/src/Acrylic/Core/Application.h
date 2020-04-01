@@ -1,11 +1,13 @@
 #pragma once
 
-#include "Core.h"
+#include "Acrylic/Core/Core.h"
 
-#include "Window.h"
-#include "Acrylic/LayerStack.h"
+#include "Acrylic/Core/Window.h"
+#include "Acrylic/Core/LayerStack.h"
 #include "Acrylic/Events/Event.h"
 #include "Acrylic/Events/ApplicationEvent.h"
+
+#include "Acrylic/ImGui/ImGuiLayer.h"
 
 namespace Acrylic 
 {
@@ -28,6 +30,7 @@ namespace Acrylic
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Acrylic/Core.h"
+#include "Acrylic/Core/Core.h"
 #include "Acrylic/Events/Event.h"
 
 namespace Acrylic {
@@ -14,6 +14,7 @@ namespace Acrylic {
 		virtual void OnAttach() { }
 		virtual void OnDetach() { }
 		virtual void OnUpdate() { }
+		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) { }
 
 		inline const std::string& GetName() const { return m_DebugName; }

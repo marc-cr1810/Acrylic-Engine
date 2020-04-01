@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Acrylic/Log.h"
+#include "Acrylic/Core/Log.h"
 
 #ifdef AC_PLATFORM_WINDOWS
 	#include <Windows.h>
