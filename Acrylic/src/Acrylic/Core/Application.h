@@ -11,7 +11,7 @@
 
 namespace Acrylic 
 {
-	class ACRYLIC_API Application
+	class Application
 	{
 	public:
 		Application();

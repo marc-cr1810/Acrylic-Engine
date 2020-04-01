@@ -7,7 +7,7 @@
 
 namespace Acrylic {
 
-	class ACRYLIC_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();
