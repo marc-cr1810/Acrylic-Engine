@@ -15,9 +15,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Acrylic/vendor/GLFW/include"
+IncludeDir["Glad"] = "Acrylic/vendor/Glad/include"
 
 include "Acrylic/vendor/GLFW"
-
+include "Acrylic/vendor/Glad"
 
 project "Acrylic"
 	location "Acrylic"
@@ -40,12 +41,14 @@ project "Acrylic"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -57,7 +60,8 @@ project "Acrylic"
 		defines
 		{
 			"AC_PLATFORM_WINDOWS",
-			"AC_BUILD_DLL"
+			"AC_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"

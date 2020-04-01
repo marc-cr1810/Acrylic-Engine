@@ -5,6 +5,8 @@
 #include "Acrylic/Events/KeyEvent.h"
 #include "Acrylic/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Acrylic {
 
 	static bool s_GLFWInitialized = false;
@@ -48,6 +50,8 @@ namespace Acrylic {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		AC_CORE_ASSERT(status, "Failed to initialize Glad!")
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
