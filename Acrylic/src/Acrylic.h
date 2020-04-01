@@ -5,6 +5,7 @@
 #include "Acrylic/Application.h"
 #include "Acrylic/Layer.h"
 #include "Acrylic/Log.h"
+#include "Acrylic/ImGui/ImGuiLayer.h"
 
 // -------| Application Entry Point |-------
 #include "Acrylic/EntryPoint.h"
