@@ -13,6 +13,8 @@
 #include "Acrylic/Renderer/Buffer.h"
 #include "Acrylic/Renderer/VertexArray.h"
 
+#include "Acrylic/Renderer/OrthographicCamera.h"
+
 namespace Acrylic 
 {
 	class Application
@@ -43,6 +45,8 @@ namespace Acrylic
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
