@@ -5,6 +5,7 @@
 #include "Acrylic/Core/Application.h"
 #include "Acrylic/Core/Layer.h"
 #include "Acrylic/Core/Log.h"
+#include "Acrylic/Core/Timestep.h"
 
 #include "Acrylic/Core/Input.h"
 #include "Acrylic/Core/KeyCodes.h"

@@ -119,22 +119,22 @@ public:
 		m_BlueShader.reset(new Acrylic::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Acrylic::Timestep ts) override
 	{
-		if (Acrylic::Input::IsKeyPressed(AC_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * 0.01;
-		else if (Acrylic::Input::IsKeyPressed(AC_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * 0.01;
-
-		if (Acrylic::Input::IsKeyPressed(AC_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * 0.01;
-		else if (Acrylic::Input::IsKeyPressed(AC_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * 0.01;
-
 		if (Acrylic::Input::IsKeyPressed(AC_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * 0.01;
-		if (Acrylic::Input::IsKeyPressed(AC_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * 0.01;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+		else if (Acrylic::Input::IsKeyPressed(AC_KEY_D))
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+
+		if (Acrylic::Input::IsKeyPressed(AC_KEY_W))
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+		else if (Acrylic::Input::IsKeyPressed(AC_KEY_S))
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+
+		if (Acrylic::Input::IsKeyPressed(AC_KEY_Q))
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
+		if (Acrylic::Input::IsKeyPressed(AC_KEY_E))
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 
 		Acrylic::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Acrylic::RenderCommand::Clear();
