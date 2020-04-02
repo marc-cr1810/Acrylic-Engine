@@ -9,6 +9,8 @@
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 
+#include "Acrylic/Renderer/Shader.h"
+
 namespace Acrylic 
 {
 	class Application
@@ -35,6 +37,7 @@ namespace Acrylic
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
