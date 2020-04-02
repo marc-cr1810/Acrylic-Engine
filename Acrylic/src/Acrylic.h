@@ -12,6 +12,17 @@
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 
+// -------- Renderer --------
+#include "Acrylic/Renderer/Renderer.h"
+#include "Acrylic/Renderer/RenderCommand.h"
+
+#include "Acrylic/Renderer/Buffer.h"
+#include "Acrylic/Renderer/Shader.h"
+#include "Acrylic/Renderer/VertexArray.h"
+
+#include "Acrylic/Renderer/OrthographicCamera.h"
+//---------------------------
+
 // -------| Application Entry Point |-------
 #include "Acrylic/Core/EntryPoint.h"
 // -------|=========================|-------
