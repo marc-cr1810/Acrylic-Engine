@@ -22,7 +22,7 @@ namespace Acrylic
 		return nullptr;
 	}
 
-	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
+	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t count)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -30,7 +30,7 @@ namespace Acrylic
 			AC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::OpenGL:
-			return new OpenGLIndexBuffer(indices, size);
+			return new OpenGLIndexBuffer(indices, count);
 		}
 
 		AC_CORE_ASSERT(false, "Unknown RendererAPI!");
