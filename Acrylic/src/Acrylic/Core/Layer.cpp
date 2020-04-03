@@ -7,7 +7,4 @@ namespace Acrylic {
 		: m_DebugName(name)
 	{ }
 
-	Layer::~Layer()
-	{ }
-
 }
