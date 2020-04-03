@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Acrylic::VertexBuffer> vertexBuffer;
+		Acrylic::Ref<Acrylic::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Acrylic::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Acrylic::BufferLayout layout = {
 			{ Acrylic::ShaderDataType::Float3, "a_Position" },
@@ -31,7 +31,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Acrylic::IndexBuffer> indexBuffer;
+		Acrylic::Ref<Acrylic::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Acrylic::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -44,7 +44,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Acrylic::VertexBuffer> squareVB;
+		Acrylic::Ref<Acrylic::VertexBuffer> squareVB;
 		squareVB.reset(Acrylic::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Acrylic::ShaderDataType::Float3, "a_Position" }
@@ -52,7 +52,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Acrylic::IndexBuffer> squareIB;
+		Acrylic::Ref<Acrylic::IndexBuffer> squareIB;
 		squareIB.reset(Acrylic::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -186,11 +186,11 @@ public:
 
 	}
 private:
-	std::shared_ptr<Acrylic::Shader> m_Shader;
-	std::shared_ptr<Acrylic::VertexArray> m_VertexArray;
+	Acrylic::Ref<Acrylic::Shader> m_Shader;
+	Acrylic::Ref<Acrylic::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Acrylic::Shader> m_FlatColorShader;
-	std::shared_ptr<Acrylic::VertexArray> m_SquareVA;
+	Acrylic::Ref<Acrylic::Shader> m_FlatColorShader;
+	Acrylic::Ref<Acrylic::VertexArray> m_SquareVA;
 
 	Acrylic::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
