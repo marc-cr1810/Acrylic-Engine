@@ -10,6 +10,7 @@
 #include "Acrylic/Core/Input.h"
 #include "Acrylic/Core/KeyCodes.h"
 #include "Acrylic/Core/MouseButtonCodes.h"
+#include "Acrylic/Core/OrthographicCameraController.h"
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 
