@@ -1,5 +1,6 @@
 workspace "Acrylic"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -7,8 +8,11 @@ workspace "Acrylic"
 		"Release",
 		"Dist"
 	}
-
-	startproject "Sandbox"
+	
+	flags
+	{
+		"MultiProcessorCompile"
+	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -18,6 +22,7 @@ IncludeDir["GLFW"] = "Acrylic/vendor/GLFW/include"
 IncludeDir["Glad"] = "Acrylic/vendor/Glad/include"
 IncludeDir["ImGui"] = "Acrylic/vendor/imgui"
 IncludeDir["glm"] = "Acrylic/vendor/glm"
+IncludeDir["stb_image"] = "Acrylic/vendor/stb_image"
 
 group "Dependencies"
 	include "Acrylic/vendor/GLFW"
@@ -42,6 +47,8 @@ project "Acrylic"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -58,7 +65,8 @@ project "Acrylic"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
