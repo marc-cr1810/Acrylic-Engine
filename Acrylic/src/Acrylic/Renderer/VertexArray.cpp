@@ -11,7 +11,7 @@ namespace Acrylic
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    AC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  CreateRef<OpenGLVertexArray>();
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLVertexArray>();
 		}
 
 		AC_CORE_ASSERT(false, "Unknown RendererAPI!");

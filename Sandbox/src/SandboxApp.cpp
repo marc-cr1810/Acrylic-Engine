@@ -1,4 +1,5 @@
 #include <Acrylic.h>
+#include "Acrylic/Core/EntryPoint.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -15,7 +16,7 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{ 
-		m_VertexArray.reset(Acrylic::VertexArray::Create());
+		m_VertexArray = Acrylic::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -37,7 +38,7 @@ public:
 		indexBuffer.reset(Acrylic::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Acrylic::VertexArray::Create());
+		m_SquareVA = Acrylic::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,

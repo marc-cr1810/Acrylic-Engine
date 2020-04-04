@@ -25,7 +25,3 @@
 #include "Acrylic/Renderer/OrthographicCamera.h"
 #include "Acrylic/Renderer/OrthographicCameraController.h"
 //---------------------------
-
-// -------| Application Entry Point |-------
-#include "Acrylic/Core/EntryPoint.h"
-// -------|=========================|-------
