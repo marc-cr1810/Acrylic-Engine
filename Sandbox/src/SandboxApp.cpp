@@ -92,7 +92,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Acrylic::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Acrylic::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -126,15 +126,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Acrylic::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Acrylic::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Acrylic::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Acrylic::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_DuckTexture = Acrylic::Texture2D::Create("assets/textures/Duck.png");
 
-		std::dynamic_pointer_cast<Acrylic::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Acrylic::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Acrylic::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Acrylic::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Acrylic::Timestep ts) override
@@ -177,10 +177,12 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Acrylic::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Acrylic::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_DuckTexture->Bind();
-		Acrylic::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Acrylic::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
 		//Acrylic::Renderer::Submit(m_Shader, m_VertexArray);
@@ -201,10 +203,11 @@ public:
 
 	}
 private:
+	Acrylic::ShaderLibrary m_ShaderLibrary;
 	Acrylic::Ref<Acrylic::Shader> m_Shader;
 	Acrylic::Ref<Acrylic::VertexArray> m_VertexArray;
 
-	Acrylic::Ref<Acrylic::Shader> m_FlatColorShader, m_TextureShader;
+	Acrylic::Ref<Acrylic::Shader> m_FlatColorShader;
 	Acrylic::Ref<Acrylic::VertexArray> m_SquareVA;
 
 	Acrylic::Ref<Acrylic::Texture2D> m_Texture, m_DuckTexture;
