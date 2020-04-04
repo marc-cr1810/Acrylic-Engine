@@ -82,7 +82,6 @@ project "Acrylic"
 
 		defines
 		{
-			"AC_PLATFORM_WINDOWS",
 			"AC_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -133,11 +132,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"AC_PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "AC_DEBUG"

@@ -10,7 +10,6 @@
 #include "Acrylic/Core/Input.h"
 #include "Acrylic/Core/KeyCodes.h"
 #include "Acrylic/Core/MouseButtonCodes.h"
-#include "Acrylic/Core/OrthographicCameraController.h"
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 
@@ -24,6 +23,7 @@
 #include "Acrylic/Renderer/VertexArray.h"
 
 #include "Acrylic/Renderer/OrthographicCamera.h"
+#include "Acrylic/Renderer/OrthographicCameraController.h"
 //---------------------------
 
 // -------| Application Entry Point |-------

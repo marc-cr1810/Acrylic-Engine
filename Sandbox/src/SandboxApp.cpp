@@ -7,11 +7,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Acrylic::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{ 
 		m_VertexArray.reset(Acrylic::VertexArray::Create());
 
@@ -208,13 +210,12 @@ class Sandbox : public Acrylic::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
-	{
-
-	}
+	{}
 };
 
 Acrylic::Application* Acrylic::CreateApplication()
