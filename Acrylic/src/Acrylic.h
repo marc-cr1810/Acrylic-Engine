@@ -15,6 +15,7 @@
 
 // -------- Renderer --------
 #include "Acrylic/Renderer/Renderer.h"
+#include "Acrylic/Renderer/Renderer2D.h"
 #include "Acrylic/Renderer/RenderCommand.h"
 
 #include "Acrylic/Renderer/Buffer.h"

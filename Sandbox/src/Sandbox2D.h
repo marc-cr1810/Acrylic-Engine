@@ -16,9 +16,5 @@ public:
 private:
 	Acrylic::OrthographicCameraController m_CameraController;
 
-	// Temp
-	Acrylic::Ref<Acrylic::VertexArray> m_SquareVA;
-	Acrylic::Ref<Acrylic::Shader> m_FlatColorShader;
-
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
