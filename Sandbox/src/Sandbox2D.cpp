@@ -37,9 +37,9 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 	{
 		AC_PROFILE_SCOPE("Renderer Draw");
 		Acrylic::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		Acrylic::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareColor);
+		Acrylic::Renderer2D::DrawRotatedQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(m_SquareRotation), m_SquareColor);
 		Acrylic::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.8f, 0.3f, 0.2f, 1.0f });
-		Acrylic::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
+		Acrylic::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture, 10.0f);
 		Acrylic::Renderer2D::EndScene();
 	}
 }
@@ -50,6 +50,7 @@ void Sandbox2D::OnImGuiRender()
 
 	ImGui::Begin("Settings");
 	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	ImGui::SliderFloat("Square Rotation", &m_SquareRotation, 0, 360);
 	ImGui::End();
 }
 

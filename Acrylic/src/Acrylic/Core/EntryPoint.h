@@ -8,7 +8,7 @@ extern Acrylic::Application* Acrylic::CreateApplication();
 int main(int argc, char** argv)
 {
 	Acrylic::Log::Init();
-	AC_CORE_WARN("Initialized Log!");
+	AC_CORE_INFO("Initialized Log!");
 
 	AC_PROFILE_BEGIN_SESSION("Startup", "AcrylicProfile-Startup.json");
 	auto app = Acrylic::CreateApplication();
