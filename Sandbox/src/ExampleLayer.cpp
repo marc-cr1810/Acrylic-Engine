@@ -127,6 +127,12 @@ ExampleLayer::ExampleLayer()
 	textureShader->SetInt("u_Texture", 0);
 }
 
+void ExampleLayer::OnAttach()
+{}
+
+void ExampleLayer::OnDetach()
+{}
+
 void ExampleLayer::OnUpdate(Acrylic::Timestep ts)
 {
 	//Update

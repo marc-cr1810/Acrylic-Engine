@@ -4,11 +4,6 @@
 #include "Sandbox2D.h"
 #include "ExampleLayer.h"
 
-class ExampleLayer : public Acrylic::Layer
-{
-public:
-};
-
 class Sandbox : public Acrylic::Application
 {
 public:

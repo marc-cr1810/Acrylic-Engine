@@ -5,6 +5,8 @@
 #include "Acrylic/Events/KeyEvent.h"
 #include "Acrylic/Events/MouseEvent.h"
 
+#include "Acrylic/Renderer/Renderer.h"
+
 #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Acrylic 
@@ -55,6 +57,10 @@ namespace Acrylic
 		
 		{
 			AC_PROFILE_SCOPE("glfwCreateWindow");
+#if defined(AC_DEBUG)
+			if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#endif
 			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;
 		}
