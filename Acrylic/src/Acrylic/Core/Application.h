@@ -11,6 +11,8 @@
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace Acrylic 
 {
 	class Application
@@ -18,8 +20,6 @@ namespace Acrylic
 	public:
 		Application();
 		virtual ~Application();
-
-		void Run();
 
 		void OnEvent(Event& e);
 
@@ -32,6 +32,7 @@ namespace Acrylic
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 	private:
+		void Run();
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -40,6 +41,7 @@ namespace Acrylic
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	// To be defined in client
