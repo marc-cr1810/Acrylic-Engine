@@ -1,6 +1,7 @@
 #pragma once
 
 #include "acpch.h"
+
 #include "Acrylic/Core/Core.h"
 
 namespace Acrylic {

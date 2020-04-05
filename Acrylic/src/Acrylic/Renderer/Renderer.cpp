@@ -1,7 +1,7 @@
-#include  "acpch.h"
-#include "Renderer.h"
+#include "acpch.h"
+#include "Acrylic/Renderer/Renderer.h"
 
-#include "Renderer2D.h"
+#include "Acrylic/Renderer/Renderer2D.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Acrylic
@@ -12,6 +12,11 @@ namespace Acrylic
 	{
 		RenderCommand::Init();
 		Renderer2D::Init();
+	}
+
+	void Renderer::Shutdown()
+	{
+		Renderer2D::Shutdown();
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)

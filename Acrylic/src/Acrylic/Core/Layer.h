@@ -4,8 +4,8 @@
 #include "Acrylic/Core/Timestep.h"
 #include "Acrylic/Events/Event.h"
 
-namespace Acrylic {
-
+namespace Acrylic 
+{
 	class Layer
 	{
 	public:

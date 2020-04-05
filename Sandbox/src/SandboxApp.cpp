@@ -1,10 +1,7 @@
 #include <Acrylic.h>
 #include "Acrylic/Core/EntryPoint.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#include "imgui/imgui.h"
-
+#include <imgui/imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -24,8 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		Acrylic::Ref<Acrylic::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Acrylic::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Acrylic::Ref<Acrylic::VertexBuffer> vertexBuffer = Acrylic::VertexBuffer::Create(vertices, sizeof(vertices));
 		Acrylic::BufferLayout layout = {
 			{ Acrylic::ShaderDataType::Float3, "a_Position" },
 			{ Acrylic::ShaderDataType::Float4, "a_Color" }
@@ -34,8 +30,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Acrylic::Ref<Acrylic::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Acrylic::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Acrylic::Ref<Acrylic::IndexBuffer> indexBuffer = Acrylic::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = Acrylic::VertexArray::Create();
@@ -47,8 +42,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Acrylic::Ref<Acrylic::VertexBuffer> squareVB;
-		squareVB.reset(Acrylic::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Acrylic::Ref<Acrylic::VertexBuffer> squareVB = Acrylic::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Acrylic::ShaderDataType::Float3, "a_Position" },
 			{ Acrylic::ShaderDataType::Float2, "a_TexCoord" }
@@ -56,8 +50,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Acrylic::Ref<Acrylic::IndexBuffer> squareIB;
-		squareIB.reset(Acrylic::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Acrylic::Ref<Acrylic::IndexBuffer> squareIB = Acrylic::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(

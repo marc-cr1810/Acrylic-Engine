@@ -1,9 +1,9 @@
 #include "acpch.h"
-#include "ImGuiLayer.h"
+#include "Acrylic/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <examples/imgui_impl_glfw.h>
+#include <examples/imgui_impl_opengl3.h>
 
 #include "Acrylic/Core/Application.h"
 

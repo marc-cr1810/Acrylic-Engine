@@ -1,12 +1,8 @@
 #include "acpch.h"
-#include "LayerStack.h"
+#include "Acrylic/Core/LayerStack.h"
 
-namespace Acrylic {
-
-	LayerStack::LayerStack()
-	{
-	}
-
+namespace Acrylic 
+{
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)

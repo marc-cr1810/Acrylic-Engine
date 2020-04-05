@@ -1,7 +1,8 @@
 #include "acpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
 #include "Acrylic/Core/Application.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Acrylic

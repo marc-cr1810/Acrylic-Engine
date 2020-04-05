@@ -1,5 +1,5 @@
 #include "acpch.h"
-#include "Application.h"
+#include "Acrylic/Core/Application.h"
 
 #include "Acrylic/Core/Log.h"
 #include "Acrylic/Core/Input.h"
@@ -8,10 +8,8 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Acrylic {
-
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
+namespace Acrylic 
+{
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
@@ -20,12 +18,17 @@ namespace Acrylic {
 		s_Instance = this;
 
 		m_Window = Scope<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallback(AC_BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+	}
+
+	Application::~Application()
+	{
+		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -43,8 +46,8 @@ namespace Acrylic {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResized));
+		dispatcher.Dispatch<WindowCloseEvent>(AC_BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(AC_BIND_EVENT_FN(OnWindowResized));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{

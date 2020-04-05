@@ -43,21 +43,6 @@
 	#error "Unknown platform!"
 #endif // End of platform detection
 
-// DLL support
-#ifdef AC_PLATFORM_WINDOWS
-	#if AC_DYNAMIC_LINK
-		#ifdef AC_BUILD_DLL
-			#define ACRYLIC_API __declspec(dllexport)
-		#else
-			#define ACRYLIC_API __declspec(dllimport)
-		#endif
-	#else
-		#define ACRYLIC_API
-	#endif
-#else
-	#error Acrylic only supports Windows!
-#endif // End of DLL support
-
 #ifdef AC_DEBUG
 	#define AC_ENABLE_ASSERTS
 #endif
