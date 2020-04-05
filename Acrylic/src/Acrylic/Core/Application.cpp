@@ -18,7 +18,7 @@ namespace Acrylic
 		s_Instance = this;
 
 		m_Window = Scope<Window>(Window::Create());
-		m_Window->SetEventCallback(AC_BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallback(AC_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
 
@@ -46,8 +46,8 @@ namespace Acrylic
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(AC_BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(AC_BIND_EVENT_FN(OnWindowResized));
+		dispatcher.Dispatch<WindowCloseEvent>(AC_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(AC_BIND_EVENT_FN(Application::OnWindowResized));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
