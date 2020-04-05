@@ -11,7 +11,7 @@
 
 #include "Acrylic/Core/Input.h"
 #include "Acrylic/Core/KeyCodes.h"
-#include "Acrylic/Core/MouseButtonCodes.h"
+#include "Acrylic/Core/MouseCodes.h"
 
 #include "Acrylic/ImGui/ImGuiLayer.h"
 

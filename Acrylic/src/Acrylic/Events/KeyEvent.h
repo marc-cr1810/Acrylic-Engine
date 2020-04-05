@@ -1,26 +1,27 @@
 #pragma once
 
 #include "Acrylic/Events/Event.h"
+#include "Acrylic/Core/Input.h"
 
 namespace Acrylic {
 
 	class KeyEvent : public Event
 	{
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		inline KeyCode GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput);
 	protected:
-		KeyEvent(int keycode)
+		KeyEvent(KeyCode keycode)
 			: m_KeyCode(keycode) { }
 
-		int m_KeyCode;
+		KeyCode m_KeyCode;
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatcount)
+		KeyPressedEvent(KeyCode keycode, int repeatcount)
 			: KeyEvent(keycode), m_RepeatCount(repeatcount) { }
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -40,7 +41,7 @@ namespace Acrylic {
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode)
+		KeyReleasedEvent(KeyCode keycode)
 			: KeyEvent(keycode) { }
 
 		std::string ToString() const override
@@ -56,7 +57,7 @@ namespace Acrylic {
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode)
+		KeyTypedEvent(KeyCode keycode)
 			: KeyEvent(keycode)
 		{}
 
