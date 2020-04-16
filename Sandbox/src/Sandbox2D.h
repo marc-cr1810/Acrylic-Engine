@@ -17,7 +17,8 @@ private:
 	Acrylic::OrthographicCameraController m_CameraController;
 
 	Acrylic::Ref<Acrylic::Texture2D> m_CheckerboardTexture;
+	Acrylic::Ref<Acrylic::Texture2D> m_DuckTexture;
 
-	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+	glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 	float m_SquareRotation = 0.0f;
 };

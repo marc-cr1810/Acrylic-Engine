@@ -13,6 +13,7 @@ void Sandbox2D::OnAttach()
 	AC_PROFILE_FUNCTION();
 
 	m_CheckerboardTexture = Acrylic::Texture2D::Create("assets/textures/Checkerboard.png");
+	m_DuckTexture = Acrylic::Texture2D::Create("assets/textures/Duck.png");
 }
 
 void Sandbox2D::OnDetach()
@@ -36,10 +37,16 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 
 	{
 		AC_PROFILE_SCOPE("Renderer Draw");
+
+		static float rotation = 0.0f;
+		rotation += ts * 50.0f;
+
 		Acrylic::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		Acrylic::Renderer2D::DrawRotatedQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(m_SquareRotation), m_SquareColor);
+		Acrylic::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareRotation, m_SquareColor);
+		Acrylic::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 		Acrylic::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.8f, 0.3f, 0.2f, 1.0f });
 		Acrylic::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture, 10.0f);
+		Acrylic::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_DuckTexture);
 		Acrylic::Renderer2D::EndScene();
 	}
 }
