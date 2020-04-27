@@ -1,6 +1,8 @@
 #pragma once
 #include "Acrylic.h"
 
+#include "Benchmark.h"
+
 class Sandbox2D : public Acrylic::Layer
 {
 public:
@@ -22,7 +24,5 @@ private:
 	glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 	float m_SquareRotation = 0.0f;
 
-	uint32_t m_FPS = 0;
-	uint32_t m_FPSTemp = 0;
-	float m_TimePassed = 0.0f;
+	Benchmark m_Benchmark;
 };

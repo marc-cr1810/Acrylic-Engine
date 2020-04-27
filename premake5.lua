@@ -82,8 +82,7 @@ project "Acrylic"
 
 		defines
 		{
-			"AC_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			
 		}
 	
 	filter "configurations:Debug"

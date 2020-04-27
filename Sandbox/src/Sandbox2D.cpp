@@ -42,14 +42,7 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 		static float rotation = 0.0f;
 		rotation += ts * 50.0f;
 
-		m_FPSTemp++;
-		m_TimePassed += ts;
-		if (m_TimePassed >= 1.0f)
-		{
-			m_FPS = m_FPSTemp;
-			m_FPSTemp = 0;
-			m_TimePassed = 0.0f;
-		}
+		m_Benchmark.OnUpdate(ts);
 
 		Acrylic::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		Acrylic::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareRotation, m_SquareColor);
@@ -60,7 +53,7 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 		Acrylic::Renderer2D::EndScene();
 
 		Acrylic::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		float size = 0.25f;
+		float size = 0.05f;
 
 		for (float y = -5.0f; y < 5.0f; y += size)
 		{
@@ -86,7 +79,9 @@ void Sandbox2D::OnImGuiRender()
 	ImGui::Text("Quads: %d", stats.QuadCount);
 	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-	ImGui::Text("FPS: %d", m_FPS);
+	ImGui::Text("Frametime: %f (%d FPS)", m_Benchmark.GetAvgFrameTime(), m_Benchmark.GetFPS());
+	ImGui::Text("Low 1.0: %f (%d FPS)", m_Benchmark.GetAvgLow1(), m_Benchmark.GetFPSLow1());
+	ImGui::Text("Low 0.1: %f (%d FPS)", m_Benchmark.GetAvgLow01(), m_Benchmark.GetFPSLow01());
 	ImGui::Text("");
 
 	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));

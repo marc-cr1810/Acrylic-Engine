@@ -64,6 +64,15 @@ namespace Acrylic
 		dispatcher.Dispatch<WindowResizeEvent>(AC_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 	}
 
+	void OrthographicCameraController::SetZoomLevel(float level)
+	{
+		AC_PROFILE_FUNCTION();
+
+		m_ZoomLevel = level;
+		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
+		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+	}
+
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent & e)
 	{
 		AC_PROFILE_FUNCTION();
