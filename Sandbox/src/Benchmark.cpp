@@ -5,6 +5,8 @@
 void Benchmark::OnUpdate(Acrylic::Timestep ts)
 {
 	m_TimePassed += ts;
+	m_FrameTime = ts * 1000;
+	m_FPS = 1000 / m_FrameTime;
 
 	// Wait a couple of seconds to load
 	if (m_TimePassed > 3.0f)
@@ -17,7 +19,12 @@ void Benchmark::OnUpdate(Acrylic::Timestep ts)
 		std::vector<float> low2 = GetLows(m_FrameTimeData, 3.1);
 		m_Avg01Low = std::accumulate(low2.begin(), low2.end(), 0.0) / low2.size();
 
-		m_FPS = 1000 / m_AvgFrameTime;
+		if (isnan(m_Avg1Low))
+			m_Avg1Low = m_AvgFrameTime;
+		if (isnan(m_Avg01Low))
+			m_Avg01Low = m_Avg1Low;
+
+		m_FPSAvg = 1000 / m_AvgFrameTime;
 		m_FPSLow1 = 1000 / m_Avg1Low;
 		m_FPSLow01 = 1000 / m_Avg01Low;
 	}
