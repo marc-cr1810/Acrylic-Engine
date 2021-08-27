@@ -1,6 +1,6 @@
-[23:59:16] [info] ACRYLIC: Initialized Log!
-[23:59:16] [info] ACRYLIC: Creating window Acrylic Engine (1280, 720)
-[23:59:17] [info] ACRYLIC: OpenGL Info:
-[23:59:17] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[23:59:17] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[23:59:17] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[02:25:10] [info] ACRYLIC: Initialized Log!
+[02:25:10] [info] ACRYLIC: Creating window Acrylic App (1280, 720)
+[02:25:10] [info] ACRYLIC: OpenGL Info:
+[02:25:10] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[02:25:10] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[02:25:10] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41

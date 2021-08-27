@@ -71,10 +71,11 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 	Acrylic::Renderer2D::ResetStats();
 	{
 		AC_PROFILE_SCOPE("Renderer Prep");
+
 		Acrylic::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Acrylic::RenderCommand::Clear();
 	}
-#if 0
+#if 1
 	{
 		AC_PROFILE_SCOPE("Renderer Draw");
 
@@ -104,7 +105,6 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 		}
 		Acrylic::Renderer2D::EndScene();
 	}
-#endif
 
 	if (Acrylic::Input::IsMouseButtonPressed(AC_MOUSE_BUTTON_LEFT))
 	{
@@ -124,6 +124,7 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 	m_ParticleSystem.OnUpdate(ts);
 	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 
+#else
 	Acrylic::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 	for (uint32_t y = 0; y < m_MapHeight; y++)
@@ -142,16 +143,14 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 		}
 	}
 
-	//Acrylic::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_TextureStairs);
-	//Acrylic::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.5f }, { 1.0f, 1.0f }, m_TextureBarrel);
-	//Acrylic::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.5f }, { 1.0f, 2.0f }, m_TextureTree);
 	Acrylic::Renderer2D::EndScene();
+#endif
 }
 
 void Sandbox2D::OnImGuiRender()
 {
 	AC_PROFILE_FUNCTION();
-
+		
 	ImGui::Begin("Settings");
 
 	auto stats = Acrylic::Renderer2D::GetStats();
@@ -167,6 +166,7 @@ void Sandbox2D::OnImGuiRender()
 
 	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 	ImGui::SliderFloat("Square Rotation", &m_SquareRotation, 0, 360);
+
 	ImGui::End();
 }
 

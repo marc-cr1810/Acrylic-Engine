@@ -22,6 +22,7 @@
 
 #include "Acrylic/Renderer/Buffer.h"
 #include "Acrylic/Renderer/Shader.h"
+#include "Acrylic/Renderer/Framebuffer.h"
 #include "Acrylic/Renderer/Texture.h"
 #include "Acrylic/Renderer/SubTexture2D.h"
 #include "Acrylic/Renderer/VertexArray.h"

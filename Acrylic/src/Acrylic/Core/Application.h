@@ -18,7 +18,7 @@ namespace Acrylic
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Acrylic App");
 		virtual ~Application();
 
 		void OnEvent(Event& e);
@@ -27,6 +27,8 @@ namespace Acrylic
 		void PushOverlay(Layer* overlay);
 
 		Window& GetWindow() { return *m_Window; }
+
+		void Close();
 
 		static Application& Get() { return *s_Instance; }
 	private:

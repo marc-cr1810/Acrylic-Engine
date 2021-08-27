@@ -12,14 +12,14 @@ namespace Acrylic
 {
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& name)
 	{
 		AC_PROFILE_FUNCTION();
 
 		AC_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = Scope<Window>(Window::Create());
+		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(AC_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
@@ -51,6 +51,11 @@ namespace Acrylic
 		overlay->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		AC_PROFILE_FUNCTION();
@@ -61,9 +66,9 @@ namespace Acrylic
 
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
-			(*it)->OnEvent(e);
 			if (e.Handled)
 				break;
+			(*it)->OnEvent(e);
 		}
 	}
 
