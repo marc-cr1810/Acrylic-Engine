@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Acrylic/Core/Core.h"
+#include "Acrylic/Core/Base.h"
 #include "Acrylic/Core/KeyCodes.h"
 #include "Acrylic/Core/MouseCodes.h"
 
