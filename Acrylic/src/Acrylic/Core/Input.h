@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Acrylic/Core/Base.h"
+#include <glm/glm.hpp>
+
 #include "Acrylic/Core/KeyCodes.h"
 #include "Acrylic/Core/MouseCodes.h"
 
@@ -12,7 +13,7 @@ namespace Acrylic
 		static bool IsKeyPressed(KeyCode key);
 
 		static bool IsMouseButtonPressed(MouseCode button);
-		static std::pair<float, float> GetMousePosition();
+		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();
 	};
