@@ -23,6 +23,7 @@ IncludeDir["Glad"] = "Acrylic/vendor/Glad/include"
 IncludeDir["ImGui"] = "Acrylic/vendor/imgui"
 IncludeDir["glm"] = "Acrylic/vendor/glm"
 IncludeDir["stb_image"] = "Acrylic/vendor/stb_image"
+IncludeDir["entt"] = "Acrylic/vendor/entt/include"
 
 group "Dependencies"
 	include "Acrylic/vendor/GLFW"
@@ -67,7 +68,8 @@ project "Acrylic"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -122,7 +124,8 @@ project "Acrylic-Editor"
 		"Acrylic/vendor/spdlog/include",
 		"Acrylic/src",
 		"Acrylic/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -169,7 +172,8 @@ project "Sandbox"
 		"Acrylic/vendor/spdlog/include",
 		"Acrylic/src",
 		"Acrylic/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

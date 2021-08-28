@@ -19,6 +19,12 @@ namespace Acrylic
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
+		m_ActiveScene = CreateRef<Scene>();
+
+		m_Square = m_ActiveScene->CreateEntity();
+		m_ActiveScene->Reg().emplace<TransformComponent>(m_Square);
+		m_ActiveScene->Reg().emplace<SpriteRendererComponent>(m_Square, glm::vec4{ 0.7f, 0.1f, 1.0f, 1.0f });
+
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 		m_DuckTexture = Texture2D::Create("assets/textures/Duck.png");
 
@@ -34,48 +40,32 @@ namespace Acrylic
 	{
 		AC_PROFILE_FUNCTION();
 
+		// Resize
+		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		{
+			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+		}
+
 		// Update
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
 
 		// Render
 		Renderer2D::ResetStats();
-		{
-			AC_PROFILE_SCOPE("Renderer Prep");
+		m_Framebuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-			m_Framebuffer->Bind();
+		Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-		}
+		// Update scene
+		m_ActiveScene->OnUpdate(ts);
 
-		{
-			AC_PROFILE_SCOPE("Renderer Draw");
 
-			static float rotation = 0.0f;
-			rotation += ts * 50.0f;
-
-			Renderer2D::BeginScene(m_CameraController.GetCamera());
-			Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(m_SquareRotation), m_SquareColor);
-			Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-			Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.8f, 0.3f, 0.2f, 1.0f });
-			Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
-			Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, -0.01f }, { 1.0f, 1.0f }, glm::radians(rotation), m_DuckTexture);
-			Renderer2D::EndScene();
-
-			Renderer2D::BeginScene(m_CameraController.GetCamera());
-			float size = 0.25f;
-
-			for (float y = -5.0f; y < 5.0f; y += size)
-			{
-				for (float x = -5.0f; x < 5.0f; x += size)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					Renderer2D::DrawQuad({ x, y }, { size * 0.9f, size * 0.9f }, color);
-				}
-			}
-			Renderer2D::EndScene();
-		}
+		Renderer2D::EndScene();
 
 		m_Framebuffer->Unbind();
 	}
@@ -140,18 +130,21 @@ namespace Acrylic
 			ImGui::EndMenuBar();
 		}
 
-		ImGui::Begin("Settings");
-
+		ImGui::Begin("Stats");
 		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-		ImGui::Text("");
+		ImGui::End();
 
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
-		ImGui::SliderFloat("Square Rotation", &m_SquareRotation, 0, 360);
+		ImGui::Begin("Properties");
+
+		auto& squareColor = m_ActiveScene->Reg().get<SpriteRendererComponent>(m_Square).Color;
+
+		ImGui::Text("Square Properties:");
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 		ImGui::End();
 		
 		// The Viewport
@@ -163,13 +156,8 @@ namespace Acrylic
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
-		{
-			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
-			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 
-			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
-		}
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 

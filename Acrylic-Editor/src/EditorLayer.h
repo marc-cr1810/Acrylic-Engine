@@ -18,18 +18,20 @@ namespace Acrylic
 	private:
 		OrthographicCameraController m_CameraController;
 
-		Ref<Texture2D> m_CheckerboardTexture;
-		Ref<Texture2D> m_DuckTexture;
-
 		Ref<Framebuffer> m_Framebuffer;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
 
+		Ref<Scene> m_ActiveScene;
+
+		// Temp
+		Ref<Texture2D> m_CheckerboardTexture;
+		Ref<Texture2D> m_DuckTexture;
+
+		entt::entity m_Square;
+
 		glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 		float m_SquareRotation = 0.0f;
-
-		uint32_t m_MapWidth, m_MapHeight;
-		std::unordered_map<char, Ref<SubTexture2D>> m_TextureMap;
 	};
 }

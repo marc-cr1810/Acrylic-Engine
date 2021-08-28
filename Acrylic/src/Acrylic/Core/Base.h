@@ -57,6 +57,7 @@
 	#define AC_DEBUGBREAK()
 #endif
 
+/// TODO: Make this macro able to take in no arguments except condition
 #ifdef AC_ENABLE_ASSERTS
 	#define AC_ASSERT(x, ...) { if(!(x)) { AC_ERROR("Assertion Failed: {0}", __VA_ARGS__); AC_DEBUGBREAK(); } }
 	#define AC_CORE_ASSERT(x, ...) { if(!(x)) { AC_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); AC_DEBUGBREAK(); } }
