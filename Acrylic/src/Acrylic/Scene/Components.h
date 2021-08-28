@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Acrylic/Scene/SceneCamera.h"
+
 namespace Acrylic {
 
 	struct TagComponent
@@ -38,6 +40,16 @@ namespace Acrylic {
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color) {}
+	};
+
+	struct CameraComponent
+	{
+		Acrylic::SceneCamera Camera;
+		bool Primary = true; // TODO: think about moving to Scene
+		bool FixedAspectRatio = false;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
 	};
 
 }
