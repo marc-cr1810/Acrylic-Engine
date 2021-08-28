@@ -29,7 +29,7 @@ namespace Acrylic
 		Ref<Texture2D> m_CheckerboardTexture;
 		Ref<Texture2D> m_DuckTexture;
 
-		entt::entity m_Square;
+		Entity m_Square;
 
 		glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 		float m_SquareRotation = 0.0f;

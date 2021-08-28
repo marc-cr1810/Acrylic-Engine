@@ -19,14 +19,18 @@ namespace Acrylic
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
-		m_ActiveScene = CreateRef<Scene>();
-
-		m_Square = m_ActiveScene->CreateEntity();
-		m_ActiveScene->Reg().emplace<TransformComponent>(m_Square);
-		m_ActiveScene->Reg().emplace<SpriteRendererComponent>(m_Square, glm::vec4{ 0.7f, 0.1f, 1.0f, 1.0f });
-
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 		m_DuckTexture = Texture2D::Create("assets/textures/Duck.png");
+
+
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		// Entity
+		auto square = m_ActiveScene->CreateEntity("Square");
+		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.3f, 0.1f, 0.7f, 1.0f });
+
+		m_Square = square;
 
 		m_CameraController.SetZoomLevel(5.0f);
 	}
@@ -141,10 +145,15 @@ namespace Acrylic
 
 		ImGui::Begin("Properties");
 
-		auto& squareColor = m_ActiveScene->Reg().get<SpriteRendererComponent>(m_Square).Color;
+		if (m_Square)
+		{
+			auto& tag = m_Square.GetComponent<TagComponent>().Tag;
+			auto& squareColor = m_Square.GetComponent<SpriteRendererComponent>().Color;
 
-		ImGui::Text("Square Properties:");
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+			ImGui::Text("%s Properties:", tag.c_str());
+			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+		}
+
 		ImGui::End();
 		
 		// The Viewport
