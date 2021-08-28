@@ -52,7 +52,6 @@ namespace Acrylic
 				auto& transform = GetComponent<TransformComponent>().Transform;
 				float speed = 5.0f;
 
-				
 				if (Input::IsKeyPressed(Key::A))
 					transform[3][0] -= speed * ts;
 				if (Input::IsKeyPressed(Key::D))

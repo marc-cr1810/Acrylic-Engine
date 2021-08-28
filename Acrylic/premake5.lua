@@ -54,16 +54,16 @@ project "Acrylic"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "AC_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "AC_RELEASE"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "AC_DIST"
 		runtime "Release"
 		optimize "on"
