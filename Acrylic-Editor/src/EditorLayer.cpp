@@ -22,8 +22,6 @@ namespace Acrylic
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 		m_DuckTexture = Texture2D::Create("assets/textures/Duck.png");
 
-
-
 		m_ActiveScene = CreateRef<Scene>();
 
 		// Entity
@@ -38,7 +36,34 @@ namespace Acrylic
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
 
-		m_CameraController.SetZoomLevel(5.0f);
+		class CameraController : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+			}
+
+			void OnDestroy()
+			{
+			}
+
+			void OnUpdate(Timestep ts)
+			{
+				auto& transform = GetComponent<TransformComponent>().Transform;
+				float speed = 5.0f;
+
+				if (Input::IsKeyPressed(KeyCode::A))
+					transform[3][0] -= speed * ts;
+				if (Input::IsKeyPressed(KeyCode::D))
+					transform[3][0] += speed * ts;
+				if (Input::IsKeyPressed(KeyCode::W))
+					transform[3][1] += speed * ts;
+				if (Input::IsKeyPressed(KeyCode::S))
+					transform[3][1] -= speed * ts;
+			}
+		};
+
+		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 	}
 
 	void EditorLayer::OnDetach()
@@ -58,7 +83,7 @@ namespace Acrylic
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
 
-			m_ActiveScene->OnViewportResize(m_ViewportSize.x, m_ViewportSize.y);
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		// Update
