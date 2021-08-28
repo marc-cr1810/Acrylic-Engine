@@ -1,24 +1,23 @@
 project "Sandbox"
-	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"src/**.h",
+		"src/**.cpp"
 	}
 
 	includedirs
 	{
-		"Acrylic/vendor/spdlog/include",
-		"Acrylic/src",
-		"Acrylic/vendor",
+		"%{wks.location}/Acrylic/vendor/spdlog/include",
+		"%{wks.location}/Acrylic/src",
+		"%{wks.location}/Acrylic/vendor",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}"
 	}
@@ -32,16 +31,16 @@ project "Sandbox"
 		systemversion "latest"
 
 	filter "configurations:Debug"
-		defines "AC_DEBUG"
+		defines "HZ_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "AC_RELEASE"
+		defines "HZ_RELEASE"
 		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "AC_DIST"
+		defines "HZ_DIST"
 		runtime "Release"
 		optimize "on"

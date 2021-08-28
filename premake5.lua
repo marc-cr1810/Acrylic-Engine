@@ -15,7 +15,7 @@ workspace "Acrylic"
 	{
 		".editorconfig"
 	}
-	
+
 	flags
 	{
 		"MultiProcessorCompile"
