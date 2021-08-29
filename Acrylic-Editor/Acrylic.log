@@ -1,6 +1,11 @@
-[15:44:27] [info] ACRYLIC: Initialized Log!
-[15:44:27] [info] ACRYLIC: Creating window Acrylic Editor (1280, 720)
-[15:44:27] [info] ACRYLIC: OpenGL Info:
-[15:44:27] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[15:44:27] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[15:44:27] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[18:11:00] [info] ACRYLIC: Initialized Log!
+[18:11:00] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[18:11:01] [info] ACRYLIC: OpenGL Info:
+[18:11:01] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[18:11:01] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[18:11:01] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[18:11:04] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Blue Square
+[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
