@@ -3,6 +3,8 @@
 #include "Acrylic.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "Acrylic/Renderer/EditorCamera.h"
+
 namespace Acrylic
 {
 	class EditorLayer : public Layer
@@ -25,6 +27,7 @@ namespace Acrylic
 		void SaveSceneAs();
 	private:
 		OrthographicCameraController m_CameraController;
+		EditorCamera m_EditorCamera;
 
 		Ref<Framebuffer> m_Framebuffer;
 

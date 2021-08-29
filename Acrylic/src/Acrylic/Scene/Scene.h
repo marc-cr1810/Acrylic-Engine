@@ -3,6 +3,7 @@
 #include <entt.hpp>
 
 #include "Acrylic/Core/Timestep.h"
+#include "Acrylic/Renderer/EditorCamera.h"
 
 namespace Acrylic
 {
@@ -17,7 +18,8 @@ namespace Acrylic
 		Entity CreateEntity(const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
-		void OnUpdate(Timestep ts);
+		void OnUpdateRuntime(Timestep ts);
+		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 
 		void Scene::OnViewportResize(uint32_t width, uint32_t height);
 
