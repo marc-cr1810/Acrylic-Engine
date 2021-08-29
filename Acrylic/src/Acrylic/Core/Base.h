@@ -18,14 +18,8 @@
 	#define AC_DEBUGBREAK()
 #endif
 
-/// TODO: Make this macro able to take in no arguments except condition
-#ifdef AC_ENABLE_ASSERTS
-	#define AC_ASSERT(x, ...) { if(!(x)) { AC_ERROR("Assertion Failed: {0}", __VA_ARGS__); AC_DEBUGBREAK(); } }
-	#define AC_CORE_ASSERT(x, ...) { if(!(x)) { AC_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); AC_DEBUGBREAK(); } }
-#else
-	#define AC_ASSERT(x, ...)
-	#define AC_CORE_ASSERT(x, ...)
-#endif
+#define AC_EXPAND_MACRO(x) x
+#define AC_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -49,3 +43,6 @@ namespace Acrylic
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
 }
+
+#include "Acrylic/Core/Log.h"
+#include "Acrylic/Core/Assert.h"

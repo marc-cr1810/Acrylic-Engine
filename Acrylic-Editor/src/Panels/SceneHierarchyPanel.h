@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Acrylic/Core/Base.h"
-#include "Acrylic/Core/Log.h"
 #include "Acrylic/Scene/Scene.h"
 #include "Acrylic/Scene/Entity.h"
 
