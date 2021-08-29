@@ -1,11 +1,38 @@
-[18:11:00] [info] ACRYLIC: Initialized Log!
-[18:11:00] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[18:11:01] [info] ACRYLIC: OpenGL Info:
-[18:11:01] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[18:11:01] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[18:11:01] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
-[18:11:04] [trace] ACRYLIC: Deserializing scene 'Untitled'
-[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Blue Square
-[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
-[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
-[18:11:04] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:41:10] [info] ACRYLIC: Initialized Log!
+[18:41:10] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[18:41:11] [info] ACRYLIC: OpenGL Info:
+[18:41:11] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[18:41:11] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[18:41:11] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[18:41:15] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:41:15] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:41:15] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:41:15] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:41:15] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Blue Square
+[18:41:18] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:41:18] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:41:18] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:41:18] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:52:28] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:52:28] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:52:28] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:52:28] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:52:32] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:52:32] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[18:52:32] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[18:52:32] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[18:52:32] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:52:42] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:52:42] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:52:42] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:52:42] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:52:42] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Blue Square
+[18:52:47] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:52:47] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[18:52:47] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Red Square
+[18:52:47] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Green Square
+[18:52:51] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[18:52:51] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[18:52:51] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[18:52:51] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[18:52:51] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
