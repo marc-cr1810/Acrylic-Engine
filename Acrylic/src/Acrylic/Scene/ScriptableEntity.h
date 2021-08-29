@@ -16,7 +16,7 @@ namespace Acrylic
 		}
 	protected:
 		virtual void OnCreate() {}
-		virtual void OnDestory() {}
+		virtual void OnDestroy() {}
 		virtual void OnUpdate(Timestep ts) {}
 	private:
 		Entity m_Entity;

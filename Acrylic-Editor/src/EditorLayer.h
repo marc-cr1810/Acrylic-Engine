@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Acrylic.h"
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace Acrylic
 {
@@ -25,6 +27,9 @@ namespace Acrylic
 
 		Ref<Scene> m_ActiveScene;
 
+		// Panels
+		SceneHierarchyPanel m_SceneHierarchyPanel;
+
 		// Temp
 		Ref<Texture2D> m_CheckerboardTexture;
 		Ref<Texture2D> m_DuckTexture;
@@ -32,8 +37,6 @@ namespace Acrylic
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
 		bool m_PrimaryCamera = true;
-
-		Entity m_SquareEntity;
 
 		glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 		float m_SquareRotation = 0.0f;
