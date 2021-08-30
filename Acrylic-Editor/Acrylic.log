@@ -1,59 +1,11 @@
-[21:31:10] [info] ACRYLIC: Initialized Log!
-[21:31:10] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[21:31:11] [info] ACRYLIC: OpenGL Info:
-[21:31:11] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[21:31:11] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[21:31:11] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:11] [warning] ACRYLIC: Pixel data = -1
-[21:31:12] [warning] ACRYLIC: Pixel data = -1
-[21:31:12] [warning] ACRYLIC: Pixel data = -1
-[21:31:12] [warning] ACRYLIC: Pixel data = -1
-[21:31:12] [warning] ACRYLIC: Pixel data = -1
-[21:31:13] [warning] ACRYLIC: Pixel data = -1
-[21:31:13] [warning] ACRYLIC: Pixel data = -1
-[21:31:13] [warning] ACRYLIC: Pixel data = -1
-[21:31:13] [warning] ACRYLIC: Pixel data = -1
+[21:47:23] [info] ACRYLIC: Initialized Log!
+[21:47:23] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[21:47:24] [info] ACRYLIC: OpenGL Info:
+[21:47:24] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[21:47:24] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[21:47:24] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[21:47:29] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[21:47:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[21:47:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[21:47:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[21:47:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
