@@ -1,9 +1,10 @@
 #pragma once
 #include "Acrylic/Core/Base.h"
+#include "Acrylic/Core/Application.h"
 
 #ifdef AC_PLATFORM_WINDOWS
 
-extern Acrylic::Application* Acrylic::CreateApplication();
+extern Acrylic::Application* Acrylic::CreateApplication(ApplicationCommandLineArgs args);
 
 int main(int argc, char** argv)
 {
@@ -11,7 +12,7 @@ int main(int argc, char** argv)
 	AC_CORE_INFO("Initialized Log!");
 
 	AC_PROFILE_BEGIN_SESSION("Startup", "AcrylicProfile-Startup.json");
-	auto app = Acrylic::CreateApplication();
+	auto app = Acrylic::CreateApplication({ argc, argv });
 	AC_PROFILE_END_SESSION();
 
 	AC_PROFILE_BEGIN_SESSION("Runtime", "AcrylicProfile-Runtime.json");

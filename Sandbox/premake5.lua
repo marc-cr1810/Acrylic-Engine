@@ -2,7 +2,7 @@ project "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -15,16 +15,16 @@ project "Sandbox"
 
 	includedirs
 	{
-		"%{wks.location}/Acrylic/vendor/spdlog/include",
-		"%{wks.location}/Acrylic/src",
-		"%{wks.location}/Acrylic/vendor",
+		"%{wks.location}/Acylic/vendor/spdlog/include",
+		"%{wks.location}/Acylic/src",
+		"%{wks.location}/Acylic/vendor",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}"
 	}
 
 	links
 	{
-		"Acrylic"
+		"Acylic"
 	}
 
 	filter "system:windows"
@@ -34,6 +34,11 @@ project "Sandbox"
 		defines "AC_DEBUG"
 		runtime "Debug"
 		symbols "on"
+		
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}
 
 	filter "configurations:Release"
 		defines "AC_RELEASE"

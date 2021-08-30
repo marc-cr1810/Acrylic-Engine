@@ -1,4 +1,5 @@
 include "./vendor/premake/premake_customization/solution_items.lua"
+include "Dependencies.lua"
 
 workspace "Acrylic"
 	architecture "x86_64"
@@ -23,17 +24,6 @@ workspace "Acrylic"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
--- Include directories relative to root folder (solution directory)
-IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/Acrylic/vendor/GLFW/include"
-IncludeDir["Glad"] = "%{wks.location}/Acrylic/vendor/Glad/include"
-IncludeDir["ImGui"] = "%{wks.location}/Acrylic/vendor/imgui"
-IncludeDir["glm"] = "%{wks.location}/Acrylic/vendor/glm"
-IncludeDir["stb_image"] = "%{wks.location}/Acrylic/vendor/stb_image"
-IncludeDir["entt"] = "%{wks.location}/Acrylic/vendor/entt/include"
-IncludeDir["yaml_cpp"] = "%{wks.location}/Acrylic/vendor/yaml-cpp/include"
-IncludeDir["ImGuizmo"] = "%{wks.location}/Acrylic/vendor/ImGuizmo"
-
 group "Dependencies"
 	include "vendor/premake"
 	include "Acrylic/vendor/GLFW"
@@ -43,5 +33,5 @@ group "Dependencies"
 group ""
 
 include "Acrylic"
-include "Acrylic-Editor"
 include "Sandbox"
+include "Acrylic-Editor"
