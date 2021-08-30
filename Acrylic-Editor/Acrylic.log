@@ -1,11 +1,59 @@
-[19:28:25] [info] ACRYLIC: Initialized Log!
-[19:28:25] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[19:28:25] [info] ACRYLIC: OpenGL Info:
-[19:28:25] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[19:28:25] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[19:28:25] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
-[19:28:30] [trace] ACRYLIC: Deserializing scene 'Untitled'
-[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
-[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
-[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
-[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[21:31:10] [info] ACRYLIC: Initialized Log!
+[21:31:10] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[21:31:11] [info] ACRYLIC: OpenGL Info:
+[21:31:11] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[21:31:11] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[21:31:11] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:11] [warning] ACRYLIC: Pixel data = -1
+[21:31:12] [warning] ACRYLIC: Pixel data = -1
+[21:31:12] [warning] ACRYLIC: Pixel data = -1
+[21:31:12] [warning] ACRYLIC: Pixel data = -1
+[21:31:12] [warning] ACRYLIC: Pixel data = -1
+[21:31:13] [warning] ACRYLIC: Pixel data = -1
+[21:31:13] [warning] ACRYLIC: Pixel data = -1
+[21:31:13] [warning] ACRYLIC: Pixel data = -1
+[21:31:13] [warning] ACRYLIC: Pixel data = -1
