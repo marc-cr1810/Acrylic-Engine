@@ -1,11 +1,11 @@
-[23:44:08] [info] ACRYLIC: Initialized Log!
-[23:44:08] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[23:44:08] [info] ACRYLIC: OpenGL Info:
-[23:44:08] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[23:44:08] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[23:44:08] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
-[23:44:14] [trace] ACRYLIC: Deserializing scene 'Untitled'
-[23:44:14] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
-[23:44:14] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
-[23:44:14] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
-[23:44:14] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[19:28:25] [info] ACRYLIC: Initialized Log!
+[19:28:25] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[19:28:25] [info] ACRYLIC: OpenGL Info:
+[19:28:25] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[19:28:25] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[19:28:25] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.41
+[19:28:30] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[19:28:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right

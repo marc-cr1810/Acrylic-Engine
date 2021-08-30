@@ -34,10 +34,10 @@ namespace Acrylic
 
 		static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 	private:
-		void Run();
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
