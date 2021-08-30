@@ -32,7 +32,4 @@
 #include "Acrylic/Renderer/Texture.h"
 #include "Acrylic/Renderer/SubTexture2D.h"
 #include "Acrylic/Renderer/VertexArray.h"
-
-#include "Acrylic/Renderer/OrthographicCamera.h"
-#include "Acrylic/Renderer/OrthographicCameraController.h"
 //---------------------------

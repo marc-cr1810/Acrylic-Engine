@@ -14,7 +14,7 @@
 namespace Acrylic 
 {
 	EditorLayer::EditorLayer()
-		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f)
+		: Layer("EditorLayer")
 	{}
 
 	void EditorLayer::OnAttach()
@@ -110,16 +110,12 @@ namespace Acrylic
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
 
 			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		// Update
-		if (m_ViewportFocused)
-			m_CameraController.OnUpdate(ts);
-
 		m_EditorCamera.OnUpdate(ts);
 
 		// Render
@@ -321,7 +317,6 @@ namespace Acrylic
 
 	void EditorLayer::OnEvent(Event & e)
 	{
-		m_CameraController.OnEvent(e);
 		m_EditorCamera.OnEvent(e);
 
 		EventDispatcher dispatcher(e);
