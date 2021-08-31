@@ -13,9 +13,12 @@
 
 namespace Acrylic 
 {
+	extern const std::filesystem::path g_AssetPath;
+
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer")
-	{}
+	{
+	}
 
 	void EditorLayer::OnAttach()
 	{
@@ -91,8 +94,6 @@ namespace Acrylic
 #endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-
-		SceneSerializer serializer(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -110,7 +111,6 @@ namespace Acrylic
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-
 			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
@@ -151,7 +151,7 @@ namespace Acrylic
 	{
 		AC_PROFILE_FUNCTION();
 
-		bool dockspaceOpen = true;
+		static bool dockspaceOpen = true;
 		static bool opt_fullscreen_persistant = true;
 		bool opt_fullscreen = opt_fullscreen_persistant;
 		static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
@@ -161,9 +161,9 @@ namespace Acrylic
 		ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
 		if (opt_fullscreen)
 		{
-			const ImGuiViewport* viewport = ImGui::GetMainViewport();
-			ImGui::SetNextWindowPos(viewport->WorkPos);
-			ImGui::SetNextWindowSize(viewport->WorkSize);
+			ImGuiViewport* viewport = ImGui::GetMainViewport();
+			ImGui::SetNextWindowPos(viewport->Pos);
+			ImGui::SetNextWindowSize(viewport->Size);
 			ImGui::SetNextWindowViewport(viewport->ID);
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
@@ -171,15 +171,14 @@ namespace Acrylic
 			window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
 		}
 
-		// When using ImGuiDockNodeFlags_PassthruCentralNode, DockSpace() will render our background 
-		// and handle the pass-thru hole, so we ask Begin() to not render a background.
+		// When using ImGuiDockNodeFlags_PassthruCentralNode, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
 		if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
 			window_flags |= ImGuiWindowFlags_NoBackground;
 
 		// Important: note that we proceed even if Begin() returns false (aka window is collapsed).
-		// This is because we want to keep our DockSpace() active. If a DockSpace() is inactive,
+		// This is because we want to keep our DockSpace() active. If a DockSpace() is inactive, 
 		// all active windows docked into it will lose their parent and become undocked.
-		// We cannot preserve the docking relationship between an active window and an inactive docking, otherwise
+		// We cannot preserve the docking relationship between an active window and an inactive docking, otherwise 
 		// any change of dockspace/settings would lead to windows being stuck in limbo and never being visible.
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 		ImGui::Begin("Editor Dockspace", &dockspaceOpen, window_flags);
@@ -205,6 +204,9 @@ namespace Acrylic
 		{
 			if (ImGui::BeginMenu("File"))
 			{
+				// Disabling fullscreen would allow the window to be moved to the front of other windows, 
+				// which we can't undo at the moment without finer window depth/z control.
+				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);1
 				if (ImGui::MenuItem("New", "Ctrl+N"))
 					NewScene();
 
@@ -219,11 +221,26 @@ namespace Acrylic
 				ImGui::EndMenu();
 			}
 
+			if (ImGui::BeginMenu("View"))
+			{
+				// Disabling fullscreen would allow the window to be moved to the front of other windows, 
+				// which we can't undo at the moment without finer window depth/z control.
+				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);1
+				if (ImGui::MenuItem("Content Browser"))
+					m_ContentBrowserPanel.Open();
+
+				ImGui::Separator();
+				if (ImGui::MenuItem("Exit")) Application::Get().Close();
+				ImGui::EndMenu();
+			}
+
 			ImGui::EndMenuBar();
 		}
 
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_ContentBrowserPanel.OnImGuiRender();
 
+		// Stats
 		ImGui::Begin("Stats");
 
 		std::string name = "None";
@@ -239,11 +256,10 @@ namespace Acrylic
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
 		ImGui::End();
-		
+
 		// The Viewport
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
-
 		auto viewportMinRegion = ImGui::GetWindowContentRegionMin();
 		auto viewportMaxRegion = ImGui::GetWindowContentRegionMax();
 		auto viewportOffset = ImGui::GetWindowPos();
@@ -260,6 +276,16 @@ namespace Acrylic
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+			{
+				const wchar_t* path = (const wchar_t*)payload->Data;
+				OpenScene(std::filesystem::path(g_AssetPath) / path);
+			}
+			ImGui::EndDragDropTarget();
+		}
+
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
@@ -270,6 +296,7 @@ namespace Acrylic
 			ImGuizmo::SetRect(m_ViewportBounds[0].x, m_ViewportBounds[0].y, m_ViewportBounds[1].x - m_ViewportBounds[0].x, m_ViewportBounds[1].y - m_ViewportBounds[0].y);
 
 			// Camera
+
 			// Runtime camera from entity
 			// auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
 			// const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
@@ -309,13 +336,14 @@ namespace Acrylic
 			}
 		}
 
+
 		ImGui::End();
 		ImGui::PopStyleVar();
 
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Event & e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_EditorCamera.OnEvent(e);
 
@@ -332,6 +360,7 @@ namespace Acrylic
 
 		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
 		bool shift = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
+
 		switch (e.GetKeyCode())
 		{
 		case Key::N:
@@ -383,7 +412,7 @@ namespace Acrylic
 		}
 		}
 	}
-	
+
 	bool EditorLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
 	{
 		if (e.GetMouseButton() == Mouse::ButtonLeft)
@@ -405,14 +434,17 @@ namespace Acrylic
 	{
 		std::string filepath = FileDialogs::OpenFile("Acrylic Scene (*.acrylic)\0*.acrylic\0");
 		if (!filepath.empty())
-		{
-			m_ActiveScene = CreateRef<Scene>();
-			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+			OpenScene(filepath);
+	}
 
-			SceneSerializer serializer(m_ActiveScene);
-			serializer.Deserialize(filepath);
-		}
+	void EditorLayer::OpenScene(const std::filesystem::path& path)
+	{
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+		SceneSerializer serializer(m_ActiveScene);
+		serializer.Deserialize(path.string());
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -424,5 +456,4 @@ namespace Acrylic
 			serializer.Serialize(filepath);
 		}
 	}
-
 }

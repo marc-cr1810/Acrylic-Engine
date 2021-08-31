@@ -2,6 +2,7 @@
 
 #include "Acrylic.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "Acrylic/Renderer/EditorCamera.h"
 
@@ -25,6 +26,7 @@ namespace Acrylic
 
 		void NewScene();
 		void OpenScene();
+		void OpenScene(const std::filesystem::path& path);
 		void SaveSceneAs();
 	private:
 		EditorCamera m_EditorCamera;
@@ -41,6 +43,7 @@ namespace Acrylic
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 
 		// Temp
 		Ref<Texture2D> m_CheckerboardTexture;
