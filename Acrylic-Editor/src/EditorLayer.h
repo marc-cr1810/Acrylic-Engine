@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Acrylic.h"
-#include "Panels/SceneHierarchyPanel.h"
-#include "Panels/ContentBrowserPanel.h"
 
 #include "Acrylic/Renderer/EditorCamera.h"
+
+#include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 namespace Acrylic
 {
@@ -44,6 +45,9 @@ namespace Acrylic
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 		ContentBrowserPanel m_ContentBrowserPanel;
+
+		bool m_ViewportOpen = true;
+		bool m_StatsOpen = true;
 
 		// Temp
 		Ref<Texture2D> m_CheckerboardTexture;

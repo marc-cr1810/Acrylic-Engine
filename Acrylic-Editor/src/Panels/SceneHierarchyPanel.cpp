@@ -24,35 +24,41 @@ namespace Acrylic
 
 	void SceneHierarchyPanel::OnImGuiRender()
 	{
-		ImGui::Begin("Scene Hierarchy");
+		if (m_SceneHierarchyOpen)
+		{
+			ImGui::Begin("Scene Hierarchy", &m_SceneHierarchyOpen);
 
-		m_Context->m_Registry.each([&](auto entityID)
+			m_Context->m_Registry.each([&](auto entityID)
+				{
+					Entity entity{ entityID , m_Context.get() };
+					DrawEntityNode(entity);
+				});
+
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_SelectionContext = {};
+
+			// Right-click on blank space
+			if (ImGui::BeginPopupContextWindow(0, 1, false))
 			{
-				Entity entity{ entityID , m_Context.get() };
-				DrawEntityNode(entity);
-			});
+				if (ImGui::MenuItem("Create Empty Entity"))
+					m_Context->CreateEntity("Empty Entity");
 
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-			m_SelectionContext = {};
+				ImGui::EndPopup();
+			}
 
-		// Right-click on blank space
-		if (ImGui::BeginPopupContextWindow(0, 1, false))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
-				m_Context->CreateEntity("Empty Entity");
-
-			ImGui::EndPopup();
+			ImGui::End();
 		}
 
-		ImGui::End();
-
-		ImGui::Begin("Properties");
-		if (m_SelectionContext)
+		if (m_PropertiesOpen)
 		{
-			DrawComponents(m_SelectionContext);
-		}
+			ImGui::Begin("Properties", &m_PropertiesOpen);
+			if (m_SelectionContext)
+			{
+				DrawComponents(m_SelectionContext);
+			}
 
-		ImGui::End();
+			ImGui::End();
+		}
 	}
 
 	void SceneHierarchyPanel::SetSelectedEntity(Entity entity)
