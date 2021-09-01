@@ -57,7 +57,7 @@ namespace Acrylic
 				ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
 				ImGui::Image((ImTextureID)icon->GetRendererID(), ImVec2{ 16.0f, 16.0f });
 				ImGui::SameLine();
-				ImGui::Text(relativePath.generic_string().c_str());
+				ImGui::Text(path.string().c_str());
 				ImGui::EndDragDropSource();
 			}
 

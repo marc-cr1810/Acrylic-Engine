@@ -5,6 +5,7 @@
 #include "Acrylic/Renderer/EditorCamera.h"
 
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/PropertiesPanel.h"
 #include "Panels/ContentBrowserPanel.h"
 
 namespace Acrylic
@@ -44,6 +45,7 @@ namespace Acrylic
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		PropertiesPanel m_PropertiesPanel;
 		ContentBrowserPanel m_ContentBrowserPanel;
 
 		bool m_ViewportOpen = true;

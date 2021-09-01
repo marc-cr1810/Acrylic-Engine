@@ -227,10 +227,10 @@ namespace Acrylic
 					m_ViewportOpen = true;
 
 				if (ImGui::MenuItem("Scene Hierarchy"))
-					m_SceneHierarchyPanel.OpenSceneHierarchy();
+					m_SceneHierarchyPanel.Open();
 
 				if (ImGui::MenuItem("Properties"))
-					m_SceneHierarchyPanel.OpenProperties();
+					m_PropertiesPanel.Open();
 
 				if (ImGui::MenuItem("Content Browser"))
 					m_ContentBrowserPanel.Open();
@@ -244,6 +244,7 @@ namespace Acrylic
 		}
 
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_PropertiesPanel.OnImGuiRender(m_SceneHierarchyPanel.GetSelectedEntity());
 		m_ContentBrowserPanel.OnImGuiRender();
 
 		// Stats
@@ -291,8 +292,26 @@ namespace Acrylic
 			{
 				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
 				{
-					const wchar_t* path = (const wchar_t*)payload->Data;
-					OpenScene(std::filesystem::path(g_AssetPath) / path);
+					const wchar_t* path = (const wchar_t*)payload->Data;					
+					auto& file = std::filesystem::path(g_AssetPath) / path;
+
+					if (file.extension() == ".acrylic")
+						OpenScene(file);
+					else if (
+						file.extension() == ".png" ||
+						file.extension() == ".jpg" ||
+						file.extension() == ".bmp"
+						)
+					{
+						if (m_HoveredEntity)
+						{
+							if (m_HoveredEntity.HasComponent<SpriteRendererComponent>())
+							{
+								auto& src = m_HoveredEntity.GetComponent<SpriteRendererComponent>();
+								src.Texture = Texture2D::Create(file.string());
+							}
+						}
+					}
 				}
 				ImGui::EndDragDropTarget();
 			}
