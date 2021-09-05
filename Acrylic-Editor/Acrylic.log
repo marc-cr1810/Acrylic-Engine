@@ -1,19 +1,24 @@
-[21:09:20] [info] ACRYLIC: Initialized Log!
-[21:09:20] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[21:09:21] [info] ACRYLIC: OpenGL Info:
-[21:09:21] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[21:09:21] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[21:09:21] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
-[21:09:21] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
-[21:09:21] [trace] ACRYLIC:     1 uniform buffers
-[21:09:21] [trace] ACRYLIC:     0 resources
-[21:09:21] [trace] ACRYLIC: Uniform buffers:
-[21:09:21] [trace] ACRYLIC:   _46_48
-[21:09:21] [trace] ACRYLIC:     Size = 64
-[21:09:21] [trace] ACRYLIC:     Binding = 0
-[21:09:21] [trace] ACRYLIC:     Members = 1
-[21:09:21] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
-[21:09:21] [trace] ACRYLIC:     0 uniform buffers
-[21:09:21] [trace] ACRYLIC:     1 resources
-[21:09:21] [trace] ACRYLIC: Uniform buffers:
-[21:09:21] [warning] ACRYLIC: Shader creation took 13.6606 ms
+[22:40:10] [info] ACRYLIC: Initialized Log!
+[22:40:10] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[22:40:11] [info] ACRYLIC: OpenGL Info:
+[22:40:11] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[22:40:11] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[22:40:11] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
+[22:40:11] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
+[22:40:11] [trace] ACRYLIC:     1 uniform buffers
+[22:40:11] [trace] ACRYLIC:     0 resources
+[22:40:11] [trace] ACRYLIC: Uniform buffers:
+[22:40:11] [trace] ACRYLIC:   _46_48
+[22:40:11] [trace] ACRYLIC:     Size = 64
+[22:40:11] [trace] ACRYLIC:     Binding = 0
+[22:40:11] [trace] ACRYLIC:     Members = 1
+[22:40:11] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
+[22:40:11] [trace] ACRYLIC:     0 uniform buffers
+[22:40:11] [trace] ACRYLIC:     1 resources
+[22:40:11] [trace] ACRYLIC: Uniform buffers:
+[22:40:11] [warning] ACRYLIC: Shader creation took 20.1892 ms
+[22:40:16] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[22:40:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[22:40:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[22:40:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[22:40:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right

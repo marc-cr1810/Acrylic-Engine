@@ -3,12 +3,14 @@
 #include "Acrylic/Core/Base.h"
 #include "Acrylic/Scene/Entity.h"
 
+#include "Acrylic/Renderer/Texture.h"
+
 namespace Acrylic
 {
 	class PropertiesPanel
 	{
 	public:
-		PropertiesPanel() = default;
+		PropertiesPanel();
 
 		void OnImGuiRender(const Entity& context);
 
@@ -16,6 +18,10 @@ namespace Acrylic
 	private:
 		void DrawComponents(Entity entity);
 	private:
+		Ref<Texture2D> m_TransformIcon;
+		Ref<Texture2D> m_SpriteRendererIcon;
+		Ref<Texture2D> m_CameraIcon;
+
 		bool m_Open = true;
 	};
 }

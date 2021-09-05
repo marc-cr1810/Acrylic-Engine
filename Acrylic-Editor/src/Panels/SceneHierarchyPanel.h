@@ -4,12 +4,14 @@
 #include "Acrylic/Scene/Scene.h"
 #include "Acrylic/Scene/Entity.h"
 
+#include "Acrylic/Renderer/Texture.h"
+
 namespace Acrylic
 {
 	class SceneHierarchyPanel
 	{
 	public:
-		SceneHierarchyPanel() = default;
+		SceneHierarchyPanel();
 		SceneHierarchyPanel(const Ref<Scene>& context);
 
 		void SetContext(const Ref<Scene>& context);
@@ -25,6 +27,8 @@ namespace Acrylic
 	private:
 		Ref<Scene> m_Context;
 		Entity m_SelectionContext;
+
+		Ref<Texture2D> m_GameObjectIcon;
 
 		bool m_Open = true;
 	};
