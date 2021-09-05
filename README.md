@@ -1,3 +1,4 @@
+![Acrylic](/Resources/Branding/Acrylic_Engine_Icon_Dark_Text.png?raw=true "Acrylic")
 # Acrylic Engine
 Acrylic is primarily an early-stage interactive application and rendering engine for Windows.
 
