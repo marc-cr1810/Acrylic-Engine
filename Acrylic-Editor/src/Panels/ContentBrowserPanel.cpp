@@ -21,13 +21,15 @@ namespace Acrylic
 
 		ImGui::Begin("Content Browser", &m_Open);
 
-		if (m_CurrentDirectory != std::filesystem::path(g_AssetPath))
+		if (ImGui::Button("<-"))
 		{
-			if (ImGui::Button("<-"))
+			if (m_CurrentDirectory != std::filesystem::path(g_AssetPath))
 			{
 				m_CurrentDirectory = m_CurrentDirectory.parent_path();
 			}
 		}
+
+		ImGui::Separator();
 
 		static float padding = 4.0f;
 		static float thumbnailSize = 72.0f;

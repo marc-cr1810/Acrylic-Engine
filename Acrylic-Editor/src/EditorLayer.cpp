@@ -366,7 +366,6 @@ namespace Acrylic
 				}
 			}
 
-
 			ImGui::End();
 			ImGui::PopStyleVar();
 		}
