@@ -36,7 +36,9 @@ namespace Acrylic
 			{
 				ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
 				if (m_Context->m_Registry.size() == 0)
-					flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;;
+					flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+				else
+					flags |= ImGuiTreeNodeFlags_DefaultOpen;
 				bool opened = UI::DrawTreeNodeWithImage((ImTextureID)m_SceneIcon->GetRendererID(), (void*)454655, flags, m_Context->m_Name.c_str());
 
 				if (opened && m_Context->m_Registry.size() > 0)

@@ -1,24 +1,24 @@
-[17:20:26] [info] ACRYLIC: Initialized Log!
-[17:20:26] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[17:20:27] [info] ACRYLIC: OpenGL Info:
-[17:20:27] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[17:20:27] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[17:20:27] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
-[17:20:27] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
-[17:20:27] [trace] ACRYLIC:     1 uniform buffers
-[17:20:27] [trace] ACRYLIC:     0 resources
-[17:20:27] [trace] ACRYLIC: Uniform buffers:
-[17:20:27] [trace] ACRYLIC:   _46_48
-[17:20:27] [trace] ACRYLIC:     Size = 64
-[17:20:27] [trace] ACRYLIC:     Binding = 0
-[17:20:27] [trace] ACRYLIC:     Members = 1
-[17:20:27] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
-[17:20:27] [trace] ACRYLIC:     0 uniform buffers
-[17:20:27] [trace] ACRYLIC:     1 resources
-[17:20:27] [trace] ACRYLIC: Uniform buffers:
-[17:20:27] [warning] ACRYLIC: Shader creation took 47.1276 ms
-[17:20:34] [trace] ACRYLIC: Deserializing scene 'Pink Cube'
-[17:20:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
-[17:20:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
-[17:20:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
-[17:20:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[21:41:15] [info] ACRYLIC: Initialized Log!
+[21:41:15] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[21:41:16] [info] ACRYLIC: OpenGL Info:
+[21:41:16] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[21:41:16] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[21:41:16] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
+[21:41:16] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
+[21:41:16] [trace] ACRYLIC:     1 uniform buffers
+[21:41:16] [trace] ACRYLIC:     0 resources
+[21:41:16] [trace] ACRYLIC: Uniform buffers:
+[21:41:16] [trace] ACRYLIC:   _46_48
+[21:41:16] [trace] ACRYLIC:     Size = 64
+[21:41:16] [trace] ACRYLIC:     Binding = 0
+[21:41:16] [trace] ACRYLIC:     Members = 1
+[21:41:16] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
+[21:41:16] [trace] ACRYLIC:     0 uniform buffers
+[21:41:16] [trace] ACRYLIC:     1 resources
+[21:41:16] [trace] ACRYLIC: Uniform buffers:
+[21:41:16] [warning] ACRYLIC: Shader creation took 15.2613 ms
+[21:42:07] [trace] ACRYLIC: Deserializing scene 'Pink Cube'
+[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
