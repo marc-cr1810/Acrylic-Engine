@@ -12,7 +12,7 @@ namespace Acrylic
 	class Scene
 	{
 	public:
-		Scene();
+		Scene(const std::string& name = "Untitled");
 		~Scene();
 
 		Entity CreateEntity(const std::string& name = std::string());
@@ -24,10 +24,13 @@ namespace Acrylic
 		void Scene::OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();
+		std::string GetName() { return m_Name; }
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);
 	private:
+		std::string m_Name;
+
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 

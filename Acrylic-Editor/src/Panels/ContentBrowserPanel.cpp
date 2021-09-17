@@ -11,7 +11,10 @@ namespace Acrylic
 		: m_CurrentDirectory(g_AssetPath)
 	{
 		m_DirectoryIcon = Texture2D::Create("Resources/Icons/Panels/ContentBrowser/DirectoryIcon.png");
+		m_SceneIcon = Texture2D::Create("Resources/Icons/Panels/ContentBrowser/SceneIcon.png");
 		m_FileIcon = Texture2D::Create("Resources/Icons/Panels/ContentBrowser/FileIcon.png");
+		m_FileEmptyIcon = Texture2D::Create("Resources/Icons/Panels/ContentBrowser/FileEmptyIcon.png");
+		m_FileGLSLIcon = Texture2D::Create("Resources/Icons/Panels/ContentBrowser/FileGLSLIcon.png");
 	}
 
 	void ContentBrowserPanel::OnImGuiRender()
@@ -33,7 +36,7 @@ namespace Acrylic
 
 		static float padding = 4.0f;
 		static float thumbnailSize = 72.0f;
-		float cellSize = thumbnailSize + padding;
+		float cellSize = thumbnailSize + padding * 2;
 
 		float panelWidth = ImGui::GetContentRegionAvail().x;
 		int columnCount = (int)(panelWidth / cellSize);
@@ -49,7 +52,17 @@ namespace Acrylic
 			std::string filenameString = relativePath.filename().string();
 
 			ImGui::PushID(filenameString.c_str());
-			Ref<Texture2D> icon = directoryEntry.is_directory() ? m_DirectoryIcon : m_FileIcon;
+			Ref<Texture2D> icon = directoryEntry.file_size() > 0 ? m_FileIcon : m_FileEmptyIcon;
+			if (!directoryEntry.is_directory() && relativePath.has_extension())
+			{
+				std::string extension = relativePath.extension().string();
+				if (extension == ".ascene")
+					icon = m_SceneIcon;
+				else if (extension == ".glsl")
+					icon = m_FileGLSLIcon;
+			}
+			else
+				icon = m_DirectoryIcon;
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
 			ImGui::ImageButton((ImTextureID)icon->GetRendererID(), { thumbnailSize, thumbnailSize }, { 0, 1 }, { 1, 0 });
 
@@ -57,7 +70,7 @@ namespace Acrylic
 			{
 				const wchar_t* itemPath = relativePath.c_str();
 				ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
-				ImGui::Image((ImTextureID)icon->GetRendererID(), ImVec2{ 16.0f, 16.0f });
+				ImGui::Image((ImTextureID)icon->GetRendererID(), ImVec2{ 16.0f, 16.0f }, ImVec2(0, 1), ImVec2(1, 0));
 				ImGui::SameLine();
 				ImGui::Text(path.string().c_str());
 				ImGui::EndDragDropSource();

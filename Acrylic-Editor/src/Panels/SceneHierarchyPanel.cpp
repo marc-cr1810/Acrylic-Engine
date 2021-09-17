@@ -11,6 +11,7 @@ namespace Acrylic
 {
 	SceneHierarchyPanel::SceneHierarchyPanel()
 	{
+		m_SceneIcon = Texture2D::Create("Resources/Icons/Panels/SceneHierachy/SceneIcon.png");
 		m_GameObjectIcon = Texture2D::Create("Resources/Icons/Panels/SceneHierachy/GameObjectIcon.png");
 	}
 
@@ -31,22 +32,35 @@ namespace Acrylic
 		{
 			ImGui::Begin("Scene Hierarchy", &m_Open);
 
-			m_Context->m_Registry.each([&](auto entityID)
-				{
-					Entity entity{ entityID , m_Context.get() };
-					DrawEntityNode(entity);
-				});
-
-			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-				m_SelectionContext = {};
-
-			// Right-click on blank space
-			if (ImGui::BeginPopupContextWindow(0, 1, false))
+			if (m_Context != nullptr)
 			{
-				if (ImGui::MenuItem("Create Empty Entity"))
-					m_Context->CreateEntity("Empty Entity");
+				ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
+				if (m_Context->m_Registry.size() == 0)
+					flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;;
+				bool opened = UI::DrawTreeNodeWithImage((ImTextureID)m_SceneIcon->GetRendererID(), (void*)454655, flags, m_Context->m_Name.c_str());
 
-				ImGui::EndPopup();
+				if (opened && m_Context->m_Registry.size() > 0)
+				{
+					m_Context->m_Registry.each([&](auto entityID)
+						{
+							Entity entity{ entityID , m_Context.get() };
+							DrawEntityNode(entity);
+						});
+
+					ImGui::TreePop();
+				}
+
+				if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+					m_SelectionContext = {};
+
+				// Right-click on blank space
+				if (ImGui::BeginPopupContextWindow(0, 1, false))
+				{
+					if (ImGui::MenuItem("Create Empty Entity"))
+						m_Context->CreateEntity("Empty Entity");
+
+					ImGui::EndPopup();
+				}
 			}
 
 			ImGui::End();
@@ -62,9 +76,10 @@ namespace Acrylic
 	{
 		auto& tag = entity.GetComponent<TagComponent>().Tag;
 
-		ImGuiTreeNodeFlags node_flags = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
-
-		node_flags |= ImGuiTreeNodeFlags_SpanAvailWidth;
+		ImGuiTreeNodeFlags node_flags = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
+#ifndef HAS_CHILDREN
+		node_flags |= ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+#endif
 		bool opened = UI::DrawTreeNodeWithImage((ImTextureID)m_GameObjectIcon->GetRendererID(), (void*)(uint64_t)(uint32_t)entity, node_flags, tag.c_str());
 		if (ImGui::IsItemClicked())
 		{
@@ -80,6 +95,7 @@ namespace Acrylic
 			ImGui::EndPopup();
 		}
 
+#ifdef HAS_CHILDREN
 		if (opened)
 		{
 			ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
@@ -87,6 +103,7 @@ namespace Acrylic
 			UI::DrawTreeNodeWithImage((ImTextureID)m_GameObjectIcon->GetRendererID(), (void*)9817239, flags, tag.c_str());
 			ImGui::TreePop();
 		}
+#endif
 
 		if (entityDeleted)
 		{

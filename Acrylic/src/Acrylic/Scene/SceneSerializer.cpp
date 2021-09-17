@@ -154,7 +154,7 @@ namespace Acrylic {
 	{
 		YAML::Emitter out;
 		out << YAML::BeginMap;
-		out << YAML::Key << "Scene" << YAML::Value << "Untitled";
+		out << YAML::Key << "Scene" << YAML::Value << m_Scene->m_Name;
 		out << YAML::Key << "Entities" << YAML::Value << YAML::BeginSeq;
 		m_Scene->m_Registry.each([&](auto entityID)
 			{
@@ -183,12 +183,22 @@ namespace Acrylic {
 		std::stringstream strStream;
 		strStream << stream.rdbuf();
 
-		YAML::Node data = YAML::Load(strStream.str());
+		YAML::Node data;
+		try
+		{
+			data = YAML::LoadFile(filepath);
+		}
+		catch (const YAML::ParserException& ex)
+		{
+			AC_CORE_ERROR("Failed to deserialize scene '{0}'\n     {1}", filepath, ex.what());
+			return false;
+		}
+
 		if (!data["Scene"])
 			return false;
 
-		std::string sceneName = data["Scene"].as<std::string>();
-		AC_CORE_TRACE("Deserializing scene '{0}'", sceneName);
+		m_Scene->m_Name = data["Scene"].as<std::string>();
+		AC_CORE_TRACE("Deserializing scene '{0}'", m_Scene->m_Name);
 
 		auto entities = data["Entities"];
 		if (entities)

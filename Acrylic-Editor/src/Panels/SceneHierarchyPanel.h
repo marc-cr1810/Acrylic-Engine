@@ -28,6 +28,7 @@ namespace Acrylic
 		Ref<Scene> m_Context;
 		Entity m_SelectionContext;
 
+		Ref<Texture2D> m_SceneIcon;
 		Ref<Texture2D> m_GameObjectIcon;
 
 		bool m_Open = true;

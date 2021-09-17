@@ -247,7 +247,7 @@ namespace Acrylic
 					const wchar_t* path = (const wchar_t*)payload->Data;					
 					auto& file = std::filesystem::path(g_AssetPath) / path;
 
-					if (file.extension() == ".acrylic")
+					if (file.extension() == ".ascene")
 						OpenScene(file);
 					else if (
 						file.extension() == ".png" ||
@@ -414,7 +414,7 @@ namespace Acrylic
 
 	void EditorLayer::OpenScene()
 	{
-		std::string filepath = FileDialogs::OpenFile("Acrylic Scene (*.acrylic)\0*.acrylic\0");
+		std::string filepath = FileDialogs::OpenFile("Acrylic Scene (*.ascene)\0*.ascene\0");
 		if (!filepath.empty())
 			OpenScene(filepath);
 	}
@@ -431,7 +431,7 @@ namespace Acrylic
 
 	void EditorLayer::SaveSceneAs()
 	{
-		std::string filepath = FileDialogs::SaveFile("Acrylic Scene (*.acrylic)\0*.acrylic\0");
+		std::string filepath = FileDialogs::SaveFile("Acrylic Scene (*.ascene)\0*.ascene\0");
 		if (!filepath.empty())
 		{
 			SceneSerializer serializer(m_ActiveScene);
