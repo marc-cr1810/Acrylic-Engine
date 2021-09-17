@@ -11,6 +11,29 @@
 namespace YAML {
 
 	template<>
+	struct convert<glm::vec2>
+	{
+		static Node encode(const glm::vec2 &rhs)
+		{
+			Node node;
+			node.push_back(rhs.x);
+			node.push_back(rhs.y);
+			node.SetStyle(EmitterStyle::Flow);
+			return node;
+		}
+
+		static bool decode(const Node &node, glm::vec2 &rhs)
+		{
+			if (!node.IsSequence() || node.size() != 2)
+				return false;
+
+			rhs.x = node[0].as<float>();
+			rhs.y = node[1].as<float>();
+			return true;
+		}
+	};
+
+	template<>
 	struct convert<glm::vec3>
 	{
 		static Node encode(const glm::vec3& rhs)
@@ -63,6 +86,13 @@ namespace YAML {
 }
 namespace Acrylic {
 
+	YAML::Emitter &operator<<(YAML::Emitter &out, const glm::vec2 &v)
+	{
+		out << YAML::Flow;
+		out << YAML::BeginSeq << v.x << v.y << YAML::EndSeq;
+		return out;
+	}
+
 	YAML::Emitter& operator<<(YAML::Emitter& out, const glm::vec3& v)
 	{
 		out << YAML::Flow;
@@ -75,6 +105,29 @@ namespace Acrylic {
 		out << YAML::Flow;
 		out << YAML::BeginSeq << v.x << v.y << v.z << v.w << YAML::EndSeq;
 		return out;
+	}
+
+	static std::string RigidBody2DTypeToString(Rigidbody2DComponent::BodyType type)
+	{
+		switch (type)
+		{
+		case Rigidbody2DComponent::BodyType::Static:    return "Static";
+		case Rigidbody2DComponent::BodyType::Dynamic:   return "Dynamic";
+		case Rigidbody2DComponent::BodyType::Kinematic: return "Kinematic";
+		}
+
+		AC_CORE_ASSERT(false);
+		return {};
+	}
+
+	static Rigidbody2DComponent::BodyType RigidBody2DTypeFromString(const std::string &typeString)
+	{
+		if (typeString == "Static")    return Rigidbody2DComponent::BodyType::Static;
+		if (typeString == "Dynamic")   return Rigidbody2DComponent::BodyType::Dynamic;
+		if (typeString == "Kinematic") return Rigidbody2DComponent::BodyType::Kinematic;
+
+		AC_CORE_ASSERT(false);
+		return Rigidbody2DComponent::BodyType::Static;
 	}
 
 	SceneSerializer::SceneSerializer(const Ref<Scene>& scene)
@@ -111,6 +164,17 @@ namespace Acrylic {
 			out << YAML::EndMap; // TransformComponent
 		}
 
+		if (entity.HasComponent<SpriteRendererComponent>())
+		{
+			out << YAML::Key << "SpriteRendererComponent";
+			out << YAML::BeginMap; // SpriteRendererComponent
+
+			auto &spriteRendererComponent = entity.GetComponent<SpriteRendererComponent>();
+			out << YAML::Key << "Color" << YAML::Value << spriteRendererComponent.Color;
+
+			out << YAML::EndMap; // SpriteRendererComponent
+		}
+
 		if (entity.HasComponent<CameraComponent>())
 		{
 			out << YAML::Key << "CameraComponent";
@@ -135,16 +199,32 @@ namespace Acrylic {
 
 			out << YAML::EndMap; // CameraComponent
 		}
-
-		if (entity.HasComponent<SpriteRendererComponent>())
+		if (entity.HasComponent<Rigidbody2DComponent>())
 		{
-			out << YAML::Key << "SpriteRendererComponent";
-			out << YAML::BeginMap; // SpriteRendererComponent
+			out << YAML::Key << "Rigidbody2DComponent";
+			out << YAML::BeginMap; // Rigidbody2DComponent
 
-			auto& spriteRendererComponent = entity.GetComponent<SpriteRendererComponent>();
-			out << YAML::Key << "Color" << YAML::Value << spriteRendererComponent.Color;
+			auto &rigidbody2DComponent = entity.GetComponent<Rigidbody2DComponent>();
+			out << YAML::Key << "Type" << YAML::Value << RigidBody2DTypeToString(rigidbody2DComponent.Type);
+			out << YAML::Key << "FixedRotation" << YAML::Value << rigidbody2DComponent.FixedRotation;
 
-			out << YAML::EndMap; // SpriteRendererComponent
+			out << YAML::EndMap; // Rigidbody2DComponent
+		}
+
+		if (entity.HasComponent<BoxCollider2DComponent>())
+		{
+			out << YAML::Key << "BoxCollider2DComponent";
+			out << YAML::BeginMap; // BoxCollider2DComponent
+
+			auto &boxCollider2DComponent = entity.GetComponent<BoxCollider2DComponent>();
+			out << YAML::Key << "Offset" << YAML::Value << boxCollider2DComponent.Offset;
+			out << YAML::Key << "Size" << YAML::Value << boxCollider2DComponent.Size;
+			out << YAML::Key << "Density" << YAML::Value << boxCollider2DComponent.Density;
+			out << YAML::Key << "Friction" << YAML::Value << boxCollider2DComponent.Friction;
+			out << YAML::Key << "Restitution" << YAML::Value << boxCollider2DComponent.Restitution;
+			out << YAML::Key << "RestitutionThreshold" << YAML::Value << boxCollider2DComponent.RestitutionThreshold;
+
+			out << YAML::EndMap; // BoxCollider2DComponent
 		}
 
 		out << YAML::EndMap; // Entity
@@ -159,7 +239,7 @@ namespace Acrylic {
 		m_Scene->m_Registry.each([&](auto entityID)
 			{
 				Entity entity = { entityID, m_Scene.get() };
-				if (!entity)
+				if (!entity || entity.HasComponent<SceneComponent>())
 					return;
 
 				SerializeEntity(out, entity);
@@ -251,6 +331,26 @@ namespace Acrylic {
 
 					cc.Primary = cameraComponent["Primary"].as<bool>();
 					cc.FixedAspectRatio = cameraComponent["FixedAspectRatio"].as<bool>();
+				}
+
+				auto rb2dComponent = entity["Rigidbody2DComponent"];
+				if (rb2dComponent)
+				{
+					auto &rb2d = deserializedEntity.AddComponent<Rigidbody2DComponent>();
+					rb2d.Type = RigidBody2DTypeFromString(rb2dComponent["Type"].as<std::string>());
+					rb2d.FixedRotation = rb2dComponent["FixedRotation"].as<bool>();
+				}
+
+				auto bc2dComponent = entity["BoxCollider2DComponent"];
+				if (bc2dComponent)
+				{
+					auto &bc2d = deserializedEntity.AddComponent<BoxCollider2DComponent>();
+					bc2d.Offset = bc2dComponent["Offset"].as<glm::vec2>();
+					bc2d.Size = bc2dComponent["Size"].as<glm::vec2>();
+					bc2d.Density = bc2dComponent["Density"].as<float>();
+					bc2d.Friction = bc2dComponent["Friction"].as<float>();
+					bc2d.Restitution = bc2dComponent["Restitution"].as<float>();
+					bc2d.RestitutionThreshold = bc2dComponent["RestitutionThreshold"].as<float>();
 				}
 			}
 		}

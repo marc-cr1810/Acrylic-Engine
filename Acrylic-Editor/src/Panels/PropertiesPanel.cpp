@@ -97,16 +97,40 @@ namespace Acrylic
 
 		if (ImGui::BeginPopup("AddComponent"))
 		{
-			if (ImGui::MenuItem("Camera"))
+			if (!entity.HasComponent<CameraComponent>())
 			{
-				entity.AddComponent<CameraComponent>();
-				ImGui::CloseCurrentPopup();
+				if (ImGui::MenuItem("Camera"))
+				{
+					entity.AddComponent<CameraComponent>();
+					ImGui::CloseCurrentPopup();
+				}
 			}
 
-			if (ImGui::MenuItem("Sprite Renderer"))
+			if (!entity.HasComponent<SpriteRendererComponent>())
 			{
-				entity.AddComponent<SpriteRendererComponent>();
-				ImGui::CloseCurrentPopup();
+				if (ImGui::MenuItem("Sprite Renderer"))
+				{
+					entity.AddComponent<SpriteRendererComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+			}
+
+			if (!entity.HasComponent<Rigidbody2DComponent>())
+			{
+				if (ImGui::MenuItem("Rigidbody 2D"))
+				{
+					entity.AddComponent<Rigidbody2DComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+			}
+
+			if (!entity.HasComponent<BoxCollider2DComponent>())
+			{
+				if (ImGui::MenuItem("Box Collider 2D"))
+				{
+					entity.AddComponent<BoxCollider2DComponent>();
+					ImGui::CloseCurrentPopup();
+				}
 			}
 
 			ImGui::EndPopup();
@@ -205,5 +229,40 @@ namespace Acrylic
 				}
 			});
 
+
+		DrawComponent<Rigidbody2DComponent>("Rigidbody 2D", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto &rb2dComponent)
+			{
+				const char *bodyTypeStrings[] = { "Static", "Dynamic", "Kinematic" };
+				const char *currentBodyTypeString = bodyTypeStrings[(int)rb2dComponent.Type];
+				if (ImGui::BeginCombo("Type", currentBodyTypeString))
+				{
+					for (int i = 0; i < 3; i++)
+					{
+						bool isSelected = currentBodyTypeString == bodyTypeStrings[i];
+						if (ImGui::Selectable(bodyTypeStrings[i], isSelected))
+						{
+							currentBodyTypeString = bodyTypeStrings[i];
+							rb2dComponent.Type = (Rigidbody2DComponent::BodyType)i;
+						}
+
+						if (isSelected)
+							ImGui::SetItemDefaultFocus();
+					}
+
+					ImGui::EndCombo();
+				}
+
+				ImGui::Checkbox("Fixed Rotation", &rb2dComponent.FixedRotation);
+			});
+
+		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto &bc2dComponent)
+			{
+				ImGui::DragFloat2("Offset", glm::value_ptr(bc2dComponent.Offset));
+				ImGui::DragFloat2("Size", glm::value_ptr(bc2dComponent.Size));
+				ImGui::DragFloat("Density", &bc2dComponent.Density, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("Friction", &bc2dComponent.Friction, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("Restitution", &bc2dComponent.Restitution, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("RestitutionThreshold", &bc2dComponent.RestitutionThreshold, 0.01f, 0.0f);
+			});
 	}
 }

@@ -29,7 +29,9 @@ namespace Acrylic
 		void NewScene();
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);
+		void SaveScene();
 		void SaveSceneAs();
+		void SerializeScene(const std::filesystem::path &path);
 
 		void OnScenePlay();
 		void OnSceneStop();
@@ -54,6 +56,7 @@ namespace Acrylic
 		SceneState m_SceneState = SceneState::Edit;
 
 		Ref<Scene> m_ActiveScene;
+		std::filesystem::path m_ActiveScenePath;
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

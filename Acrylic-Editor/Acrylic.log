@@ -1,24 +1,105 @@
-[21:41:15] [info] ACRYLIC: Initialized Log!
-[21:41:15] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[21:41:16] [info] ACRYLIC: OpenGL Info:
-[21:41:16] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[21:41:16] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[21:41:16] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
-[21:41:16] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
-[21:41:16] [trace] ACRYLIC:     1 uniform buffers
-[21:41:16] [trace] ACRYLIC:     0 resources
-[21:41:16] [trace] ACRYLIC: Uniform buffers:
-[21:41:16] [trace] ACRYLIC:   _46_48
-[21:41:16] [trace] ACRYLIC:     Size = 64
-[21:41:16] [trace] ACRYLIC:     Binding = 0
-[21:41:16] [trace] ACRYLIC:     Members = 1
-[21:41:16] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
-[21:41:16] [trace] ACRYLIC:     0 uniform buffers
-[21:41:16] [trace] ACRYLIC:     1 resources
-[21:41:16] [trace] ACRYLIC: Uniform buffers:
-[21:41:16] [warning] ACRYLIC: Shader creation took 15.2613 ms
-[21:42:07] [trace] ACRYLIC: Deserializing scene 'Pink Cube'
-[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
-[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
-[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
-[21:42:07] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[23:53:11] [info] ACRYLIC: Initialized Log!
+[23:53:11] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[23:53:12] [info] ACRYLIC: OpenGL Info:
+[23:53:12] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[23:53:12] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[23:53:12] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 471.68
+[23:53:12] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Texture.glsl
+[23:53:12] [trace] ACRYLIC:     1 uniform buffers
+[23:53:12] [trace] ACRYLIC:     0 resources
+[23:53:12] [trace] ACRYLIC: Uniform buffers:
+[23:53:12] [trace] ACRYLIC:   _46_48
+[23:53:12] [trace] ACRYLIC:     Size = 64
+[23:53:12] [trace] ACRYLIC:     Binding = 0
+[23:53:12] [trace] ACRYLIC:     Members = 1
+[23:53:12] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Texture.glsl
+[23:53:12] [trace] ACRYLIC:     0 uniform buffers
+[23:53:12] [trace] ACRYLIC:     1 resources
+[23:53:12] [trace] ACRYLIC: Uniform buffers:
+[23:53:12] [warning] ACRYLIC: Shader creation took 13.9264 ms
+[23:53:16] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:53:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:53:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:53:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:53:22] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:53:22] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:53:22] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:53:22] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:54:21] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:54:21] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:54:21] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:54:21] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:54:31] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:54:31] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:54:31] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:54:31] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:55:12] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:55:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:55:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:55:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:55:43] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:55:43] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:55:43] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:55:43] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:56:34] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:56:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:56:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:56:34] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:56:53] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:56:53] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:56:53] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:56:53] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:57:17] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:57:17] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:57:17] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:57:17] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:57:30] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:57:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:57:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:57:30] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:57:51] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:57:51] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:57:52] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:57:52] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:58:16] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:58:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:58:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:58:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:58:55] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:58:55] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:58:55] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:58:55] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:59:00] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:59:00] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:59:00] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:59:00] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:59:16] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:59:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:59:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:59:16] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:59:29] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[23:59:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:59:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[23:59:29] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[23:59:46] [trace] ACRYLIC: Deserializing scene 'Pink Cube'
+[23:59:46] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[23:59:46] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[23:59:46] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[23:59:46] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[00:00:08] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[00:00:08] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[00:00:08] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[00:00:08] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[00:00:09] [trace] ACRYLIC: Deserializing scene 'Pink Cube'
+[00:00:09] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[00:00:09] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Top
+[00:00:09] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Left
+[00:00:09] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Right
+[00:00:12] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[00:00:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[00:00:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[00:00:12] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform
+[00:00:45] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[00:00:45] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Camera
+[00:00:45] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Sprite
+[00:00:45] [trace] ACRYLIC: Deserialized entity with ID = 12837192831273, name = Platform

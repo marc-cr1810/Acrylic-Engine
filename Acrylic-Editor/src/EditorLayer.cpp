@@ -182,6 +182,9 @@ namespace Acrylic
 				if (ImGui::MenuItem("Open...", "Ctrl+O"))
 					OpenScene();
 
+				if (ImGui::MenuItem("Save", "Ctrl+S"))
+					SaveScene();
+
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 					SaveSceneAs();
 
@@ -412,8 +415,13 @@ namespace Acrylic
 		}
 		case Key::S:
 		{
-			if (control && shift)
-				SaveSceneAs();
+			if (control)
+			{
+				if (shift)
+					SaveSceneAs();
+				else
+					SaveScene();
+			}
 
 			break;
 		}
@@ -465,6 +473,7 @@ namespace Acrylic
 
 	void EditorLayer::OpenScene()
 	{
+		OnSceneStop();
 		std::string filepath = FileDialogs::OpenFile("Acrylic Scene (*.ascene)\0*.ascene\0");
 		if (!filepath.empty())
 			OpenScene(filepath);
@@ -472,6 +481,7 @@ namespace Acrylic
 
 	void EditorLayer::OpenScene(const std::filesystem::path& path)
 	{
+		OnSceneStop();
 		Ref<Scene> newScene = CreateRef<Scene>();
 		SceneSerializer serializer(newScene);
 		if (serializer.Deserialize(path.string()))
@@ -479,7 +489,24 @@ namespace Acrylic
 			m_ActiveScene = newScene;
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+			m_ActiveScenePath = path.string();
 		}
+	}
+
+	void EditorLayer::SaveScene()
+	{
+		if (m_ActiveScenePath.empty())
+			SaveSceneAs();
+		else
+			SerializeScene(m_ActiveScenePath);
+	}
+
+	void EditorLayer::SerializeScene(const std::filesystem::path &path)
+	{
+		AC_CORE_ASSERT(!path.empty());
+
+		SceneSerializer serializer(m_ActiveScene);
+		serializer.Serialize(path.string());
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -487,18 +514,20 @@ namespace Acrylic
 		std::string filepath = FileDialogs::SaveFile("Acrylic Scene (*.ascene)\0*.ascene\0");
 		if (!filepath.empty())
 		{
-			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(filepath);
+			SerializeScene(filepath);
+			m_ActiveScenePath = filepath;
 		}
 	}
 
 	void EditorLayer::OnScenePlay()
 	{
+		m_ActiveScene->OnRuntimeStart();
 		m_SceneState = SceneState::Play;
 	}
 
 	void EditorLayer::OnSceneStop()
 	{
+		m_ActiveScene->OnRuntimeStop();
 		m_SceneState = SceneState::Edit;
 	}
 }

@@ -1,29 +1,31 @@
 #pragma once
 
+#include "Acrylic/Core/UUID.h"
+#include "Acrylic/Scene/SceneCamera.h"
+#include "Acrylic/Scene/ScriptableEntity.h"
+#include "Acrylic/Renderer/Texture.h"
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
-#include "Acrylic/Scene/SceneCamera.h"
-#include "Acrylic/Scene/ScriptableEntity.h"
-
-#include "Acrylic/Renderer/Texture.h"
-
-namespace Acrylic {
+namespace Acrylic
+{
 
 	struct TagComponent
 	{
 		std::string Tag;
 
 		TagComponent() = default;
-		TagComponent(const TagComponent&) = default;
-		TagComponent(const std::string& tag)
-			: Tag(tag) { }
+		TagComponent(const TagComponent &) = default;
+		TagComponent(const std::string &tag)
+			: Tag(tag)
+		{}
 
-		operator std::string& () { return Tag; }
-		operator const std::string& () const { return Tag; }
+		operator std::string &() { return Tag; }
+		operator const std::string &() const { return Tag; }
 	};
 
 	struct TransformComponent
@@ -33,9 +35,10 @@ namespace Acrylic {
 		glm::vec3 Scale = { 1.0f, 1.0f, 1.0f };
 
 		TransformComponent() = default;
-		TransformComponent(const TransformComponent&) = default;
-		TransformComponent(const glm::vec3& translation)
-			: Translation(translation) {}
+		TransformComponent(const TransformComponent &) = default;
+		TransformComponent(const glm::vec3 &translation)
+			: Translation(translation)
+		{}
 
 		glm::mat4 GetTransform() const
 		{
@@ -54,9 +57,10 @@ namespace Acrylic {
 		float TilingFactor = 1.0f;
 
 		SpriteRendererComponent() = default;
-		SpriteRendererComponent(const SpriteRendererComponent&) = default;
-		SpriteRendererComponent(const glm::vec4& color)
-			: Color(color) {}
+		SpriteRendererComponent(const SpriteRendererComponent &) = default;
+		SpriteRendererComponent(const glm::vec4 &color)
+			: Color(color)
+		{}
 	};
 
 	struct CameraComponent
@@ -66,22 +70,62 @@ namespace Acrylic {
 		bool FixedAspectRatio = false;
 
 		CameraComponent() = default;
-		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const CameraComponent &) = default;
 	};
 
 	// For native C++ scripting
 	struct NativeScriptComponent
 	{
-		ScriptableEntity* Instance = nullptr;
+		ScriptableEntity *Instance = nullptr;
 
-		ScriptableEntity*(*InstantiateScript)();
-		void (*DestroyScript)(NativeScriptComponent*);
+		ScriptableEntity *(*InstantiateScript)();
+		void (*DestroyScript)(NativeScriptComponent *);
 
 		template<typename T>
 		void Bind()
 		{
-			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
-			DestroyScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
+			InstantiateScript = []() { return static_cast<ScriptableEntity *>(new T()); };
+			DestroyScript = [](NativeScriptComponent *nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
 		}
+	};
+
+	/* --- Physics Components ---------------------------------------------*/
+
+	struct Rigidbody2DComponent
+	{
+		enum class BodyType { Static = 0, Dynamic, Kinematic };
+		BodyType Type = BodyType::Static;
+		bool FixedRotation = false;
+
+		// Storage for runtime
+		void *RuntimeBody = nullptr;
+
+		Rigidbody2DComponent() = default;
+		Rigidbody2DComponent(const Rigidbody2DComponent &other) = default;
+	};
+
+	struct BoxCollider2DComponent
+	{
+		glm::vec2 Offset = { 0.0f, 0.0f };
+		glm::vec2 Size = { 0.5f, 0.5f };
+
+
+		//TODO: move into physics material in the future
+		float Density = 2.0f;
+		float Friction = 0.5f;
+		float Restitution = 0.0f;
+		float RestitutionThreshold = 0.5f;
+
+		// Storage for runtime
+		void *RuntimeFixture = nullptr;
+
+		BoxCollider2DComponent() = default;
+		BoxCollider2DComponent(const BoxCollider2DComponent &other) = default;
+	};
+
+	// For internal use
+	struct SceneComponent
+	{
+		UUID SceneID;
 	};
 }

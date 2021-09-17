@@ -20,3 +20,6 @@
 [submodule "Acrylic/vendor/ImGuizmo"]
 	path = Acrylic/vendor/ImGuizmo
 	url = https://github.com/marc-cr1810/ImGuizmo
+[submodule "Acrylic/vendor/Box2D"]
+	path = Acrylic/vendor/Box2D
+	url = https://github.com/marc-cr1810/box2d.git

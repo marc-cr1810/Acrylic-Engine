@@ -76,6 +76,9 @@ namespace Acrylic
 
 	void SceneHierarchyPanel::DrawEntityNode(Entity entity)
 	{
+		if (entity.HasComponent<SceneComponent>())
+			return;
+
 		auto& tag = entity.GetComponent<TagComponent>().Tag;
 
 		ImGuiTreeNodeFlags node_flags = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
