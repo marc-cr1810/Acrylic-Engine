@@ -9,7 +9,7 @@ Visual Studio 2017, 2019, or 2022 is recommended 2022 is the default), Acrylic i
 
 <ins>**1. Downloading the repository:**</ins>
 
-Start by cloning the repository with `git clone --recursive https://github.com/marc-cr1810/Acrylic`.
+Start by cloning the repository with `git clone --recursive https://github.com/marc-cr1810/Acrylic-Engine`.
 
 If the repository was cloned non-recursively previously, use `git submodule update --init` to clone the necessary submodules.
 
