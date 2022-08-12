@@ -5,7 +5,7 @@ Acrylic is primarily an early-stage interactive application and rendering engine
 ***
 
 ## Getting Started
-Visual Studio 2017, 2019, or 2022 is recommended 2022 is the default), Acrylic is officially untested on other development environments whilst we focus on a Windows build.
+Visual Studio 2017, 2019, or 2022 is recommended (2022 is the default), Acrylic is officially untested on other development environments whilst we focus on a Windows build.
 
 <ins>**1. Downloading the repository:**</ins>
 
