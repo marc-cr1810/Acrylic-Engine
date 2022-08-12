@@ -425,6 +425,13 @@ namespace Acrylic
 
 			break;
 		}
+		case Key::D:
+		{
+			if (control)
+				OnDuplicateEntity();
+
+			break;
+		}
 
 		// Gizmos
 		case Key::Q:
@@ -481,32 +488,34 @@ namespace Acrylic
 
 	void EditorLayer::OpenScene(const std::filesystem::path& path)
 	{
-		OnSceneStop();
+		if (m_SceneState != SceneState::Edit)
+			OnSceneStop();
+
+		if (path.extension().string() != ".ascene")
+		{
+			AC_WARN("Could not load {0} as the file is not a scene file", path.filename().string());
+			return;
+		}
+
 		Ref<Scene> newScene = CreateRef<Scene>();
 		SceneSerializer serializer(newScene);
 		if (serializer.Deserialize(path.string()))
 		{
-			m_ActiveScene = newScene;
-			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-			m_ActiveScenePath = path.string();
+			m_EditorScene = newScene;
+			m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_SceneHierarchyPanel.SetContext(m_EditorScene);
+
+			m_ActiveScene = m_EditorScene;
+			m_EditorScenePath = path;
 		}
 	}
 
 	void EditorLayer::SaveScene()
 	{
-		if (m_ActiveScenePath.empty())
+		if (m_EditorScenePath.empty())
 			SaveSceneAs();
 		else
-			SerializeScene(m_ActiveScenePath);
-	}
-
-	void EditorLayer::SerializeScene(const std::filesystem::path &path)
-	{
-		AC_CORE_ASSERT(!path.empty());
-
-		SceneSerializer serializer(m_ActiveScene);
-		serializer.Serialize(path.string());
+			SerializeScene(m_ActiveScene, m_EditorScenePath);
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -514,20 +523,43 @@ namespace Acrylic
 		std::string filepath = FileDialogs::SaveFile("Acrylic Scene (*.ascene)\0*.ascene\0");
 		if (!filepath.empty())
 		{
-			SerializeScene(filepath);
-			m_ActiveScenePath = filepath;
+			SerializeScene(m_ActiveScene, filepath);
+			m_EditorScenePath = filepath;
 		}
+	}
+
+	void EditorLayer::SerializeScene(Ref<Scene> scene, const std::filesystem::path& path)
+	{
+		SceneSerializer serializer(scene);
+		serializer.Serialize(path.string());
 	}
 
 	void EditorLayer::OnScenePlay()
 	{
-		m_ActiveScene->OnRuntimeStart();
 		m_SceneState = SceneState::Play;
+
+		m_ActiveScene = Scene::Copy(m_EditorScene);
+		m_ActiveScene->OnRuntimeStart();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnSceneStop()
 	{
-		m_ActiveScene->OnRuntimeStop();
 		m_SceneState = SceneState::Edit;
+		m_ActiveScene->OnRuntimeStop();
+		m_ActiveScene = m_EditorScene;
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
+	void EditorLayer::OnDuplicateEntity()
+	{
+		if (m_SceneState != SceneState::Edit)
+			return;
+
+		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
+		if (selectedEntity)
+			m_EditorScene->DuplicateEntity(selectedEntity);
 	}
 }

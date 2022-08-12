@@ -18,7 +18,10 @@ namespace Acrylic
 		Scene(const std::string &name = "Untitled");
 		~Scene();
 
+		static Ref<Scene> Copy(Ref<Scene> other);
+
 		Entity CreateEntity(const std::string &name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();
@@ -28,6 +31,8 @@ namespace Acrylic
 		void OnUpdateEditor(Timestep ts, EditorCamera &camera);
 
 		void Scene::OnViewportResize(uint32_t width, uint32_t height);
+
+		void DuplicateEntity(Entity entity);
 
 		Entity GetPrimaryCameraEntity();
 		std::string GetName() { return m_Name; }

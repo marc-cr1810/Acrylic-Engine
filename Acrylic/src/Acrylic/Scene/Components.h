@@ -2,7 +2,6 @@
 
 #include "Acrylic/Core/UUID.h"
 #include "Acrylic/Scene/SceneCamera.h"
-#include "Acrylic/Scene/ScriptableEntity.h"
 #include "Acrylic/Renderer/Texture.h"
 
 #include <glm/glm.hpp>
@@ -13,6 +12,14 @@
 
 namespace Acrylic
 {
+
+	struct IDComponent
+	{
+		UUID ID;
+
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+	};
 
 	struct TagComponent
 	{
@@ -74,6 +81,7 @@ namespace Acrylic
 	};
 
 	// For native C++ scripting
+	class ScriptableEntity; // Forward delcaration
 	struct NativeScriptComponent
 	{
 		ScriptableEntity *Instance = nullptr;

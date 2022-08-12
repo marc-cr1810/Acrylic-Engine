@@ -31,10 +31,12 @@ namespace Acrylic
 		void OpenScene(const std::filesystem::path& path);
 		void SaveScene();
 		void SaveSceneAs();
-		void SerializeScene(const std::filesystem::path &path);
+		void SerializeScene(Ref<Scene> scene, const std::filesystem::path& path);
 
 		void OnScenePlay();
 		void OnSceneStop();
+
+		void OnDuplicateEntity();
 
 		// UI Panels
 		void UI_Toolbar();
@@ -56,7 +58,8 @@ namespace Acrylic
 		SceneState m_SceneState = SceneState::Edit;
 
 		Ref<Scene> m_ActiveScene;
-		std::filesystem::path m_ActiveScenePath;
+		Ref<Scene> m_EditorScene;
+		std::filesystem::path m_EditorScenePath;
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

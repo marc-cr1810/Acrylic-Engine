@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Acrylic/Scene/Scene.h"
+#include "Acrylic/Scene/Components.h"
+#include "Acrylic/Core/UUID.h"
 
 #include <entt.hpp>
 
@@ -22,10 +24,18 @@ namespace Acrylic
 			return component;
 		}
 
+		template<typename T, typename... Args>
+		T& AddOrReplaceComponent(Args&&... args)
+		{
+			T& component = m_Scene->m_Registry.emplace_or_replace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			m_Scene->OnComponentAdded<T>(*this, component);
+			return component;
+		}
+
 		template<typename T>
 		T& GetComponent()
 		{
-			AC_CORE_ASSERT(HasComponent<T>(), "Entity does not have component!");
+			AC_CORE_ASSERT(HasComponent<T>(), "Entity does not have a component!");
 			return m_Scene->m_Registry.get<T>(m_EntityHandle);
 		}
 
@@ -38,13 +48,16 @@ namespace Acrylic
 		template<typename T>
 		void RemoveComponent()
 		{
-			AC_CORE_ASSERT(HasComponent<T>(), "Entity does not have component!");
+			AC_CORE_ASSERT(HasComponent<T>(), "Entity does not have a component!");
 			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 
 		operator bool() const { return m_EntityHandle != entt::null; }
 		operator entt::entity() const { return m_EntityHandle; }
 		operator uint32_t() const { return (uint32_t)m_EntityHandle; }
+
+		UUID GetUUID() { return GetComponent<IDComponent>().ID; }
+		const std::string& GetName() { return GetComponent<TagComponent>().Tag; }
 
 		bool operator==(const Entity& other) const
 		{
