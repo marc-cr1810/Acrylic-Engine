@@ -26,6 +26,8 @@ namespace Acrylic
 		bool OnKeyPressed(KeyPressedEvent& e);
 		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
 
+		void OnOverlayRender();
+
 		void NewScene();
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);
@@ -48,6 +50,9 @@ namespace Acrylic
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
 		glm::vec2 m_ViewportBounds[2];
+
+		// Settings
+		bool m_ShowPhysicsColliders = false;
 
 		int m_GizmoType = -1;
 

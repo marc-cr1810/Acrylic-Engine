@@ -35,6 +35,13 @@ namespace Acrylic
 		void DuplicateEntity(Entity entity);
 
 		Entity GetPrimaryCameraEntity();
+
+		template<typename... Components>
+		auto GetAllEntitiesWith()
+		{
+			return m_Registry.view<Components...>();
+		}
+
 		std::string GetName() { return m_Name; }
 	private:
 		template<typename T>

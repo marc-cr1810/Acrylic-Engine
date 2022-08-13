@@ -116,6 +116,9 @@ namespace Acrylic
 			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
 		}
 
+
+		OnOverlayRender();
+
 		m_Framebuffer->Unbind();
 	}
 
@@ -297,7 +300,7 @@ namespace Acrylic
 
 			// Gizmos
 			Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
-			if (selectedEntity && m_GizmoType != -1)
+			if (selectedEntity && m_GizmoType != -1 && m_SceneState == SceneState::Edit)
 			{
 				ImGuizmo::SetOrthographic(false);
 				ImGuizmo::SetDrawlist();
@@ -437,6 +440,12 @@ namespace Acrylic
 		}
 
 		// Function keys
+		case Key::F3:
+		{
+			// Show or hide physics collision boxes
+			m_ShowPhysicsColliders = m_ShowPhysicsColliders ? false : true;
+			break;
+		}
 		case Key::F5:
 		{
 			// Play and stop function key
@@ -444,6 +453,7 @@ namespace Acrylic
 				OnScenePlay();
 			else if (m_SceneState == SceneState::Play)
 				OnSceneStop();
+			break;
 		}
 
 		// Gizmos
@@ -482,6 +492,75 @@ namespace Acrylic
 				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
 		}
 		return false;
+	}
+
+	void EditorLayer::OnOverlayRender()
+	{
+		if (m_SceneState == SceneState::Play)
+		{
+			Entity camera = m_ActiveScene->GetPrimaryCameraEntity();
+			Renderer2D::BeginScene(camera.GetComponent<CameraComponent>().Camera, camera.GetComponent<TransformComponent>().GetTransform());
+		}
+		else
+		{
+			Renderer2D::BeginScene(m_EditorCamera);
+		}
+
+		if (m_ShowPhysicsColliders)
+		{
+			// Box Colliders
+			{
+				auto view = m_ActiveScene->GetAllEntitiesWith<TransformComponent, BoxCollider2DComponent>();
+				for (auto entity : view)
+				{
+					auto [tc, bc2d] = view.get<TransformComponent, BoxCollider2DComponent>(entity);
+
+					glm::vec3 translation = tc.Translation + glm::vec3(bc2d.Offset, 0.001f);
+					glm::vec3 scale = tc.Scale * glm::vec3(bc2d.Size * 2.0f, 1.0f);
+
+					glm::mat4 transform = glm::translate(glm::mat4(1.0f), translation)
+						* glm::rotate(glm::mat4(1.0f), tc.Rotation.z, glm::vec3(0.0f, 0.0f, 1.0f))
+						* glm::scale(glm::mat4(1.0f), scale);
+
+					Renderer2D::DrawRect(transform, glm::vec4(0.7, 0.9, 0.3, 1));
+				}
+			}
+
+			// Circle Colliders
+			{
+				auto view = m_ActiveScene->GetAllEntitiesWith<TransformComponent, CircleCollider2DComponent>();
+				for (auto entity : view)
+				{
+					auto [tc, cc2d] = view.get<TransformComponent, CircleCollider2DComponent>(entity);
+
+					glm::vec3 translation = tc.Translation + glm::vec3(cc2d.Offset, 0.001f);
+					glm::vec3 scale = tc.Scale * glm::vec3(cc2d.Radius * 2.0f);
+
+					glm::mat4 transform = glm::translate(glm::mat4(1.0f), translation)
+						* glm::scale(glm::mat4(1.0f), scale);
+
+					Renderer2D::DrawCircle(transform, glm::vec4(0.7, 0.9, 0.3, 1), 0.01f / cc2d.Radius);
+				}
+			}
+		}
+
+		Entity selectedEnitity = m_SceneHierarchyPanel.GetSelectedEntity();
+		if (selectedEnitity)
+		{
+			if (selectedEnitity.HasComponent<SpriteRendererComponent>())
+			{
+				TransformComponent tc = selectedEnitity.GetComponent<TransformComponent>();
+				Renderer2D::DrawRect(tc.GetTransform(), glm::vec4(1, 0.8, 0.2, 1));
+			}
+			if (selectedEnitity.HasComponent<CircleRendererComponent>())
+			{
+				TransformComponent tc = selectedEnitity.GetComponent<TransformComponent>();
+				//Renderer2D::DrawCircle(tc.GetTransform(), glm::vec4(1, 0.8, 0.2, 1), 0.01f); // For some reason this does not work so we use rect for now
+				Renderer2D::DrawRect(tc.GetTransform(), glm::vec4(1, 0.8, 0.2, 1));
+			}
+		}
+
+		Renderer2D::EndScene();
 	}
 
 	void EditorLayer::NewScene()
