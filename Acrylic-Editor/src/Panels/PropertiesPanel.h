@@ -20,6 +20,7 @@ namespace Acrylic
 	private:
 		Ref<Texture2D> m_TransformIcon;
 		Ref<Texture2D> m_SpriteRendererIcon;
+		Ref<Texture2D> m_CircleRendererIcon;
 		Ref<Texture2D> m_CameraIcon;
 
 		bool m_Open = true;

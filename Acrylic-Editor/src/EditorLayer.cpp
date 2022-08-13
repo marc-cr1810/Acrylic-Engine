@@ -436,6 +436,16 @@ namespace Acrylic
 			break;
 		}
 
+		// Function keys
+		case Key::F5:
+		{
+			// Play and stop function key
+			if (m_SceneState == SceneState::Edit)
+				OnScenePlay();
+			else if (m_SceneState == SceneState::Play)
+				OnSceneStop();
+		}
+
 		// Gizmos
 		case Key::Q:
 		{

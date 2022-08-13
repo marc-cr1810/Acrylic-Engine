@@ -17,6 +17,7 @@ namespace Acrylic
 	{
 		m_TransformIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/TransformIcon.png");
 		m_SpriteRendererIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/SpriteRendererIcon.png");
+		m_CircleRendererIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CircleRendererIcon.png");
 		m_CameraIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CameraIcon.png");
 	}
 
@@ -179,7 +180,7 @@ namespace Acrylic
 				ImGui::DragFloat("Tiling Factor", &component.TilingFactor, 0.1f, 0.0f, 100.0f);
 			});
 
-		DrawComponent<CircleRendererComponent>("Circle Renderer", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto& component)
+		DrawComponent<CircleRendererComponent>("Circle Renderer", entity, (ImTextureID)m_CircleRendererIcon->GetRendererID(), [](auto& component)
 			{
 				ImGui::ColorEdit4("Color", glm::value_ptr(component.Color));
 				ImGui::DragFloat("Thickness", &component.Thickness, 0.025f, 0.0f, 1.0f);

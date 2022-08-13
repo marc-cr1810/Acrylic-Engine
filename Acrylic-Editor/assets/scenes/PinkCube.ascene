@@ -1,28 +1,28 @@
 Scene: Pink Cube
 Entities:
-  - Entity: 2909216594249712840
+  - Entity: 11969566302585194090
     TagComponent:
       Tag: Right
     TransformComponent:
-      Translation: [0.349999994, 0, 0.349999994]
+      Translation: [-0.349999994, 0, -0.349999994]
       Rotation: [0, 0.785398185, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
       Color: [0.549019635, 0, 0.588235319, 1]
-  - Entity: 521569486065055498
+  - Entity: 8787680208489726207
     TagComponent:
       Tag: Left
     TransformComponent:
-      Translation: [-0.349999994, 0, 0.349999994]
+      Translation: [0.349999994, 0, -0.349999994]
       Rotation: [0, -0.785398185, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
       Color: [1, 0, 0.949019611, 1]
-  - Entity: 16785106093207575166
+  - Entity: 16821608716471673820
     TagComponent:
-      Tag: Top
+      Tag: Bottom
     TransformComponent:
-      Translation: [0, 0.5, 0]
+      Translation: [0, -0.5, 0]
       Rotation: [1.57079637, 0.785398185, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
@@ -45,3 +45,30 @@ Entities:
         OrthographicFar: 1
       Primary: true
       FixedAspectRatio: false
+  - Entity: 16785106093207575166
+    TagComponent:
+      Tag: Top
+    TransformComponent:
+      Translation: [0, 0.5, 0]
+      Rotation: [1.57079637, 0.785398185, 0]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [0.874509811, 0, 0.835294127, 1]
+  - Entity: 521569486065055498
+    TagComponent:
+      Tag: Left
+    TransformComponent:
+      Translation: [-0.349999994, 0, 0.349999994]
+      Rotation: [0, -0.785398185, 0]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [1, 0, 0.949019611, 1]
+  - Entity: 2909216594249712840
+    TagComponent:
+      Tag: Right
+    TransformComponent:
+      Translation: [0.349999994, 0, 0.349999994]
+      Rotation: [0, 0.785398185, 0]
+      Scale: [1, 1, 1]
+    SpriteRendererComponent:
+      Color: [0.549019635, 0, 0.588235319, 1]
