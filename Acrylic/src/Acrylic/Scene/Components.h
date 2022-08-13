@@ -70,6 +70,16 @@ namespace Acrylic
 		{}
 	};
 
+	struct CircleRendererComponent
+	{
+		glm::vec4 Color{ 1.0f, 1.0f, 1.0f, 1.0f };
+		float Thickness = 1.0f;
+		float Fade = 0.02f;
+
+		CircleRendererComponent() = default;
+		CircleRendererComponent(const CircleRendererComponent&) = default;
+	};
+
 	struct CameraComponent
 	{
 		Acrylic::SceneCamera Camera;
@@ -97,7 +107,7 @@ namespace Acrylic
 		}
 	};
 
-	/* --- Physics Components ---------------------------------------------*/
+	/* --- Physics Components --------------------------------------------- */
 
 	struct Rigidbody2DComponent
 	{

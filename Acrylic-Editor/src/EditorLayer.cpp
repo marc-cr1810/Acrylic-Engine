@@ -36,7 +36,7 @@ namespace Acrylic
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 		m_DuckTexture = Texture2D::Create("assets/textures/Duck.png");
 
-		m_ActiveScene = CreateRef<Scene>();
+		m_EditorScene = CreateRef<Scene>();
 
 		auto commandLineArgs = Application::Get().GetCommandLineArgs();
 		if (commandLineArgs.Count > 1)
@@ -48,7 +48,10 @@ namespace Acrylic
 
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
 
-		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_EditorScene);
+
+		m_ActiveScene = m_EditorScene;
 	}
 
 	void EditorLayer::OnDetach()
