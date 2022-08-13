@@ -22,6 +22,9 @@ namespace Acrylic
 		Ref<Texture2D> m_SpriteRendererIcon;
 		Ref<Texture2D> m_CircleRendererIcon;
 		Ref<Texture2D> m_CameraIcon;
+		Ref<Texture2D> m_Rigidbody2DIcon;
+		Ref<Texture2D> m_BoxCollider2DIcon;
+		Ref<Texture2D> m_CircleCollider2DIcon;
 
 		bool m_Open = true;
 	};

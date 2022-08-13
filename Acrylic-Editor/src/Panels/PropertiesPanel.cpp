@@ -19,6 +19,9 @@ namespace Acrylic
 		m_SpriteRendererIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/SpriteRendererIcon.png");
 		m_CircleRendererIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CircleRendererIcon.png");
 		m_CameraIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CameraIcon.png");
+		m_Rigidbody2DIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/Rigidbody2DIcon.png");
+		m_BoxCollider2DIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/BoxCollider2DIcon.png");
+		m_CircleCollider2DIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CircleCollider2DIcon.png");
 	}
 
 	void PropertiesPanel::OnImGuiRender(const Entity& context)
@@ -143,6 +146,15 @@ namespace Acrylic
 				}
 			}
 
+			if (!entity.HasComponent<CircleCollider2DComponent>())
+			{
+				if (ImGui::MenuItem("Circle Collider 2D"))
+				{
+					entity.AddComponent<CircleCollider2DComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+			}
+
 			ImGui::EndPopup();
 		}
 
@@ -247,7 +259,7 @@ namespace Acrylic
 			});
 
 
-		DrawComponent<Rigidbody2DComponent>("Rigidbody 2D", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto &rb2dComponent)
+		DrawComponent<Rigidbody2DComponent>("Rigidbody 2D", entity, (ImTextureID)m_Rigidbody2DIcon->GetRendererID(), [](auto &rb2dComponent)
 			{
 				const char *bodyTypeStrings[] = { "Static", "Dynamic", "Kinematic" };
 				const char *currentBodyTypeString = bodyTypeStrings[(int)rb2dComponent.Type];
@@ -272,7 +284,7 @@ namespace Acrylic
 				ImGui::Checkbox("Fixed Rotation", &rb2dComponent.FixedRotation);
 			});
 
-		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto &bc2dComponent)
+		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, (ImTextureID)m_BoxCollider2DIcon->GetRendererID(), [](auto &bc2dComponent)
 			{
 				ImGui::DragFloat2("Offset", glm::value_ptr(bc2dComponent.Offset));
 				ImGui::DragFloat2("Size", glm::value_ptr(bc2dComponent.Size));
@@ -280,6 +292,16 @@ namespace Acrylic
 				ImGui::DragFloat("Friction", &bc2dComponent.Friction, 0.01f, 0.0f, 1.0f);
 				ImGui::DragFloat("Restitution", &bc2dComponent.Restitution, 0.01f, 0.0f, 1.0f);
 				ImGui::DragFloat("RestitutionThreshold", &bc2dComponent.RestitutionThreshold, 0.01f, 0.0f);
+			});
+
+		DrawComponent<CircleCollider2DComponent>("Circle Collider 2D", entity, (ImTextureID)m_CircleCollider2DIcon->GetRendererID(), [](auto& bc2dComponent)
+			{
+				ImGui::DragFloat2("Offset", glm::value_ptr(bc2dComponent.Offset));
+				ImGui::DragFloat("Radius", &bc2dComponent.Radius);
+				ImGui::DragFloat("Density", &bc2dComponent.Density, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("Friction", &bc2dComponent.Friction, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("Restitution", &bc2dComponent.Restitution, 0.01f, 0.0f, 1.0f);
+				ImGui::DragFloat("Restitution Threshold", &bc2dComponent.RestitutionThreshold, 0.01f, 0.0f);
 			});
 	}
 }
