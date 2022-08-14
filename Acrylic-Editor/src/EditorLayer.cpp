@@ -384,29 +384,29 @@ namespace Acrylic
 		if (!toolbarEnabled)
 			tintColor.w = 0.5f;
 
-
-
-		float size = ImGui::GetWindowHeight() - 4.0f;
+		float size = ImGui::GetWindowHeight() - 2.5f;
 		{
-			Ref<Texture2D> icon = (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Simulate) ? m_IconPlay : m_IconStop;
-			ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
-			if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 0), ImVec2(1, 1), 0, ImVec4(0.0f, 0.0f, 0.0f, 0.0f), tintColor) && toolbarEnabled)
+			Ref<Texture2D> icon = (m_SceneState == SceneState::Edit) ? m_IconPlay : m_IconStop;
+			ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - ((m_SceneState != SceneState::Edit) ? 0 : (size * 0.5f)));
+			if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 1), ImVec2(1, 0), 0, ImVec4(0.0f, 0.0f, 0.0f, 0.0f), tintColor) && toolbarEnabled)
 			{
-				if (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Simulate)
+				if (m_SceneState == SceneState::Edit)
 					OnScenePlay();
-				else if (m_SceneState == SceneState::Play)
+				else if (m_SceneState == SceneState::Play || m_SceneState == SceneState::Simulate)
 					OnSceneStop();
 			}
 		}
-		ImGui::SameLine();
+		// Show simulate button, don't show if the scene is playing or simulating
+		if (m_SceneState == SceneState::Edit)
 		{
-			Ref<Texture2D> icon = (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Play) ? m_IconSimulate : m_IconStop;		//ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
-			if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 0), ImVec2(1, 1), 0, ImVec4(0.0f, 0.0f, 0.0f, 0.0f), tintColor) && toolbarEnabled)
+			ImGui::SameLine();
 			{
-				if (m_SceneState == SceneState::Edit || m_SceneState == SceneState::Play)
-					OnSceneSimulate();
-				else if (m_SceneState == SceneState::Simulate)
-					OnSceneStop();
+				Ref<Texture2D> icon = m_IconSimulate;
+				if (ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2(size, size), ImVec2(0, 1), ImVec2(1, 0), 0, ImVec4(0.0f, 0.0f, 0.0f, 0.0f), tintColor) && toolbarEnabled)
+				{
+					if (m_SceneState == SceneState::Edit)
+						OnSceneSimulate();
+				}
 			}
 		}
 		ImGui::PopStyleVar(2);
