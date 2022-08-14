@@ -9,8 +9,8 @@ namespace Acrylic
 	class AcrylicEditor : public Application
 	{
 	public:
-		AcrylicEditor(ApplicationCommandLineArgs args)
-			: Application("Acrylic Editor", args)
+		AcrylicEditor(const ApplicationSpecification& spec)
+			: Application(spec)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -21,6 +21,10 @@ namespace Acrylic
 
 	Application* Acrylic::CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new AcrylicEditor(args);
+		ApplicationSpecification spec;
+		spec.Name = "Acrylic Editor";
+		spec.CommandLineArgs = args;
+
+		return new AcrylicEditor(spec);
 	}
 }
