@@ -124,7 +124,6 @@ namespace Acrylic
 			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
 		}
 
-
 		OnOverlayRender();
 
 		m_Framebuffer->Unbind();

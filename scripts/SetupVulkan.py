@@ -22,7 +22,7 @@ class VulkanConfiguration:
         if (not cls.CheckVulkanSDKDebugLibs()):
             print("\nNo Vulkan SDK debug libs found. Install Vulkan SDK with debug libs.")
             print("Debug configuration disabled.")
-
+    
     @classmethod
     def CheckVulkanSDK(cls):
         vulkanSDK = os.environ.get("VULKAN_SDK")
