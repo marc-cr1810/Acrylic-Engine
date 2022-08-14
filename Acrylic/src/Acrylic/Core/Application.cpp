@@ -6,7 +6,7 @@
 
 #include "Acrylic/Renderer/Renderer.h"
 
-#include <GLFW/glfw3.h>
+#include "Acrylic/Utils/PlatformUtils.h"
 
 namespace Acrylic 
 {
@@ -81,7 +81,7 @@ namespace Acrylic
 		{
 			AC_PROFILE_SCOPE("RunLoop");
 
-			float time = (float)glfwGetTime();
+			float time = Time::GetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 

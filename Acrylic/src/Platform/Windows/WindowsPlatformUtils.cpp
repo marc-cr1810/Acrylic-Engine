@@ -57,4 +57,9 @@ namespace Acrylic
 
 		return std::string();
 	}
+
+	float Time::GetTime()
+	{
+		return glfwGetTime();
+	}
 }

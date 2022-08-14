@@ -1,45 +1,63 @@
-[19:28:00] [info] ACRYLIC: Initialized Log!
-[19:28:00] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[19:28:01] [info] ACRYLIC: OpenGL Info:
-[19:28:01] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[19:28:01] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[19:28:01] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
-[19:28:01] [trace] ACRYLIC:     1 uniform buffers
-[19:28:01] [trace] ACRYLIC:     0 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [trace] ACRYLIC:   _46_48
-[19:28:01] [trace] ACRYLIC:     Size = 64
-[19:28:01] [trace] ACRYLIC:     Binding = 0
-[19:28:01] [trace] ACRYLIC:     Members = 1
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
-[19:28:01] [trace] ACRYLIC:     0 uniform buffers
-[19:28:01] [trace] ACRYLIC:     1 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [warning] ACRYLIC: Shader creation took 16.6104 ms
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
-[19:28:01] [trace] ACRYLIC:     1 uniform buffers
-[19:28:01] [trace] ACRYLIC:     0 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [trace] ACRYLIC:   _47_49
-[19:28:01] [trace] ACRYLIC:     Size = 64
-[19:28:01] [trace] ACRYLIC:     Binding = 0
-[19:28:01] [trace] ACRYLIC:     Members = 1
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
-[19:28:01] [trace] ACRYLIC:     0 uniform buffers
-[19:28:01] [trace] ACRYLIC:     0 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [warning] ACRYLIC: Shader creation took 12.4824 ms
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
-[19:28:01] [trace] ACRYLIC:     1 uniform buffers
-[19:28:01] [trace] ACRYLIC:     0 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [trace] ACRYLIC:   _30_32
-[19:28:01] [trace] ACRYLIC:     Size = 64
-[19:28:01] [trace] ACRYLIC:     Binding = 0
-[19:28:01] [trace] ACRYLIC:     Members = 1
-[19:28:01] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
-[19:28:01] [trace] ACRYLIC:     0 uniform buffers
-[19:28:01] [trace] ACRYLIC:     0 resources
-[19:28:01] [trace] ACRYLIC: Uniform buffers:
-[19:28:01] [warning] ACRYLIC: Shader creation took 13.8861 ms
+[19:34:08] [info] ACRYLIC: Initialized Log!
+[19:34:08] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[19:34:09] [info] ACRYLIC: OpenGL Info:
+[19:34:09] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[19:34:09] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[19:34:09] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
+[19:34:09] [trace] ACRYLIC:     1 uniform buffers
+[19:34:09] [trace] ACRYLIC:     0 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [trace] ACRYLIC:   _46_48
+[19:34:09] [trace] ACRYLIC:     Size = 64
+[19:34:09] [trace] ACRYLIC:     Binding = 0
+[19:34:09] [trace] ACRYLIC:     Members = 1
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
+[19:34:09] [trace] ACRYLIC:     0 uniform buffers
+[19:34:09] [trace] ACRYLIC:     1 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [warning] ACRYLIC: Shader creation took 14.9471 ms
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
+[19:34:09] [trace] ACRYLIC:     1 uniform buffers
+[19:34:09] [trace] ACRYLIC:     0 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [trace] ACRYLIC:   _47_49
+[19:34:09] [trace] ACRYLIC:     Size = 64
+[19:34:09] [trace] ACRYLIC:     Binding = 0
+[19:34:09] [trace] ACRYLIC:     Members = 1
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
+[19:34:09] [trace] ACRYLIC:     0 uniform buffers
+[19:34:09] [trace] ACRYLIC:     0 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [warning] ACRYLIC: Shader creation took 12.2977 ms
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
+[19:34:09] [trace] ACRYLIC:     1 uniform buffers
+[19:34:09] [trace] ACRYLIC:     0 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [trace] ACRYLIC:   _30_32
+[19:34:09] [trace] ACRYLIC:     Size = 64
+[19:34:09] [trace] ACRYLIC:     Binding = 0
+[19:34:09] [trace] ACRYLIC:     Members = 1
+[19:34:09] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
+[19:34:09] [trace] ACRYLIC:     0 uniform buffers
+[19:34:09] [trace] ACRYLIC:     0 resources
+[19:34:09] [trace] ACRYLIC: Uniform buffers:
+[19:34:09] [warning] ACRYLIC: Shader creation took 12.2711 ms
+[19:34:11] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 15117958593423142246, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 9338178997342463542, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 14387555427744669100, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 9183464497030979692, name = Platform
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 18407344191471969277, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 13337610774914843648, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 17423042298965270006, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 13599251731982005336, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 16866703047836961821, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 15938177446895459627, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 8183151623075048183, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 13375382757065808711, name = Platform
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 17643594723658666021, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 594415491374954704, name = Camera
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 1597773000307550917, name = Circle
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 17173150099794031605, name = Sprite
+[19:34:11] [trace] ACRYLIC: Deserialized entity with ID = 500685828057437519, name = Sprite

@@ -416,7 +416,10 @@ namespace Acrylic
 
 	void EditorLayer::OnEvent(Event& e)
 	{
-		m_EditorCamera.OnEvent(e);
+		if (m_SceneState != SceneState::Play)
+		{
+			m_EditorCamera.OnEvent(e);
+		}
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(AC_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
