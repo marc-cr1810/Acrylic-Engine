@@ -16,6 +16,9 @@ namespace Acrylic
 
 		void Open() { m_Open = true; }
 	private:
+		template<typename T>
+		void DisplayAddComponentEntry(Entity entity, const std::string& entryName);
+
 		void DrawComponents(Entity entity);
 	private:
 		Ref<Texture2D> m_TransformIcon;
