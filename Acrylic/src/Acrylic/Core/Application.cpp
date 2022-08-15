@@ -6,6 +6,8 @@
 
 #include "Acrylic/Renderer/Renderer.h"
 
+#include "Acrylic/Scripting/ScriptEngine.h"
+
 #include "Acrylic/Utils/PlatformUtils.h"
 
 namespace Acrylic 
@@ -28,6 +30,7 @@ namespace Acrylic
 		m_Window->SetEventCallback(AC_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
+		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -38,6 +41,7 @@ namespace Acrylic
 		AC_PROFILE_FUNCTION();
 
 		Renderer::Shutdown();
+		ScriptEngine::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)

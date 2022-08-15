@@ -33,6 +33,15 @@ group "Dependencies"
 	include "Acrylic/vendor/yaml-cpp"
 group ""
 
-include "Acrylic"
-include "Sandbox"
-include "Acrylic-Editor"
+group "Core"
+	include "Acrylic"
+	include "Acrylic-ScriptCore"
+group ""
+
+group "Tools"
+	include "Acrylic-Editor"
+group ""
+
+group "Misc"
+	include "Sandbox"
+group ""
