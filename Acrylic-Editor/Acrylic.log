@@ -1,47 +1,47 @@
-[16:54:13] [info] ACRYLIC: Initialized Log!
-[16:54:13] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[16:54:14] [info] ACRYLIC: OpenGL Info:
-[16:54:14] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[16:54:14] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[16:54:14] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
-[16:54:14] [trace] ACRYLIC:     1 uniform buffers
-[16:54:14] [trace] ACRYLIC:     0 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [trace] ACRYLIC:   _46_48
-[16:54:14] [trace] ACRYLIC:     Size = 64
-[16:54:14] [trace] ACRYLIC:     Binding = 0
-[16:54:14] [trace] ACRYLIC:     Members = 1
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
-[16:54:14] [trace] ACRYLIC:     0 uniform buffers
-[16:54:14] [trace] ACRYLIC:     1 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [warning] ACRYLIC: Shader creation took 15.066 ms
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
-[16:54:14] [trace] ACRYLIC:     1 uniform buffers
-[16:54:14] [trace] ACRYLIC:     0 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [trace] ACRYLIC:   _47_49
-[16:54:14] [trace] ACRYLIC:     Size = 64
-[16:54:14] [trace] ACRYLIC:     Binding = 0
-[16:54:14] [trace] ACRYLIC:     Members = 1
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
-[16:54:14] [trace] ACRYLIC:     0 uniform buffers
-[16:54:14] [trace] ACRYLIC:     0 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [warning] ACRYLIC: Shader creation took 12.6221 ms
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
-[16:54:14] [trace] ACRYLIC:     1 uniform buffers
-[16:54:14] [trace] ACRYLIC:     0 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [trace] ACRYLIC:   _30_32
-[16:54:14] [trace] ACRYLIC:     Size = 64
-[16:54:14] [trace] ACRYLIC:     Binding = 0
-[16:54:14] [trace] ACRYLIC:     Members = 1
-[16:54:14] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
-[16:54:14] [trace] ACRYLIC:     0 uniform buffers
-[16:54:14] [trace] ACRYLIC:     0 resources
-[16:54:14] [trace] ACRYLIC: Uniform buffers:
-[16:54:14] [warning] ACRYLIC: Shader creation took 12.8555 ms
-[16:54:17] [trace] ACRYLIC: .<Module>
-[16:54:17] [trace] ACRYLIC: Acrylic.Main
+[18:03:12] [info] ACRYLIC: Initialized Log!
+[18:03:12] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
+[18:03:13] [info] ACRYLIC: OpenGL Info:
+[18:03:13] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[18:03:13] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[18:03:13] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
+[18:03:13] [trace] ACRYLIC:     1 uniform buffers
+[18:03:13] [trace] ACRYLIC:     0 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [trace] ACRYLIC:   _46_48
+[18:03:13] [trace] ACRYLIC:     Size = 64
+[18:03:13] [trace] ACRYLIC:     Binding = 0
+[18:03:13] [trace] ACRYLIC:     Members = 1
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
+[18:03:13] [trace] ACRYLIC:     0 uniform buffers
+[18:03:13] [trace] ACRYLIC:     1 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [warning] ACRYLIC: Shader creation took 3.8801 ms
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
+[18:03:13] [trace] ACRYLIC:     1 uniform buffers
+[18:03:13] [trace] ACRYLIC:     0 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [trace] ACRYLIC:   _47_49
+[18:03:13] [trace] ACRYLIC:     Size = 64
+[18:03:13] [trace] ACRYLIC:     Binding = 0
+[18:03:13] [trace] ACRYLIC:     Members = 1
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
+[18:03:13] [trace] ACRYLIC:     0 uniform buffers
+[18:03:13] [trace] ACRYLIC:     0 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [warning] ACRYLIC: Shader creation took 2.4718 ms
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
+[18:03:13] [trace] ACRYLIC:     1 uniform buffers
+[18:03:13] [trace] ACRYLIC:     0 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [trace] ACRYLIC:   _30_32
+[18:03:13] [trace] ACRYLIC:     Size = 64
+[18:03:13] [trace] ACRYLIC:     Binding = 0
+[18:03:13] [trace] ACRYLIC:     Members = 1
+[18:03:13] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
+[18:03:13] [trace] ACRYLIC:     0 uniform buffers
+[18:03:13] [trace] ACRYLIC:     0 resources
+[18:03:13] [trace] ACRYLIC: Uniform buffers:
+[18:03:13] [warning] ACRYLIC: Shader creation took 2.7642 ms
+[18:03:13] [trace] ACRYLIC: .<Module>
+[18:03:13] [trace] ACRYLIC: Acrylic.Main
