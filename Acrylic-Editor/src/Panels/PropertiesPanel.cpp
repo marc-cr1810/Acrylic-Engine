@@ -1,13 +1,13 @@
 #include "PropertiesPanel.h"
+#include "UIWidgets.h"
+
+#include "Acrylic/Scripting/ScriptEngine.h"
+#include "Acrylic/Scene/Components.h"
 
 #include <imgui/imgui.h>
 #include <imgui/imgui_internal.h>
 
 #include <glm/gtc/type_ptr.hpp>
-
-#include "UIWidgets.h"
-
-#include "Acrylic/Scene/Components.h"
 
 namespace Acrylic
 {
@@ -116,6 +116,7 @@ namespace Acrylic
 			DisplayAddComponentEntry<CameraComponent>(entity, "Camera");
 			DisplayAddComponentEntry<SpriteRendererComponent>(entity, "Sprite Renderer");
 			DisplayAddComponentEntry<CircleRendererComponent>(entity, "Circle Renderer");
+			DisplayAddComponentEntry<ScriptComponent>(entity, "Script");
 			DisplayAddComponentEntry<Rigidbody2DComponent>(entity, "Rigidbody 2D");
 			DisplayAddComponentEntry<BoxCollider2DComponent>(entity, "Box Collider 2D");
 			DisplayAddComponentEntry<CircleCollider2DComponent>(entity, "Circle Collider 2D");
@@ -221,6 +222,23 @@ namespace Acrylic
 
 					ImGui::Checkbox("Fixed Aspect Ratio", &component.FixedAspectRatio);
 				}
+			});
+
+		DrawComponent<ScriptComponent>("Script", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto& component)
+			{
+				bool scriptClassExists = ScriptEngine::EntityClassExists(component.ClassName);
+
+				static char buffer[64];
+				strcpy(buffer, component.ClassName.c_str());
+
+				if (!scriptClassExists)
+					ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.9f, 0.2f, 0.3f, 1.0f));
+
+				if (ImGui::InputText("Class", buffer, sizeof(buffer)))
+					component.ClassName = buffer;
+
+				if (!scriptClassExists)
+					ImGui::PopStyleColor();
 			});
 
 

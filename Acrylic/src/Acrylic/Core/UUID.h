@@ -14,23 +14,22 @@ namespace Acrylic
 	public:
 		UUID();
 		UUID(uint64_t uuid);
-		UUID(const UUID &other);
+		UUID(const UUID&) = default;
 
-		operator uint64_t () { return m_UUID; }
-		operator const uint64_t() const { return m_UUID; }
+		operator uint64_t() const { return m_UUID; }
 	private:
 		uint64_t m_UUID;
 	};
+
 }
 
-namespace std
-{
+namespace std {
 	template <typename T> struct hash;
 
-	template <>
+	template<>
 	struct hash<Acrylic::UUID>
 	{
-		std::size_t operator()(const Acrylic::UUID &uuid) const
+		std::size_t operator()(const Acrylic::UUID& uuid) const
 		{
 			return (uint64_t)uuid;
 		}

@@ -1,9 +1,12 @@
 #include "acpch.h"
-#include "Acrylic/Scene/Scene.h"
+#include "Scene.h"
 
 #include "Acrylic/Scene/Entity.h"
 #include "Acrylic/Scene/ScriptableEntity.h"
 #include "Acrylic/Scene/Components.h"
+
+#include "Acrylic/Scripting/ScriptEngine.h"
+
 #include "Acrylic/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>
@@ -122,11 +125,13 @@ namespace Acrylic
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponent>();
 		tag.Tag = name.empty() ? "Entity" : name;
+		m_EntityMap[uuid] = entity;
 		return entity;
 	}
 
 	void Scene::DestroyEntity(Entity entity)
 	{
+		m_EntityMap.erase(entity.GetUUID());
 		m_Registry.destroy(entity);
 	}
 
@@ -135,6 +140,19 @@ namespace Acrylic
 		s_ActiveScenes[m_SceneID] = this;
 
 		OnPhysics2DStart();
+
+		// Scripting
+		{
+			ScriptEngine::OnRuntimeStart(this);
+			// Instantiate all script entities
+
+			auto view = m_Registry.view<ScriptComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				ScriptEngine::OnCreateEntity(entity);
+			}
+		}
 	}
 
 	void Scene::OnRuntimeStop()
@@ -142,6 +160,9 @@ namespace Acrylic
 		s_ActiveScenes.erase(m_SceneID);
 		// Destroy box2d world
 		OnPhysics2DStop();
+
+		// Stop the script engine
+		ScriptEngine::OnRuntimeStop();
 	}
 
 	void Scene::OnSimulationStart()
@@ -162,6 +183,14 @@ namespace Acrylic
 	{
 		// Update scripts
 		{
+			// C# Entity OnUpdate
+			auto view = m_Registry.view<ScriptComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				ScriptEngine::OnUpdateEntity(entity, ts);
+			}
+
 			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto &nsc)
 				{
 					if (!nsc.Instance)
@@ -298,6 +327,14 @@ namespace Acrylic
 	{
 		Entity newEntity = CreateEntity(entity.GetName());
 		CopyComponentIfExists(AllComponents{}, newEntity, entity);
+	}
+
+	Entity Scene::GetEntityByUUID(UUID uuid)
+	{
+		// TODO: Maybe should be assert
+		if (m_EntityMap.find(uuid) != m_EntityMap.end())
+			return { m_EntityMap.at(uuid), this };
+		return {};
 	}
 
 	Entity Scene::GetPrimaryCameraEntity()
@@ -437,6 +474,10 @@ namespace Acrylic
 
 	template<>
 	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent &component)
+	{}
+
+	template<>
+	void Scene::OnComponentAdded<ScriptComponent>(Entity entity, ScriptComponent & component)
 	{}
 
 	template<>

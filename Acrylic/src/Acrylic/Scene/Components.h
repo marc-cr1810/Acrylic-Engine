@@ -107,6 +107,15 @@ namespace Acrylic
 		}
 	};
 
+	// For C# scripting
+	struct ScriptComponent
+	{
+		std::string ClassName;
+
+		ScriptComponent() = default;
+		ScriptComponent(const ScriptComponent&) = default;
+	};
+
 	/* --- Physics Components --------------------------------------------- */
 
 	struct Rigidbody2DComponent
@@ -172,6 +181,7 @@ namespace Acrylic
 
 	using AllComponents =
 		ComponentGroup<TransformComponent, SpriteRendererComponent,
-		CircleRendererComponent, CameraComponent, NativeScriptComponent,
+		CircleRendererComponent, CameraComponent, 
+		NativeScriptComponent, ScriptComponent,
 		Rigidbody2DComponent, BoxCollider2DComponent, CircleCollider2DComponent>;
 }

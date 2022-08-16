@@ -38,6 +38,8 @@ namespace Acrylic
 
 		void DuplicateEntity(Entity entity);
 
+		Entity GetEntityByUUID(UUID uuid);
+
 		Entity GetPrimaryCameraEntity();
 
 		template<typename... Components>
@@ -65,6 +67,8 @@ namespace Acrylic
 		entt::entity m_SceneEntity;
 
 		b2World *m_Box2DWorld = nullptr;
+
+		std::unordered_map<UUID, entt::entity> m_EntityMap;
 
 		friend class Entity;
 		friend class SceneSerializer;
