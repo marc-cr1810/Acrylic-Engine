@@ -59,6 +59,50 @@ namespace Acrylic
 		entity.GetComponent<TransformComponent>().Translation = *translation;
 	}
 
+	static void TransformComponent_GetRotation(UUID entityID, glm::vec3* outRotation)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		*outRotation = entity.GetComponent<TransformComponent>().Rotation;
+	}
+
+	static void TransformComponent_SetRotation(UUID entityID, glm::vec3* rotation)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		entity.GetComponent<TransformComponent>().Rotation = *rotation;
+	}
+
+#pragma endregion
+
+#pragma region SpriteRendererComponent
+
+	static void SpriteRendererComponent_GetColor(UUID entityID, glm::vec4* outColor)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		*outColor = entity.GetComponent<SpriteRendererComponent>().Color;
+	}
+
+	static void SpriteRendererComponent_SetColor(UUID entityID, glm::vec4* color)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		entity.GetComponent<SpriteRendererComponent>().Color = *color;
+	}
+
 #pragma endregion
 
 #pragma region Rigidbody2DComponent
@@ -96,6 +140,26 @@ namespace Acrylic
 		return Input::IsKeyPressed(keycode);
 	}
 
+	static bool Input_IsMouseButtonPressed(MouseCode button)
+	{
+		return Input::IsMouseButtonPressed(button);
+	}
+
+	static void Input_GetMousePosition(glm::vec2* position)
+	{
+		*position = Input::GetMousePosition();
+	}
+
+	static void Input_GetMouseX(float* xPosition)
+	{
+		*xPosition = Input::GetMouseX();
+	}
+
+	static void Input_GetMouseY(float* yPosition)
+	{
+		*yPosition = Input::GetMouseY();
+	}
+
 #pragma endregion
 
 	template<typename... Component>
@@ -111,7 +175,7 @@ namespace Acrylic
 				MonoType* managedType = mono_reflection_type_from_name(managedTypename.data(), ScriptEngine::GetCoreAssemblyImage());
 				if (!managedType)
 				{
-					AC_CORE_ERROR("Could not find component type {}", managedTypename);
+					AC_CORE_ERROR("Could not find C# component type {}", managedTypename);
 					return;
 				}
 				s_EntityHasComponentFuncs[managedType] = [](Entity entity) { return entity.HasComponent<Component>(); };
@@ -135,10 +199,19 @@ namespace Acrylic
 
 		AC_ADD_INTERNAL_CALL(TransformComponent_GetTranslation);
 		AC_ADD_INTERNAL_CALL(TransformComponent_SetTranslation);
+		AC_ADD_INTERNAL_CALL(TransformComponent_GetRotation);
+		AC_ADD_INTERNAL_CALL(TransformComponent_SetRotation);
+
+		AC_ADD_INTERNAL_CALL(SpriteRendererComponent_GetColor);
+		AC_ADD_INTERNAL_CALL(SpriteRendererComponent_SetColor);
 
 		AC_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulse);
 		AC_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulseToCenter);
 
 		AC_ADD_INTERNAL_CALL(Input_IsKeyDown);
+		AC_ADD_INTERNAL_CALL(Input_IsMouseButtonPressed);
+		AC_ADD_INTERNAL_CALL(Input_GetMousePosition);
+		AC_ADD_INTERNAL_CALL(Input_GetMouseX);
+		AC_ADD_INTERNAL_CALL(Input_GetMouseY);
 	}
 }

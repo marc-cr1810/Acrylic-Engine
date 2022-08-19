@@ -56,7 +56,7 @@ namespace Acrylic
 				auto view = src.view<Component>();
 				for (auto srcEntity : view)
 				{
-					entt::entity dstEntity = enttMap.at(src.get<IDComponent>(srcEntity).ID);
+					entt::entity dstEntity = enttMap.at(src.get<IDComponent>(srcEntity));
 
 					auto& srcComponent = src.get<Component>(srcEntity);
 					dst.emplace_or_replace<Component>(dstEntity, srcComponent);
@@ -102,7 +102,7 @@ namespace Acrylic
 		for (auto e : idView)
 		{
 			UUID uuid = srcSceneRegistry.get<IDComponent>(e).ID;
-			const auto& name = srcSceneRegistry.get<TagComponent>(e).Tag;
+			const auto& name = srcSceneRegistry.get<TagComponent>(e);
 			Entity newEntity = newScene->CreateEntityWithUUID(uuid, name);
 			enttMap[uuid] = (entt::entity)newEntity;
 		}

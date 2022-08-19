@@ -20,7 +20,6 @@
 			Z = z;
 		}
 
-
 		public Vector2 XY
 		{
 			get => new Vector2(X, Y);
@@ -36,9 +35,39 @@
 			return new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 		}
 
+		public static Vector3 operator +(Vector3 vector, float scalar)
+		{
+			return new Vector3(vector.X + scalar, vector.Y + scalar, vector.Z + scalar);
+		}
+
+		public static Vector3 operator -(Vector3 a, Vector3 b)
+		{
+			return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+		}
+
+		public static Vector3 operator -(Vector3 vector, float scalar)
+		{
+			return new Vector3(vector.X - scalar, vector.Y - scalar, vector.Z - scalar);
+		}
+
+		public static Vector3 operator *(Vector3 a, Vector3 b)
+		{
+			return new Vector3(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+		}
+
 		public static Vector3 operator *(Vector3 vector, float scalar)
 		{
 			return new Vector3(vector.X * scalar, vector.Y * scalar, vector.Z * scalar);
+		}
+
+		public static Vector3 operator /(Vector3 a, Vector3 b)
+		{
+			return new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
+		}
+
+		public static Vector3 operator /(Vector3 vector, float scalar)
+		{
+			return new Vector3(vector.X / scalar, vector.Y / scalar, vector.Z / scalar);
 		}
 	}
 }

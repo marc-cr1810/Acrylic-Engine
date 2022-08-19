@@ -19,6 +19,9 @@ namespace Acrylic
 
 		IDComponent() = default;
 		IDComponent(const IDComponent&) = default;
+
+		operator UUID& () { return ID; }
+		operator const UUID& () { return ID; }
 	};
 
 	struct TagComponent

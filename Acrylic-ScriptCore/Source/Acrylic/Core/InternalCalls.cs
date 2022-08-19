@@ -20,6 +20,22 @@ namespace Acrylic
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void TransformComponent_SetTranslation(ulong entityID, ref Vector3 translation);
 
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void TransformComponent_GetRotation(ulong entityID, out Vector3 rotation);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void TransformComponent_SetRotation(ulong entityID, ref Vector3 rotation);
+
+		#endregion
+
+		#region SpriteRendererComponent
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SpriteRendererComponent_GetColor(ulong entityID, out Vector4 color);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void SpriteRendererComponent_SetColor(ulong entityID, ref Vector4 color);
+
 		#endregion
 
 		#region Rigidbody2DComponent
@@ -29,10 +45,26 @@ namespace Acrylic
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void Rigidbody2DComponent_ApplyLinearImpulseToCenter(ulong entityID, ref Vector2 impulse, bool wake);
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 
 		#endregion
 
+		#region Input
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static bool Input_IsKeyDown(KeyCode keycode);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static bool Input_IsMouseButtonPressed(MouseCode button);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void Input_GetMousePosition(out Vector2 position);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void Input_GetMouseX(out float xPosition);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void Input_GetMouseY(out float yPosition);
+
+		#endregion
 	}
 }

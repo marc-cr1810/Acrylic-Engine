@@ -1,57 +1,51 @@
-[22:11:56] [info] ACRYLIC: Initialized Log!
-[22:11:56] [info] ACRYLIC: Creating window Acrylic Editor (1600, 900)
-[22:11:57] [info] ACRYLIC: OpenGL Info:
-[22:11:57] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[22:11:57] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[22:11:57] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
-[22:11:57] [trace] ACRYLIC:     1 uniform buffers
-[22:11:57] [trace] ACRYLIC:     0 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [trace] ACRYLIC:   _46_48
-[22:11:57] [trace] ACRYLIC:     Size = 64
-[22:11:57] [trace] ACRYLIC:     Binding = 0
-[22:11:57] [trace] ACRYLIC:     Members = 1
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
-[22:11:57] [trace] ACRYLIC:     0 uniform buffers
-[22:11:57] [trace] ACRYLIC:     1 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [warning] ACRYLIC: Shader creation took 12.6698 ms
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
-[22:11:57] [trace] ACRYLIC:     1 uniform buffers
-[22:11:57] [trace] ACRYLIC:     0 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [trace] ACRYLIC:   _47_49
-[22:11:57] [trace] ACRYLIC:     Size = 64
-[22:11:57] [trace] ACRYLIC:     Binding = 0
-[22:11:57] [trace] ACRYLIC:     Members = 1
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
-[22:11:57] [trace] ACRYLIC:     0 uniform buffers
-[22:11:57] [trace] ACRYLIC:     0 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [warning] ACRYLIC: Shader creation took 11.0358 ms
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
-[22:11:57] [trace] ACRYLIC:     1 uniform buffers
-[22:11:57] [trace] ACRYLIC:     0 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [trace] ACRYLIC:   _30_32
-[22:11:57] [trace] ACRYLIC:     Size = 64
-[22:11:57] [trace] ACRYLIC:     Binding = 0
-[22:11:57] [trace] ACRYLIC:     Members = 1
-[22:11:57] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
-[22:11:57] [trace] ACRYLIC:     0 uniform buffers
-[22:11:57] [trace] ACRYLIC:     0 resources
-[22:11:57] [trace] ACRYLIC: Uniform buffers:
-[22:11:57] [warning] ACRYLIC: Shader creation took 10.6733 ms
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.SpriteRendererComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.CircleRendererComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.CameraComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.NativeScriptComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.ScriptComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.BoxCollider2DComponent
-[22:11:57] [error] ACRYLIC: Could not find component type Acrylic.CircleCollider2DComponent
-[22:11:59] [trace] ACRYLIC: Deserializing scene 'Untitled'
-[22:11:59] [trace] ACRYLIC: Deserialized entity with ID = 10788485966694766546, name = Camera
-[22:11:59] [trace] ACRYLIC: Deserialized entity with ID = 10809011240575432738, name = Red Square
-[22:11:59] [trace] ACRYLIC: Deserialized entity with ID = 6168587161580105977, name = Green Square
-[22:11:59] [trace] ACRYLIC: Deserialized entity with ID = 1556756331191138409, name = Blue Square
+[21:44:37] [info] ACRYLIC: Initialized Log!
+[21:44:37] [info] ACRYLIC: Creating window Acrylic Editor (1280, 720)
+[21:44:37] [info] ACRYLIC: OpenGL Info:
+[21:44:37] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[21:44:37] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[21:44:37] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
+[21:44:37] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
+[21:44:37] [trace] ACRYLIC:     1 uniform buffers
+[21:44:37] [trace] ACRYLIC:     0 resources
+[21:44:37] [trace] ACRYLIC: Uniform buffers:
+[21:44:37] [trace] ACRYLIC:   _46_48
+[21:44:37] [trace] ACRYLIC:     Size = 64
+[21:44:37] [trace] ACRYLIC:     Binding = 0
+[21:44:37] [trace] ACRYLIC:     Members = 1
+[21:44:37] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
+[21:44:37] [trace] ACRYLIC:     0 uniform buffers
+[21:44:37] [trace] ACRYLIC:     1 resources
+[21:44:37] [trace] ACRYLIC: Uniform buffers:
+[21:44:38] [warning] ACRYLIC: Shader creation took 28.7021 ms
+[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
+[21:44:38] [trace] ACRYLIC:     1 uniform buffers
+[21:44:38] [trace] ACRYLIC:     0 resources
+[21:44:38] [trace] ACRYLIC: Uniform buffers:
+[21:44:38] [trace] ACRYLIC:   _47_49
+[21:44:38] [trace] ACRYLIC:     Size = 64
+[21:44:38] [trace] ACRYLIC:     Binding = 0
+[21:44:38] [trace] ACRYLIC:     Members = 1
+[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
+[21:44:38] [trace] ACRYLIC:     0 uniform buffers
+[21:44:38] [trace] ACRYLIC:     0 resources
+[21:44:38] [trace] ACRYLIC: Uniform buffers:
+[21:44:38] [warning] ACRYLIC: Shader creation took 25.5349 ms
+[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
+[21:44:38] [trace] ACRYLIC:     1 uniform buffers
+[21:44:38] [trace] ACRYLIC:     0 resources
+[21:44:38] [trace] ACRYLIC: Uniform buffers:
+[21:44:38] [trace] ACRYLIC:   _30_32
+[21:44:38] [trace] ACRYLIC:     Size = 64
+[21:44:38] [trace] ACRYLIC:     Binding = 0
+[21:44:38] [trace] ACRYLIC:     Members = 1
+[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
+[21:44:38] [trace] ACRYLIC:     0 uniform buffers
+[21:44:38] [trace] ACRYLIC:     0 resources
+[21:44:38] [trace] ACRYLIC: Uniform buffers:
+[21:44:38] [warning] ACRYLIC: Shader creation took 24.77 ms
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CircleRendererComponent
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CameraComponent
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.NativeScriptComponent
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.ScriptComponent
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.BoxCollider2DComponent
+[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CircleCollider2DComponent
