@@ -1,51 +1,57 @@
-[21:44:37] [info] ACRYLIC: Initialized Log!
-[21:44:37] [info] ACRYLIC: Creating window Acrylic Editor (1280, 720)
-[21:44:37] [info] ACRYLIC: OpenGL Info:
-[21:44:37] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
-[21:44:37] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
-[21:44:37] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
-[21:44:37] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
-[21:44:37] [trace] ACRYLIC:     1 uniform buffers
-[21:44:37] [trace] ACRYLIC:     0 resources
-[21:44:37] [trace] ACRYLIC: Uniform buffers:
-[21:44:37] [trace] ACRYLIC:   _46_48
-[21:44:37] [trace] ACRYLIC:     Size = 64
-[21:44:37] [trace] ACRYLIC:     Binding = 0
-[21:44:37] [trace] ACRYLIC:     Members = 1
-[21:44:37] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
-[21:44:37] [trace] ACRYLIC:     0 uniform buffers
-[21:44:37] [trace] ACRYLIC:     1 resources
-[21:44:37] [trace] ACRYLIC: Uniform buffers:
-[21:44:38] [warning] ACRYLIC: Shader creation took 28.7021 ms
-[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
-[21:44:38] [trace] ACRYLIC:     1 uniform buffers
-[21:44:38] [trace] ACRYLIC:     0 resources
-[21:44:38] [trace] ACRYLIC: Uniform buffers:
-[21:44:38] [trace] ACRYLIC:   _47_49
-[21:44:38] [trace] ACRYLIC:     Size = 64
-[21:44:38] [trace] ACRYLIC:     Binding = 0
-[21:44:38] [trace] ACRYLIC:     Members = 1
-[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
-[21:44:38] [trace] ACRYLIC:     0 uniform buffers
-[21:44:38] [trace] ACRYLIC:     0 resources
-[21:44:38] [trace] ACRYLIC: Uniform buffers:
-[21:44:38] [warning] ACRYLIC: Shader creation took 25.5349 ms
-[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
-[21:44:38] [trace] ACRYLIC:     1 uniform buffers
-[21:44:38] [trace] ACRYLIC:     0 resources
-[21:44:38] [trace] ACRYLIC: Uniform buffers:
-[21:44:38] [trace] ACRYLIC:   _30_32
-[21:44:38] [trace] ACRYLIC:     Size = 64
-[21:44:38] [trace] ACRYLIC:     Binding = 0
-[21:44:38] [trace] ACRYLIC:     Members = 1
-[21:44:38] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
-[21:44:38] [trace] ACRYLIC:     0 uniform buffers
-[21:44:38] [trace] ACRYLIC:     0 resources
-[21:44:38] [trace] ACRYLIC: Uniform buffers:
-[21:44:38] [warning] ACRYLIC: Shader creation took 24.77 ms
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CircleRendererComponent
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CameraComponent
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.NativeScriptComponent
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.ScriptComponent
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.BoxCollider2DComponent
-[21:44:38] [error] ACRYLIC: Could not find C# component type Acrylic.CircleCollider2DComponent
+[13:45:07] [info] ACRYLIC: Initialized Log!
+[13:45:07] [info] ACRYLIC: Creating window Acrylic Editor (1280, 720)
+[13:45:08] [info] ACRYLIC: OpenGL Info:
+[13:45:08] [info] ACRYLIC:   Vendor:	NVIDIA Corporation
+[13:45:08] [info] ACRYLIC:   Renderer:	NVIDIA GeForce RTX 3080/PCIe/SSE2
+[13:45:08] [info] ACRYLIC:   Version:	4.6.0 NVIDIA 512.95
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Quad.glsl
+[13:45:08] [trace] ACRYLIC:     1 uniform buffers
+[13:45:08] [trace] ACRYLIC:     0 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [trace] ACRYLIC:   _46_48
+[13:45:08] [trace] ACRYLIC:     Size = 64
+[13:45:08] [trace] ACRYLIC:     Binding = 0
+[13:45:08] [trace] ACRYLIC:     Members = 1
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Quad.glsl
+[13:45:08] [trace] ACRYLIC:     0 uniform buffers
+[13:45:08] [trace] ACRYLIC:     1 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [warning] ACRYLIC: Shader creation took 28.7867 ms
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Circle.glsl
+[13:45:08] [trace] ACRYLIC:     1 uniform buffers
+[13:45:08] [trace] ACRYLIC:     0 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [trace] ACRYLIC:   _47_49
+[13:45:08] [trace] ACRYLIC:     Size = 64
+[13:45:08] [trace] ACRYLIC:     Binding = 0
+[13:45:08] [trace] ACRYLIC:     Members = 1
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Circle.glsl
+[13:45:08] [trace] ACRYLIC:     0 uniform buffers
+[13:45:08] [trace] ACRYLIC:     0 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [warning] ACRYLIC: Shader creation took 24.8034 ms
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_VERTEX_SHADER assets/shaders/Renderer2D_Line.glsl
+[13:45:08] [trace] ACRYLIC:     1 uniform buffers
+[13:45:08] [trace] ACRYLIC:     0 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [trace] ACRYLIC:   _30_32
+[13:45:08] [trace] ACRYLIC:     Size = 64
+[13:45:08] [trace] ACRYLIC:     Binding = 0
+[13:45:08] [trace] ACRYLIC:     Members = 1
+[13:45:08] [trace] ACRYLIC: OpenGLShader::Reflect - GL_FRAGMENT_SHADER assets/shaders/Renderer2D_Line.glsl
+[13:45:08] [trace] ACRYLIC:     0 uniform buffers
+[13:45:08] [trace] ACRYLIC:     0 resources
+[13:45:08] [trace] ACRYLIC: Uniform buffers:
+[13:45:08] [warning] ACRYLIC: Shader creation took 24.5478 ms
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.CircleRendererComponent
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.CameraComponent
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.NativeScriptComponent
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.ScriptComponent
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.BoxCollider2DComponent
+[13:45:08] [error] ACRYLIC: Could not find C# component type Acrylic.CircleCollider2DComponent
+[13:45:14] [trace] ACRYLIC: Deserializing scene 'Untitled'
+[13:45:14] [trace] ACRYLIC: Deserialized entity with ID = 12786694685168771334, name = Square
+[13:45:14] [trace] ACRYLIC: Deserialized entity with ID = 1556756331191138409, name = Blue Square
+[13:45:14] [trace] ACRYLIC: Deserialized entity with ID = 6168587161580105977, name = Green Square
+[13:45:14] [trace] ACRYLIC: Deserialized entity with ID = 10809011240575432738, name = Red Square
+[13:45:14] [trace] ACRYLIC: Deserialized entity with ID = 10788485966694766546, name = Camera

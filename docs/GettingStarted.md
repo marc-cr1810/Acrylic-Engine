@@ -14,9 +14,9 @@ Make sure that you add everything except for the .NET Framework SDK to your PATH
 
 ## Downloading the Repository
 
-Start by cloning the repository with **git clone --recursive https://github.com/marc-cr1810/Acrylic-Engine**
+Start by cloning the repository with `git clone --recursive https://github.com/marc-cr1810/Acrylic-Engine`
 
-If the repository was cloned non-recursively previously, use **git submodule update --init** clone the necessary submodules.
+If the repository was cloned non-recursively previously, use `git submodule update --init` clone the necessary submodules.
 
 ## Setting Up
 

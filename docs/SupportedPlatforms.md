@@ -7,6 +7,7 @@ If you cannot find your particular platform here that means that Acrylic does no
 You can also find out what IDEs/Toolchains aresupported by reading the [Supported Editors](#supported-editors) section.
 
 ## Fully Supported
+
 This is a list of platforms that Acrylic has been built, run, and tested on. These platforms should work without and serious platform specific problems.
 
 If you find any issues relating to one of these platforms. You can open an issue on Github here https://github.com/marc-cr1810/Acrylic-Engine/issues
@@ -15,6 +16,7 @@ If you find any issues relating to one of these platforms. You can open an issue
 > Currently Acrylic only supports 64-bit versions of Windows and it is unlikely that 32-bit version support will ever be added
 
 ## Unsupported Platforms
+
 This is a list of platforms that Acrylic does not support and probably won't run on.
  * Windows 7
  * MacOS
