@@ -1,7 +1,8 @@
 # Getting Started
 
 This guide should hopefully get you started on how to build and run the Acrylic Engine. Make sure to read eveything and follow the guide correctly.
-Do note that currently Acrylic can only be setup for **Visual Studio 2022** currently.
+
+!> Do note that currently Acrylic can only be setup for **Visual Studio 2022** currently.
 
 ## Requirements
 
@@ -49,7 +50,7 @@ If you do not have the .NET Framework installed, open the Visual Studio Installe
 
 ![NETFrameworkWorkload](/Images/NETFrameworkWorkload.jpg)
 
-You may be required to restart your computer after installing.
+?> You may be required to restart your computer after installing.
 
 ## Pulling the Latest Code
 
