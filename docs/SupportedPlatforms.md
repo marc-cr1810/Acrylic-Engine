@@ -13,7 +13,8 @@ This is a list of platforms that Acrylic has been built, run, and tested on. The
 If you find any issues relating to one of these platforms. You can open an issue on Github here https://github.com/marc-cr1810/Acrylic-Engine/issues
  * Windows 10 (64-bit)
  * Windows 11 (64-bit)
-> Currently Acrylic only supports 64-bit versions of Windows and it is unlikely that 32-bit version support will ever be added
+ 
+?> Currently Acrylic only supports 64-bit versions of Windows and it is unlikely that 32-bit version support will ever be added
 
 ## Unsupported Platforms
 

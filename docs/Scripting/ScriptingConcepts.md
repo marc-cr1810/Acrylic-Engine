@@ -36,7 +36,7 @@ Script files make their connecting with the internal workings of Acrylic (which 
 
 Take note of the two main functions defined inside the class. The **OnCreate** function is called by Acrylic before the gameplay begins and this is where you should do all of your initialization for your script. The **OnUpdate** function is called every frame for the **Entity**. Here you can do thing like movement, triggering actions and events, responses to the users input, etc. Really anything that needs to be handled udring gameplay over time. The **ts** variable in the **OnUpdate** function's arguments is the amount of time that has passed since the previous frame in **seconds** this can be very helpful for keeping various things such as movement speed and any custom physics consistent for different frame rates.
 
-?> For experienced programmers, you might note that there is no default constructor and initlialization is done on the **OnCreate** function. This is because Acrylic handles the construction of objects internally and does not occur when gameplay starts as you would normally expect. **DO NOT** create a constructor to do your initialization as you will most likely cause major problems for your project.
+!> For experienced programmers, you might note that there is no default constructor and initlialization is done on the **OnCreate** function. This is because Acrylic handles the construction of objects internally and does not occur when gameplay starts as you would normally expect. **DO NOT** create a constructor to do your initialization as you will most likely cause major problems for your project.
 
 ### Simple Script Test
 

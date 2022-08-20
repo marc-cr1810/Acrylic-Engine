@@ -28,6 +28,46 @@ The base class in which every Acrylic script derives from. When creating a new C
 | HasComponent | Returns true if the Entity has the specified component class attached |
 | GetComponent | Gets the specified component attached to the Entity                   |
 
+#### HasComponent
+
+Check if the entity has a specific component attached to it. This returns true if it does.
+
+```csharp
+using System;
+using Acrylic;
+
+public class HasComponentExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        if (HasComponent<SpriteRendererComponent>())
+        {
+            Console.WriteLine("This entity has a sprite renderer!");
+        }
+    }
+}
+```
+#### GetComponent
+
+Gets a specific component attached to the entity. Outputs the attached component with its data to be read to modified.
+
+```csharp
+using System;
+using Acrylic;
+
+public class HasComponentExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        if (HasComponent<SpriteRendererComponent>())
+        {
+            SpriteRendererComponent sprite = GetComponent<SpriteRendererComponent>();
+            // Set the sprites color to a bright pink
+            sprite.Color = new Vector4(1, 0, 1, 1);
+        }
+    }
+}
+```
 
 ## Input
 
@@ -44,6 +84,102 @@ Also read [KeyCode](#keycode) and [MouseCode](#mousecode) to see the lists of al
 | GetMousePosition     | Gets a Vector2 of the current mouse x and y position in pixels |
 | GetMouseX            | Gets the current x position of the mouse in pixels             |
 | GetMouseY            | Gets the current y position of the mouse in pixels             |
+
+#### IsKeyDown
+
+Check if a key on the keyboard is pressed down. The **keycode** parameter is the specified key to check for.
+
+```csharp
+using System;
+using Acrylic;
+
+public class KeyCodeExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        if (Input.IsKeyDown(KeyCode.Space))
+        {
+            Console.WriteLine("The space key is pressed down");
+        }
+    }
+}
+```
+
+#### IsMouseButtonPressed
+
+Check if a mouse button is pressed down. The **button** parameter is the specified mouse button to check for.
+
+```csharp
+using System;
+using Acrylic;
+
+public class MouseCodeExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        if (Input.IsMouseButtonPressed(MouseCode.ButtonLeft))
+        {
+            Console.WriteLine("The left mouse button is pressed down");
+        }
+    }
+}
+```
+
+#### GetMousePosition
+
+Returns a Vector2 of the X and Y coordinates of the mouse cursor in pixels relative to the top left corner of the window.
+
+```csharp
+using System;
+using Acrylic;
+
+public class MousePositionExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        Vector2 pos = Input.GetMousePosition();
+        Console.WriteLine("Mouse Position: {0}, {1}", pos.X, pos.Y);
+    }
+}
+```
+
+#### GetMouseX
+
+Unalike [GetMousePosition](#getmouseposition), this function only returns the value of the mouse cursors X position. It is also in pixels relative to the top left corner of the window.
+
+
+```csharp
+using System;
+using Acrylic;
+
+public class GetMouseXExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        float x = Input.GetMouseX();
+        Console.WriteLine("Mouse X Position: {0}", x);
+    }
+}
+```
+
+#### GetMouseY
+
+Unalike [GetMousePosition](#getmouseposition) and much like [GetMouseX](#getmousex), this function only returns the value of the mouse cursors Y position. It is also in pixels relative to the top left corner of the window.
+
+
+```csharp
+using System;
+using Acrylic;
+
+public class GetMouseYExample : Entity
+{
+    void OnUpdate(float ts)
+    {
+        float y = Input.GetMouseY();
+        Console.WriteLine("Mouse Y Position: {0}", y);
+    }
+}
+```
 
 ## KeyCode
 
@@ -192,7 +328,7 @@ public class KeyCodeExample : Entity
 
 ## MouseCode
 
-MouseCode is a map of every physical button on the mouse. Use these with the [Input.IsMouseButtonPressed](#input) function to detect key presses from the user.
+MouseCode is a map of every physical button on the mouse. Use these with the [Input.IsMouseButtonPressed](#input) function to detect mouse button presses from the user.
 
 ```csharp
 using System;
