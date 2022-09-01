@@ -18,6 +18,7 @@ public:
 	void OnEvent(Acrylic::Event& e) override;
 private:
 	Acrylic::OrthographicCameraController m_CameraController;
+	Acrylic::SceneCamera m_Camera;
 
 	Acrylic::Ref<Acrylic::Texture2D> m_CheckerboardTexture;
 	Acrylic::Ref<Acrylic::Texture2D> m_DuckTexture;

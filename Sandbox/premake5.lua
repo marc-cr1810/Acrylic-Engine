@@ -15,16 +15,16 @@ project "Sandbox"
 
 	includedirs
 	{
-		"%{wks.location}/Acylic/vendor/spdlog/include",
-		"%{wks.location}/Acylic/src",
-		"%{wks.location}/Acylic/vendor",
+		"%{wks.location}/Acrylic/vendor/spdlog/include",
+		"%{wks.location}/Acrylic/src",
+		"%{wks.location}/Acrylic/vendor",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}"
 	}
 
 	links
 	{
-		"Acylic"
+		"Acrylic"
 	}
 
 	filter "system:windows"

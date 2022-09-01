@@ -52,6 +52,7 @@ void Sandbox2D::OnAttach()
 	m_Particle.VelocityVariation = { 3.0f, 1.0f };
 	m_Particle.Position = { 0.0f, 0.0f };
 
+	m_Camera.SetOrthographic(10.0f, -5.0f, 5.0f);
 	m_CameraController.SetZoomLevel(5.0f);
 }
 
@@ -106,9 +107,11 @@ void Sandbox2D::OnUpdate(Acrylic::Timestep ts)
 		Acrylic::Renderer2D::EndScene();
 	}
 
-	if (Acrylic::Input::IsMouseButtonPressed(AC_MOUSE_BUTTON_LEFT))
+	if (Acrylic::Input::IsMouseButtonPressed(Acrylic::Mouse::ButtonLeft))
 	{
-		auto [x, y] = Acrylic::Input::GetMousePosition();
+		auto pos = Acrylic::Input::GetMousePosition();
+		auto x = pos.x;
+		auto y = pos.y;
 		auto width = Acrylic::Application::Get().GetWindow().GetWidth();
 		auto height = Acrylic::Application::Get().GetWindow().GetHeight();
 

@@ -7,7 +7,8 @@
 class Sandbox : public Acrylic::Application
 {
 public:
-	Sandbox()
+	Sandbox(const Acrylic::ApplicationSpecification& spec)
+			: Application(spec)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -17,7 +18,7 @@ public:
 	{}
 };
 
-Acrylic::Application* Acrylic::CreateApplication()
+Acrylic::Application* Acrylic::CreateApplication(ApplicationCommandLineArgs args)
 {
 	return new Sandbox();
 }
