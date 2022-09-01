@@ -16,6 +16,7 @@ namespace Acrylic
 		{ "System.Double", ScriptFieldType::Double },
 		{ "System.Boolean", ScriptFieldType::Bool },
 		{ "System.Char", ScriptFieldType::Char },
+		{ "System.String", ScriptFieldType::String },
 		{ "System.Int16", ScriptFieldType::Short },
 		{ "System.Int32", ScriptFieldType::Int },
 		{ "System.Int64", ScriptFieldType::Long },
@@ -129,6 +130,7 @@ namespace Acrylic
 			case ScriptFieldType::Bool:    return "Bool";
 			case ScriptFieldType::Char:    return "Char";
 			case ScriptFieldType::Byte:    return "Byte";
+			case ScriptFieldType::String:  return "String";
 			case ScriptFieldType::Short:   return "Short";
 			case ScriptFieldType::Int:     return "Int";
 			case ScriptFieldType::Long:    return "Long";

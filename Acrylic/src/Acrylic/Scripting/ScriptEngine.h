@@ -22,7 +22,7 @@ namespace Acrylic
 	{
 		None = 0,
 		Float, Double,
-		Bool, Char, Byte, Short, Int, Long,
+		Bool, Char, String, Byte, Short, Int, Long,
 		UByte, UShort, UInt, ULong,
 		Vector2, Vector3, Vector4,
 		Entity

@@ -6,8 +6,9 @@
 namespace Acrylic {
 	namespace UI
 	{
-		void DrawVec3Control(const std::string& label, glm::vec3& values, float resetValue, float columnWidth)
+		bool DrawVec3Control(const std::string& label, glm::vec3& values, float resetValue, float columnWidth)
 		{
+			bool valueChanged = false;
 			ImGuiIO& io = ImGui::GetIO();
 			auto boldFont = io.Fonts->Fonts[0];
 
@@ -34,7 +35,7 @@ namespace Acrylic {
 			ImGui::PopStyleColor(3);
 
 			ImGui::SameLine();
-			ImGui::DragFloat("##X", &values.x, 0.1f, 0.0f, 0.0f, "%.2f");
+			ImGui::DragFloat("##X", &values.x, 0.1f, 0.0f, 0.0f, "%.2f") ? valueChanged = true : valueChanged = valueChanged;
 			ImGui::PopItemWidth();
 			ImGui::SameLine();
 
@@ -48,7 +49,7 @@ namespace Acrylic {
 			ImGui::PopStyleColor(3);
 
 			ImGui::SameLine();
-			ImGui::DragFloat("##Y", &values.y, 0.1f, 0.0f, 0.0f, "%.2f");
+			ImGui::DragFloat("##Y", &values.y, 0.1f, 0.0f, 0.0f, "%.2f") ? valueChanged = true : valueChanged = valueChanged;
 			ImGui::PopItemWidth();
 			ImGui::SameLine();
 
@@ -62,7 +63,7 @@ namespace Acrylic {
 			ImGui::PopStyleColor(3);
 
 			ImGui::SameLine();
-			ImGui::DragFloat("##Z", &values.z, 0.1f, 0.0f, 0.0f, "%.2f");
+			ImGui::DragFloat("##Z", &values.z, 0.1f, 0.0f, 0.0f, "%.2f") ? valueChanged = true : valueChanged = valueChanged;
 			ImGui::PopItemWidth();
 
 			ImGui::PopStyleVar();
@@ -70,6 +71,8 @@ namespace Acrylic {
 			ImGui::Columns(1);
 
 			ImGui::PopID();
+
+			return valueChanged;
 		}
 
 		// Taken from "imgui_widgets.cpp" but modified to have a texture between the arrow/bullet

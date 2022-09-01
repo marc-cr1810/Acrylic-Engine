@@ -128,11 +128,11 @@ namespace Acrylic
 
 		DrawComponent<TransformComponent>("Transform", entity, (ImTextureID)m_TransformIcon->GetRendererID(), [](auto& component)
 			{
-				UI::DrawVec3Control("Translation", component.Translation);
+				UI::DrawVec3Control("Translation", component.Translation, 0.0f, 75.0f);
 				glm::vec3 rotation = glm::degrees(component.Rotation);
-				UI::DrawVec3Control("Rotation", rotation);
+				UI::DrawVec3Control("Rotation", rotation, 0.0f, 75.0f);
 				component.Rotation = glm::radians(rotation);
-				UI::DrawVec3Control("Scale", component.Scale, 1.0f);
+				UI::DrawVec3Control("Scale", component.Scale, 1.0f, 75.0f);
 			});
 
 		DrawComponent<SpriteRendererComponent>("Sprite Renderer", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto& component)
@@ -256,6 +256,10 @@ namespace Acrylic
 						if (field.Type == ScriptFieldType::Vector3)
 						{
 							glm::vec3 vec3 = scriptInstance->GetFieldValue<glm::vec3>(name);
+							if (UI::DrawVec3Control(name, vec3))
+							{
+								scriptInstance->SetFieldValue(name, vec3);
+							}
 						}
 					}
 				}
