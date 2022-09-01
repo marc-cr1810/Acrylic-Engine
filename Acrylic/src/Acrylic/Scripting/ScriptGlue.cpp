@@ -234,11 +234,14 @@ namespace Acrylic
 
 	void ScriptGlue::RegisterComponents()
 	{
+		AC_CORE_INFO("Registering C# component classes");
 		RegisterComponent(AllComponents{});
 	}
 
 	void ScriptGlue::RegisterFunctions()
 	{
+		AC_CORE_INFO("Registering C# internal functions");
+
 		AC_ADD_INTERNAL_CALL(Entity_HasComponent);
 
 		AC_ADD_INTERNAL_CALL(TransformComponent_GetTranslation);

@@ -224,7 +224,7 @@ namespace Acrylic
 				}
 			});
 
-		DrawComponent<ScriptComponent>("Script", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [](auto& component)
+		DrawComponent<ScriptComponent>("Script", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [entity](auto& component) mutable
 			{
 				bool scriptClassExists = ScriptEngine::EntityClassExists(component.ClassName);
 
@@ -236,6 +236,29 @@ namespace Acrylic
 
 				if (ImGui::InputText("Class", buffer, sizeof(buffer)))
 					component.ClassName = buffer;
+
+				// Fields
+				Ref<ScriptInstance> scriptInstance = ScriptEngine::GetEntityScriptInstance(entity.GetUUID());
+				if (scriptInstance)
+				{
+					const auto& fields = scriptInstance->GetScriptClass()->GetFields();
+
+					for (const auto& [name, field] : fields)
+					{
+						if (field.Type == ScriptFieldType::Float || field.Type == ScriptFieldType::Double)
+						{
+							float data = scriptInstance->GetFieldValue<float>(name);
+							if (ImGui::DragFloat(name.c_str(), &data))
+							{
+								scriptInstance->SetFieldValue(name, data);
+							}
+						}
+						if (field.Type == ScriptFieldType::Vector3)
+						{
+							glm::vec3 vec3 = scriptInstance->GetFieldValue<glm::vec3>(name);
+						}
+					}
+				}
 
 				if (!scriptClassExists)
 					ImGui::PopStyleColor();

@@ -6,6 +6,7 @@ namespace Sandbox
 	public class Player : Entity
 	{
 		public float Speed = 15.0f;
+		public Vector3 Vec3 = Vector3.Zero;
 
 		private TransformComponent Transform;
 		private Rigidbody2DComponent Rigidbody;
