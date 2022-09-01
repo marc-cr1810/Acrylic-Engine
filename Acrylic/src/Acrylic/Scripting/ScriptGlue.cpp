@@ -105,6 +105,50 @@ namespace Acrylic
 
 #pragma endregion
 
+#pragma region CircleRendererComponent
+
+	static void CircleRendererComponent_GetColor(UUID entityID, glm::vec4* outColor)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		*outColor = entity.GetComponent<CircleRendererComponent>().Color;
+	}
+
+	static void CircleRendererComponent_SetColor(UUID entityID, glm::vec4* color)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		entity.GetComponent<CircleRendererComponent>().Color = *color;
+	}
+
+	static void CircleRendererComponent_GetThickness(UUID entityID, float* outThickness)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		*outThickness = entity.GetComponent<CircleRendererComponent>().Thickness;
+	}
+
+	static void CircleRendererComponent_SetThickness(UUID entityID, float* thickness)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		AC_CORE_ASSERT(entity);
+
+		entity.GetComponent<CircleRendererComponent>().Thickness = *thickness;
+	}
+
+#pragma endregion
+
 #pragma region Rigidbody2DComponent
 
 	static void Rigidbody2DComponent_ApplyLinearImpulse(UUID entityID, glm::vec2* impulse, glm::vec2* point, bool wake)
@@ -204,6 +248,11 @@ namespace Acrylic
 
 		AC_ADD_INTERNAL_CALL(SpriteRendererComponent_GetColor);
 		AC_ADD_INTERNAL_CALL(SpriteRendererComponent_SetColor);
+
+		AC_ADD_INTERNAL_CALL(CircleRendererComponent_GetColor);
+		AC_ADD_INTERNAL_CALL(CircleRendererComponent_SetColor);
+		AC_ADD_INTERNAL_CALL(CircleRendererComponent_GetThickness);
+		AC_ADD_INTERNAL_CALL(CircleRendererComponent_SetThickness);
 
 		AC_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulse);
 		AC_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulseToCenter);

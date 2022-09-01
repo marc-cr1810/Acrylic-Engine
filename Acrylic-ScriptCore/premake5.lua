@@ -3,8 +3,8 @@ project "Acrylic-ScriptCore"
 	language "C#"
 	dotnetframework "4.7.2"
 
-	targetdir ("%{wks.location}/Acrylic-Editor/Resources/Scripts")
-	objdir ("%{wks.location}/Acrylic-Editor/Resources/Scripts/Intermediates")
+	targetdir ("../Acrylic-Editor/Resources/Scripts")
+	objdir ("../Acrylic-Editor/Resources/Scripts/Intermediates")
 
 	files 
 	{

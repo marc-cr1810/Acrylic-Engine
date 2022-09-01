@@ -38,6 +38,22 @@ namespace Acrylic
 
 		#endregion
 
+		#region CircleRendererComponent
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void CircleRendererComponent_GetColor(ulong entityID, out Vector4 color);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void CircleRendererComponent_SetColor(ulong entityID, ref Vector4 color);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void CircleRendererComponent_GetThickness(ulong entityID, out float thickness);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static void CircleRendererComponent_SetThickness(ulong entityID, ref float thickness);
+
+		#endregion
+
 		#region Rigidbody2DComponent
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
