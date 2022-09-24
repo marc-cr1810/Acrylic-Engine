@@ -5,6 +5,10 @@ namespace Sandbox
 {
 	public class Square : Entity
 	{
+		public Vector2 Vec2 = new Vector2(0.2f, 0.7f);
+		public Vector3 Vec3 = new Vector3(0.5f, 0.5f, 0.0f);
+		public Vector4 Vec4 = new Vector4(0.8f, 0.3f, 0.6f, 1.0f);
+
 		private SpriteRendererComponent Sprite;
 
 		void OnCreate()
