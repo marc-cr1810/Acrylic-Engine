@@ -137,6 +137,8 @@ namespace Acrylic
 
 	void Scene::OnRuntimeStart()
 	{
+		m_Running = true;
+
 		s_ActiveScenes[m_SceneID] = this;
 
 		OnPhysics2DStart();
@@ -157,6 +159,8 @@ namespace Acrylic
 
 	void Scene::OnRuntimeStop()
 	{
+		m_Running = false;
+
 		s_ActiveScenes.erase(m_SceneID);
 		// Destroy box2d world
 		OnPhysics2DStop();

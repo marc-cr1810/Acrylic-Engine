@@ -24,6 +24,16 @@ namespace Acrylic
 		m_CircleCollider2DIcon = Texture2D::Create("Resources/Icons/Panels/Properties/Components/CircleCollider2DIcon.png");
 	}
 
+	PropertiesPanel::PropertiesPanel(const Ref<Scene>& sceneContext)
+	{
+		SetSceneContext(sceneContext);
+	}
+
+	void PropertiesPanel::SetSceneContext(const Ref<Scene>& sceneContext)
+	{
+		m_SceneContext = sceneContext;
+	}
+
 	void PropertiesPanel::OnImGuiRender(const Entity& context)
 	{
 		if (m_Open)
@@ -224,12 +234,12 @@ namespace Acrylic
 				}
 			});
 
-		DrawComponent<ScriptComponent>("Script", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [entity](auto& component) mutable
+		DrawComponent<ScriptComponent>("Script", entity, (ImTextureID)m_SpriteRendererIcon->GetRendererID(), [entity, scene = m_SceneContext](auto& component) mutable
 			{
 				bool scriptClassExists = ScriptEngine::EntityClassExists(component.ClassName);
 
 				static char buffer[64];
-				strcpy(buffer, component.ClassName.c_str());
+				strcpy_s(buffer, sizeof(buffer), component.ClassName.c_str());
 
 				if (!scriptClassExists)
 					ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.9f, 0.2f, 0.3f, 1.0f));
@@ -238,27 +248,88 @@ namespace Acrylic
 					component.ClassName = buffer;
 
 				// Fields
-				Ref<ScriptInstance> scriptInstance = ScriptEngine::GetEntityScriptInstance(entity.GetUUID());
-				if (scriptInstance)
+				bool sceneRunning = scene->IsRunning();
+				if (sceneRunning)
 				{
-					const auto& fields = scriptInstance->GetScriptClass()->GetFields();
-
-					for (const auto& [name, field] : fields)
+					Ref<ScriptInstance> scriptInstance = ScriptEngine::GetEntityScriptInstance(entity.GetUUID());
+					if (scriptInstance)
 					{
-						if (field.Type == ScriptFieldType::Float || field.Type == ScriptFieldType::Double)
+						const auto& fields = scriptInstance->GetScriptClass()->GetFields();
+						for (const auto& [name, field] : fields)
 						{
-							float data = scriptInstance->GetFieldValue<float>(name);
-							if (ImGui::DragFloat(name.c_str(), &data))
+							if (field.Type == ScriptFieldType::Float || field.Type == ScriptFieldType::Double)
 							{
-								scriptInstance->SetFieldValue(name, data);
+								float data = scriptInstance->GetFieldValue<float>(name);
+								if (ImGui::DragFloat(name.c_str(), &data))
+								{
+									scriptInstance->SetFieldValue(name, data);
+								}
+							}
+							else if (field.Type == ScriptFieldType::Vector3)
+							{
+								glm::vec3 vec3 = scriptInstance->GetFieldValue<glm::vec3>(name);
+								if (UI::DrawVec3Control(name, vec3))
+								{
+									scriptInstance->SetFieldValue(name, vec3);
+								}
 							}
 						}
-						if (field.Type == ScriptFieldType::Vector3)
+					}
+				}
+				else
+				{
+					if (scriptClassExists)
+					{
+						Ref<ScriptClass> entityClass = ScriptEngine::GetEntityClass(component.ClassName);
+						const auto& fields = entityClass->GetFields();
+
+						auto& entityFields = ScriptEngine::GetScriptFieldMap(entity);
+						for (const auto& [name, field] : fields)
 						{
-							glm::vec3 vec3 = scriptInstance->GetFieldValue<glm::vec3>(name);
-							if (UI::DrawVec3Control(name, vec3))
+							// Field has been set in editor
+							if (entityFields.find(name) != entityFields.end())
 							{
-								scriptInstance->SetFieldValue(name, vec3);
+								ScriptFieldInstance& scriptField = entityFields.at(name);
+
+								// Display control to set it maybe
+								if (field.Type == ScriptFieldType::Float || field.Type == ScriptFieldType::Double)
+								{
+									float data = scriptField.GetValue<float>();
+									if (ImGui::DragFloat(name.c_str(), &data))
+										scriptField.SetValue(data);
+								}
+								else if (field.Type == ScriptFieldType::Vector3)
+								{
+									glm::vec3 vec3 = scriptField.GetValue<glm::vec3>();
+									if (UI::DrawVec3Control(name, vec3))
+									{
+										scriptField.SetValue(vec3);
+									}
+								}
+							}
+							else
+							{
+								// Display control to set it maybe
+								if (field.Type == ScriptFieldType::Float)
+								{
+									float data = 0.0f;
+									if (ImGui::DragFloat(name.c_str(), &data))
+									{
+										ScriptFieldInstance& fieldInstance = entityFields[name];
+										fieldInstance.Field = field;
+										fieldInstance.SetValue(data);
+									}
+								}
+								else if (field.Type == ScriptFieldType::Vector3)
+								{
+									glm::vec3 vec3 = glm::vec3{ 0.0f, 0.0f, 0.0f };
+									if (UI::DrawVec3Control(name, vec3, 75.0f))
+									{
+										ScriptFieldInstance& fieldInstance = entityFields[name];
+										fieldInstance.Field = field;
+										fieldInstance.SetValue(vec3);
+									}
+								}
 							}
 						}
 					}

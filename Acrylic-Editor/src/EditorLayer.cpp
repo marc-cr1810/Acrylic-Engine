@@ -51,6 +51,7 @@ namespace Acrylic
 
 		m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		m_SceneHierarchyPanel.SetContext(m_EditorScene);
+		m_PropertiesPanel.SetSceneContext(m_EditorScene);
 
 		m_ActiveScene = m_EditorScene;
 	}
@@ -265,7 +266,7 @@ namespace Acrylic
 
 			m_ViewportFocused = ImGui::IsWindowFocused();
 			m_ViewportHovered = ImGui::IsWindowHovered();
-			Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
+			Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportHovered);
 
 			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
@@ -608,8 +609,9 @@ namespace Acrylic
 	void EditorLayer::NewScene()
 	{
 		m_EditorScene = CreateRef<Scene>();
-		m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		//m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		m_SceneHierarchyPanel.SetContext(m_EditorScene);
+		m_PropertiesPanel.SetSceneContext(m_EditorScene);
 
 		m_ActiveScene = m_EditorScene;
 	}
@@ -638,8 +640,9 @@ namespace Acrylic
 		if (serializer.Deserialize(path.string()))
 		{
 			m_EditorScene = newScene;
-			m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			//m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_EditorScene);
+			m_PropertiesPanel.SetSceneContext(m_EditorScene);
 
 			m_ActiveScene = m_EditorScene;
 			m_EditorScenePath = path;
@@ -681,6 +684,7 @@ namespace Acrylic
 		m_ActiveScene->OnRuntimeStart();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		m_PropertiesPanel.SetSceneContext(m_ActiveScene);
 	}
 
 
@@ -695,6 +699,7 @@ namespace Acrylic
 		m_ActiveScene->OnSimulationStart();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		m_PropertiesPanel.SetSceneContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnSceneStop()
@@ -711,6 +716,7 @@ namespace Acrylic
 		m_ActiveScene = m_EditorScene;
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		m_PropertiesPanel.SetSceneContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDuplicateEntity()

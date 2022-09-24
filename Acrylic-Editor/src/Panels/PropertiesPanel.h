@@ -11,6 +11,9 @@ namespace Acrylic
 	{
 	public:
 		PropertiesPanel();
+		PropertiesPanel(const Ref<Scene>& sceneContext);
+
+		void SetSceneContext(const Ref<Scene>& sceneContext);
 
 		void OnImGuiRender(const Entity& context);
 
@@ -21,6 +24,8 @@ namespace Acrylic
 
 		void DrawComponents(Entity entity);
 	private:
+		Ref<Scene> m_SceneContext;
+
 		Ref<Texture2D> m_TransformIcon;
 		Ref<Texture2D> m_SpriteRendererIcon;
 		Ref<Texture2D> m_CircleRendererIcon;

@@ -42,6 +42,8 @@ namespace Acrylic
 
 		Entity GetPrimaryCameraEntity();
 
+		bool IsRunning() const { return m_Running; }
+
 		template<typename... Components>
 		auto GetAllEntitiesWith()
 		{
@@ -63,6 +65,7 @@ namespace Acrylic
 
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
+		bool m_Running = false;
 
 		entt::entity m_SceneEntity;
 
