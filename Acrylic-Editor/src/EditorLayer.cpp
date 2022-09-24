@@ -609,7 +609,7 @@ namespace Acrylic
 	void EditorLayer::NewScene()
 	{
 		m_EditorScene = CreateRef<Scene>();
-		//m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		m_SceneHierarchyPanel.SetContext(m_EditorScene);
 		m_PropertiesPanel.SetSceneContext(m_EditorScene);
 
@@ -640,7 +640,7 @@ namespace Acrylic
 		if (serializer.Deserialize(path.string()))
 		{
 			m_EditorScene = newScene;
-			//m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_EditorScene);
 			m_PropertiesPanel.SetSceneContext(m_EditorScene);
 
