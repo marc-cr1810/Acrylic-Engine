@@ -213,6 +213,10 @@ Entities:
       TilingFactor: 1
     ScriptComponent:
       ClassName: Sandbox.Player
+      ScriptFields:
+        - Name: Speed
+          Type: Float
+          Data: 15
     Rigidbody2DComponent:
       Type: Dynamic
       FixedRotation: false
