@@ -8,11 +8,15 @@ namespace Sandbox
 		public float Speed = 15.0f;
 		public Vector3 Vec3 = new Vector3(1.5f, 1.0f, 0.4f);
 
+		private Entity CameraEntity;
+
 		private TransformComponent Transform;
 		private Rigidbody2DComponent Rigidbody;
 
 		void OnCreate()
 		{
+			CameraEntity = GetEntityByTag("Camera");
+
 			Transform = GetComponent<TransformComponent>();
 			Rigidbody = GetComponent<Rigidbody2DComponent>();
 		}
@@ -30,6 +34,16 @@ namespace Sandbox
 				velocity.X = -1.0f;
 			else if (Input.IsKeyDown(KeyCode.D))
 				velocity.X = 1.0f;
+
+			if (CameraEntity != null)
+			{
+				Camera camera  = CameraEntity.As<Camera>();
+
+				if (Input.IsKeyDown(KeyCode.Q))
+					camera.DistanceFromPlayer += 2.0f * ts;
+				else if (Input.IsKeyDown(KeyCode.E))
+					camera.DistanceFromPlayer -= 2.0f * ts;
+			}
 
 			velocity *= Speed * ts;
 

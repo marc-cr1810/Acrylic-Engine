@@ -53,5 +53,29 @@ namespace Acrylic
 			T component = new T() { Entity = this };
 			return component;
 		}
+
+		public Entity GetEntityByTag(string tag)
+		{
+			ulong entityID = InternalCalls.Entity_GetEntityByTag(tag);
+			if (entityID == 0)
+				return null;
+
+			return new Entity(entityID);
+		}
+
+		public Entity GetEntityByUUID(ulong uuid)
+		{
+			ulong entityID = InternalCalls.Entity_GetEntityByUUID(uuid);
+			if (entityID == 0)
+				return null;
+
+			return new Entity(entityID);
+		}
+
+		public T As<T>() where T : Entity, new()
+		{
+			object instance = InternalCalls.GetScriptInstance(ID);
+			return instance as T;
+		}
 	}
 }

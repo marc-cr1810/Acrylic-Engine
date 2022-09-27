@@ -35,6 +35,34 @@ namespace Acrylic
 		return s_EntityHasComponentFuncs.at(managedType)(entity);
 	}
 
+	static uint64_t Entity_GetEntityByTag(MonoString* tag)
+	{
+		char* nameCStr = mono_string_to_utf8(tag);
+
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByTag(nameCStr);
+		mono_free(nameCStr);
+
+		if (!entity)
+			return 0;
+
+		return entity.GetUUID();
+	}
+
+	static uint64_t Entity_GetEntityByUUID(UUID entityID)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		AC_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+
+		if (!entity)
+			return 0;
+
+		//NOTE: Could also just return entityID instead
+		return entity.GetUUID();
+	}
+
 #pragma endregion
 
 #pragma region TransformComponent
@@ -206,6 +234,15 @@ namespace Acrylic
 
 #pragma endregion
 
+#pragma region Misc
+
+	static MonoObject* GetScriptInstance(UUID entityID)
+	{
+		return ScriptEngine::GetManagedInstance(entityID);
+	}
+
+#pragma endregion
+
 	template<typename... Component>
 	static void RegisterComponent()
 	{
@@ -243,6 +280,8 @@ namespace Acrylic
 		AC_CORE_INFO("Registering C# internal functions");
 
 		AC_ADD_INTERNAL_CALL(Entity_HasComponent);
+		AC_ADD_INTERNAL_CALL(Entity_GetEntityByTag);
+		AC_ADD_INTERNAL_CALL(Entity_GetEntityByUUID);
 
 		AC_ADD_INTERNAL_CALL(TransformComponent_GetTranslation);
 		AC_ADD_INTERNAL_CALL(TransformComponent_SetTranslation);
@@ -265,5 +304,7 @@ namespace Acrylic
 		AC_ADD_INTERNAL_CALL(Input_GetMousePosition);
 		AC_ADD_INTERNAL_CALL(Input_GetMouseX);
 		AC_ADD_INTERNAL_CALL(Input_GetMouseY);
+
+		AC_ADD_INTERNAL_CALL(GetScriptInstance);
 	}
 }

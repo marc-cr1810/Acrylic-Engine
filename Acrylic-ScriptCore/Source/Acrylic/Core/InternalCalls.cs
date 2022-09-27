@@ -10,6 +10,12 @@ namespace Acrylic
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static bool Entity_HasComponent(ulong entityID, Type componentType);
 
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static ulong Entity_GetEntityByTag(string tag);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static ulong Entity_GetEntityByUUID(ulong entityID);
+
 		#endregion
 
 		#region TransformComponent
@@ -80,6 +86,13 @@ namespace Acrylic
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static void Input_GetMouseY(out float yPosition);
+
+		#endregion
+
+		#region Misc
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern static object GetScriptInstance(ulong entityID);
 
 		#endregion
 	}

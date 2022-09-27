@@ -38,6 +38,7 @@ namespace Acrylic
 
 		void DuplicateEntity(Entity entity);
 
+		Entity GetEntityByTag(std::string_view name);
 		Entity GetEntityByUUID(UUID uuid);
 
 		Entity GetPrimaryCameraEntity();

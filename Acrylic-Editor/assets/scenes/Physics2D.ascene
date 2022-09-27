@@ -99,6 +99,12 @@ Entities:
         OrthographicFar: 2.5
       Primary: true
       FixedAspectRatio: false
+    ScriptComponent:
+      ClassName: Sandbox.Camera
+      ScriptFields:
+        - Name: DistanceFromPlayer
+          Type: Float
+          Data: 2
   - Entity: 17643594723658666021
     TagComponent:
       Tag: Circle
